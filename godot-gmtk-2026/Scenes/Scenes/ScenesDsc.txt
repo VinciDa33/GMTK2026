@@ -1,0 +1,1 @@
+Scenes refer to larger scenes containing the gameplay management systems. Such as main menues, game scenes, etc.

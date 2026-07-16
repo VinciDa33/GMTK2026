@@ -1,0 +1,1 @@
+Styling refers to Resource objects for things such as Theme, FlatBoxStyle, etc.

@@ -1,0 +1,1 @@
+AutoLoads refers to scenes that a registered in the Global Autoloader under the project settings.

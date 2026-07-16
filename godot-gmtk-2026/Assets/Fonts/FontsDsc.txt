@@ -1,0 +1,1 @@
+Its for font files (probably mostly .ttf).

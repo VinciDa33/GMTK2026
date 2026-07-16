@@ -1,0 +1,1 @@
+Prefabs refer to all smaller scenes that are meant to be instantiated multiple times during runtime. Could be enemies, effects or others.

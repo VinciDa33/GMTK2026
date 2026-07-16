@@ -1,0 +1,1 @@
+Scripts refers to all code files for the game. Subdirectories should be used for categorizing scripts.

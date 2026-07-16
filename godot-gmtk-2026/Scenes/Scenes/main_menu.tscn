@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bf7xuoykf2j41"]
+
+[ext_resource type="Script" uid="uid://lvsty2cdbtjd" path="res://Scripts/Temp/TempMainMenuController.cs" id="1_8um42"]
+
+[node name="World" type="Node2D" unique_id=255343335]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1671066560]
+
+[node name="Main_Menu_Control" type="Control" parent="CanvasLayer" unique_id=809381305]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8um42")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Main_Menu_Control" unique_id=359769763]
+layout_mode = 0
+offset_right = 291.0
+offset_bottom = 406.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main_Menu_Control/MarginContainer" unique_id=1134897180]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=677095968]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "GMTK 2026!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=281602445]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Start_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=210176167]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Start"
+
+[node name="Settings_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=1164563297]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Settings
+"
+
+[node name="Quit_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=1698353584]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="button_down" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Settings_Button" to="CanvasLayer/Main_Menu_Control" method="SettingsClicked"]
