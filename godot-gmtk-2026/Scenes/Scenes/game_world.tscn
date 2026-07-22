@@ -5,11 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://cmghspt0j53nc" path="res://Scenes/PreFabs/inventory_item.tscn" id="3_1aiwk"]
 [ext_resource type="Script" uid="uid://dpkebv4ejpa6y" path="res://Scripts/OxygenCounter/UI/OxygenProgressBar.cs" id="4_2w2h1"]
 [ext_resource type="PackedScene" uid="uid://75gko4n5qxcr" path="res://Scenes/PreFabs/player.tscn" id="5_kj3be"]
+[ext_resource type="Script" uid="uid://cehx3tpqvjwb4" path="res://Scripts/Player/CameraFollower.cs" id="6_mpric"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7y0oj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csq4g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7y0oj"]
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
@@ -142,3 +145,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=466123480 instance=ExtResource("5_kj3be")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2035123442 node_paths=PackedStringArray("_target")]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 20, 0)
+script = ExtResource("6_mpric")
+_target = NodePath("../Player")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=697663417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.6698718)
+mesh = SubResource("BoxMesh_7y0oj")
