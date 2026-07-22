@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 using GodotGMTK2026.Scripts.Management;
@@ -28,10 +29,12 @@ public partial class PlayerInventoryUI : Node
     public override void _Process(double delta)
     {
         if (Input.IsKeyPressed(Key.Space))
-            GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.ScrapMetal));
+        {
+            RandomNumberGenerator rng = new RandomNumberGenerator();
+            GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem((ItemEnum)rng.RandiRange(0, 5)));
+        }
         if (Input.IsKeyPressed(Key.S))
-            GameState.Instance.PlayerInventory.RemoveItem(
-                GameState.Instance.PlayerInventory.GetFirstItemOfType(ItemEnum.ScrapMetal));
+            GameState.Instance.PlayerInventory.RemoveFirst();
     }
 
     private void ItemAdded(Item item)

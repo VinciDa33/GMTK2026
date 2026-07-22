@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://lehpg5xxd8xr"]
 
 [ext_resource type="Script" uid="uid://cs2sm5kpdiksk" path="res://Scripts/Items/ItemResource.cs" id="1_1w7nx"]
+[ext_resource type="Texture2D" uid="uid://dfytv10makypn" path="res://Assets/Graphics/Placeholder/copper_ore.png" id="1_v2mux"]
 
 [resource]
 script = ExtResource("1_1w7nx")
 Identifier = 3
 Name = "Copper Ore"
+Sprite = ExtResource("1_v2mux")
 metadata/_custom_type_script = "uid://cs2sm5kpdiksk"

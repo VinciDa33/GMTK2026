@@ -63,6 +63,16 @@ public class Inventory
         return false;
     }
 
+    public void RemoveFirst()
+    {
+        if (_items.Count == 0)
+            return;
+        
+        Item removed = _items[0];
+        _items.RemoveAt(0);
+        OnItemRemoved?.Invoke(removed);
+    }
+
     public void SetCapacity(int capacity)
     {
         _capacity = capacity;
