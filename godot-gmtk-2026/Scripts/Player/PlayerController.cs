@@ -3,21 +3,18 @@ using GodotGMTK2026.Scripts.Management;
 
 public partial class PlayerController : CharacterBody3D
 {
-    private float Acceleration = 5.0f;
     [Export] public float RotationSpeed = 5.0f;
-
-	[Export] public float Dampening = 0.98f;
-	private bool HasDampingUpgrade { get; set; } = false;
-
+	[Export] public float DampeningFactor = 0.98f; // The closer to 1 slower the dampening effect, the closer to 0 faster the dampening effect
+	
+	private float _acceleration;
+	private bool _hasDampingUpgrade { get; set; } = false;
 	private Vector3 _velocity = Vector3.Zero;
+	private float _oxygenTimer = 0.0f;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		UpdatePlayerValues();
-
-		var timer = GetNode<Timer>("Timer");
-		timer.Timeout += OnTimerTimeout;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +22,8 @@ public partial class PlayerController : CharacterBody3D
 	{
 		// Update player values from GameState so updated stats are reflected in the player controller
 		UpdatePlayerValues();
+
+		CountDownOxygen(delta);
 
 		if (Input.IsActionPressed("rotate_left"))
 		{
@@ -37,40 +36,37 @@ public partial class PlayerController : CharacterBody3D
 
 		if (Input.IsActionPressed("fire_jetpack"))
 		{
-			_velocity += -Transform.Basis.X * Acceleration * (float)delta;
+			_velocity += -Transform.Basis.X * _acceleration * (float)delta;
 			Velocity = _velocity;
 		}
-		else if (HasDampingUpgrade)
+		else if (_hasDampingUpgrade && Input.IsActionPressed("dampen_speed"))
 		{
-			_velocity *= Dampening;
+			_velocity *= DampeningFactor;
 			Velocity = _velocity;
 		}
 
 		MoveAndSlide();
 	}
 
-	private void OnTimerTimeout()
-	{
-		CountDownOxygen();
-	}
-
 	private void UpdatePlayerValues()
 	{
-		HasDampingUpgrade = GameState.Instance.PlayerStats.HasDampingUpgrade;
-		Acceleration = GameState.Instance.PlayerStats.ThrusterPower;
+		_hasDampingUpgrade = GameState.Instance.PlayerStats.HasDampingUpgrade;
+		_acceleration = GameState.Instance.PlayerStats.ThrusterPower;
 	}
 
-	private void CountDownOxygen()
+	private void CountDownOxygen(double delta)
 	{
-		GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenLevel - 1);
+		_oxygenTimer += (float)delta;
 
-		/*if (Input.IsActionPressed("fire_jetpack"))
+		if ((Input.IsActionPressed("fire_jetpack") || Input.IsActionPressed("dampen_speed")) && _oxygenTimer >= 0.5f)
 		{
 			GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenLevel - 1);
+			_oxygenTimer = 0.0f;
 		}
-		else
+		else if (_oxygenTimer >= 1.0f)
 		{
-			//GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenLevel - (GameState.Instance.PlayerStats.OxygenEfficiency / 2));
-		}*/
+			GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenLevel - 1);
+			_oxygenTimer = 0.0f;
+		}
 	}
 }

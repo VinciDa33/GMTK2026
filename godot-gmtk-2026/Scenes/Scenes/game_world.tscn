@@ -20,6 +20,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 _oxygenCapacity = 100
 _oxygenLevel = 50
 _thrusterPower = 1.0
+_hasDampingUpgrade = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=34810243]
 

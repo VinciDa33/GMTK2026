@@ -21,6 +21,3 @@ mesh = SubResource("BoxMesh_7y0oj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=207904145]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.86072725, 0, 0)
 mesh = SubResource("BoxMesh_ff1m3")
-
-[node name="Timer" type="Timer" parent="." unique_id=577372709]
-autostart = true
