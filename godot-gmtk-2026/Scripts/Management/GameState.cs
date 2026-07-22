@@ -1,7 +1,7 @@
 using Godot;
 using GodotGMTK2026.Scripts.Items.Inventory;
 
-namespace GodotGMTK2026.Scripts.GameState;
+namespace GodotGMTK2026.Scripts.Management;
 
 public partial class GameState : Node
 {

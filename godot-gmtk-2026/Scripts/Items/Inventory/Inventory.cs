@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GodotGMTK2026.Scripts.Items.Inventory;
 
 public class Inventory
 {
+    public event Action<Item> OnItemAdded;
+    public event Action<Item> OnItemRemoved;
+    
     private int _capacity;
     private List<Item> _items = new List<Item>();
     
@@ -25,6 +29,7 @@ public class Inventory
             return false;
         
         _items.Add(item);
+        OnItemAdded?.Invoke(item);
         return true;
     }
 
@@ -47,9 +52,15 @@ public class Inventory
         return itemsOfType;
     }
 
-    public void RemoveItem(Item item)
+    public bool RemoveItem(Item item)
     {
-        _items.Remove(item);
+        if (_items.Remove(item))
+        {
+            OnItemRemoved?.Invoke(item);
+            return true;
+        }
+
+        return false;
     }
 
     public void SetCapacity(int capacity)

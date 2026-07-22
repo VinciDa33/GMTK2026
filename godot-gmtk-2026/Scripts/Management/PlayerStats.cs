@@ -1,4 +1,4 @@
-﻿namespace GodotGMTK2026.Scripts.GameState;
+﻿namespace GodotGMTK2026.Scripts.Management;
 
 public class PlayerStats
 {

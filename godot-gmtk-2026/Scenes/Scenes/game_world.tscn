@@ -1,7 +1,67 @@
 [gd_scene format=3 uid="uid://cbgjwdha8r1ef"]
 
 [ext_resource type="PackedScene" uid="uid://cd5bhls5ykigr" path="res://Scenes/PreFabs/game_state.tscn" id="1_05xqj"]
+[ext_resource type="Script" uid="uid://doxlwchcr3p3v" path="res://Scripts/Items/Inventory/UI/PlayerInventoryUI.cs" id="2_f6d6p"]
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
 [node name="Game_State" parent="." unique_id=1927038039 instance=ExtResource("1_05xqj")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=34810243]
+
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=104942045]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player_Inventory" type="Control" parent="CanvasLayer/HUD" unique_id=1781244057]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("2_f6d6p")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD/Player_Inventory" unique_id=1483264722]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -123.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HUD/Player_Inventory/MarginContainer" unique_id=1328355497]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD/Player_Inventory/MarginContainer/PanelContainer" unique_id=1115596180]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD/Player_Inventory/MarginContainer/PanelContainer/MarginContainer" unique_id=501740146]
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/Player_Inventory/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=751748250]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1

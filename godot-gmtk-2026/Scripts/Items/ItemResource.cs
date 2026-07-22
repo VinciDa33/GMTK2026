@@ -7,5 +7,5 @@ public partial class ItemResource : Resource
 {
     [Export] public ItemEnum Identifier;
     [Export] public string Name;
-    [Export] public Texture Sprite;
+    [Export] public Texture2D Sprite;
 }
