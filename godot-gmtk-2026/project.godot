@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneLoader="*uid://dc3r2hriraiwk"
+ItemRegistry="*uid://bphqq66os3py"
 
 [display]
 

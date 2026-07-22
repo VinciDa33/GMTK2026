@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cqmstl8mx3gcg"]
+
+[ext_resource type="Script" uid="uid://cs2sm5kpdiksk" path="res://Scripts/Items/ItemResource.cs" id="1_nidgu"]
+
+[resource]
+script = ExtResource("1_nidgu")
+Identifier = 1
+Name = "Scrap Cable"
+metadata/_custom_type_script = "uid://cs2sm5kpdiksk"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://lehpg5xxd8xr"]
+
+[ext_resource type="Script" uid="uid://cs2sm5kpdiksk" path="res://Scripts/Items/ItemResource.cs" id="1_1w7nx"]
+
+[resource]
+script = ExtResource("1_1w7nx")
+Identifier = 3
+Name = "Copper Ore"
+metadata/_custom_type_script = "uid://cs2sm5kpdiksk"

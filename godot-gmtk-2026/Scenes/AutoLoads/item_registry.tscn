@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bphqq66os3py"]
+
+[ext_resource type="Script" uid="uid://c05fax3ochhjc" path="res://Scripts/Items/ItemRegistry.cs" id="1_akxx8"]
+[ext_resource type="Resource" uid="uid://canmsae43ige2" path="res://Scripts/Items/Items/ScrapMetal.tres" id="2_ogpd8"]
+[ext_resource type="Resource" uid="uid://cqmstl8mx3gcg" path="res://Scripts/Items/Items/ScrapCable.tres" id="3_qen47"]
+[ext_resource type="Resource" uid="uid://bmblpf5jlvdsl" path="res://Scripts/Items/Items/IronOre.tres" id="4_wcd0e"]
+[ext_resource type="Resource" uid="uid://lehpg5xxd8xr" path="res://Scripts/Items/Items/CopperOre.tres" id="5_cbc1i"]
+[ext_resource type="Resource" uid="uid://d3dsrq82bjlpf" path="res://Scripts/Items/Items/Iron.tres" id="6_gleem"]
+[ext_resource type="Resource" uid="uid://cnqq635ekm47s" path="res://Scripts/Items/Items/Copper.tres" id="7_78ftu"]
+
+[node name="Item_Registry" type="Node" unique_id=941819154]
+script = ExtResource("1_akxx8")
+_itemResources = Array[Object]([ExtResource("2_ogpd8"), ExtResource("3_qen47"), ExtResource("4_wcd0e"), ExtResource("5_cbc1i"), ExtResource("6_gleem"), ExtResource("7_78ftu")])

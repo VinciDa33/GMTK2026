@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://canmsae43ige2"]
+
+[ext_resource type="Script" uid="uid://cs2sm5kpdiksk" path="res://Scripts/Items/ItemResource.cs" id="1_80efn"]
+
+[resource]
+script = ExtResource("1_80efn")
+Name = "Scrap Metal"
+metadata/_custom_type_script = "uid://cs2sm5kpdiksk"
