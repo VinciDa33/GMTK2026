@@ -2,10 +2,9 @@
 
 namespace GodotGMTK2026.Scripts.Items.Inventory.UI;
 
-public partial class InventoryUIItem : PanelContainer
+public partial class InventoryItemUI : PanelContainer
 {
     public Item Item { get; private set; }
-
     public void SetItem(Item item)
     {
         Item = item;

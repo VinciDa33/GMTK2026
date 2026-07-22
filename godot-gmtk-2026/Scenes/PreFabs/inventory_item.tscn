@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmghspt0j53nc"]
 
-[ext_resource type="Script" uid="uid://rct5vsjjnbws" path="res://Scripts/Items/Inventory/UI/InventoryUIItem.cs" id="1_4xn72"]
+[ext_resource type="Script" uid="uid://cqsr10c2g756h" path="res://Scripts/Items/Inventory/UI/InventoryItemUI.cs" id="1_4xn72"]
 [ext_resource type="Texture2D" uid="uid://gqd1hrp2wjbf" path="res://icon.svg" id="1_iu5kb"]
 
 [node name="InventoryItem" type="PanelContainer" unique_id=866943885]

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cd5bhls5ykigr" path="res://Scenes/PreFabs/game_state.tscn" id="1_05xqj"]
 [ext_resource type="Script" uid="uid://doxlwchcr3p3v" path="res://Scripts/Items/Inventory/UI/PlayerInventoryUI.cs" id="2_f6d6p"]
+[ext_resource type="PackedScene" uid="uid://cmghspt0j53nc" path="res://Scenes/PreFabs/inventory_item.tscn" id="3_1aiwk"]
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
@@ -17,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player_Inventory" type="Control" parent="CanvasLayer/HUD" unique_id=1781244057]
+[node name="Player_Inventory" type="Control" parent="CanvasLayer/HUD" unique_id=1781244057 node_paths=PackedStringArray("_hostNode")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -29,6 +30,8 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("2_f6d6p")
+_inventoryItem = ExtResource("3_1aiwk")
+_hostNode = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD/Player_Inventory" unique_id=1483264722]
 layout_mode = 1
