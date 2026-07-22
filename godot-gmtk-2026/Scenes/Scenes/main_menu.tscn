@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bf7xuoykf2j41"]
 
-[ext_resource type="Script" uid="uid://lvsty2cdbtjd" path="res://Scripts/Temp/TempMainMenuController.cs" id="1_8um42"]
+[ext_resource type="Script" uid="uid://opjdnpl0a4u0" path="res://Scripts/MainMenu/MainMenuController.cs" id="1_8um42"]
 
 [node name="World" type="Node2D" unique_id=255343335]
 
@@ -80,4 +80,6 @@ text = "By ZeroJect, Ominousity & VinciDa"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="button_down" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Settings_Button" to="CanvasLayer/Main_Menu_Control" method="SettingsClicked"]
+[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Start_Button" to="CanvasLayer/Main_Menu_Control" method="StartClicked"]
+[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Settings_Button" to="CanvasLayer/Main_Menu_Control" method="SettingsClicked"]
+[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Quit_Button" to="CanvasLayer/Main_Menu_Control" method="QuitClicked"]
