@@ -76,7 +76,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Label" type="Label" parent="CanvasLayer/Main_Menu_Control/Credits_MarginContainer" unique_id=163846957]
 layout_mode = 2
-text = "By ZeroJect & VinciDa"
+text = "By ZeroJect, Ominousity & VinciDa"
 horizontal_alignment = 1
 vertical_alignment = 1
 
