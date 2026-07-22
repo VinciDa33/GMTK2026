@@ -5,13 +5,13 @@ namespace GodotGMTK2026.Scripts.GameState;
 
 public partial class GameState : Node
 {
-    public Inventory PlayerInventory;
+    public Inventory PlayerInventory { get; private set; }
     
     public static GameState Instance { get; private set; }
 
     public override void _Ready()
     {
-        PlayerInventory = new Inventory(5);
         Instance = this;
+        PlayerInventory = new Inventory(5);
     }
 }
