@@ -1,8 +1,50 @@
 [gd_scene format=3 uid="uid://db5fwh1k6q5pl"]
 
+[ext_resource type="Script" uid="uid://dubhvr4ku1edw" path="res://Scripts/Machines/UpgradeMachine/UpgradeStation.cs" id="1_ovuyv"]
+[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="2_dxyk2"]
+[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="2_rkql0"]
+
+[sub_resource type="Resource" id="Resource_dxyk2"]
+script = ExtResource("2_dxyk2")
+Amount = 5
+ItemType = 4
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[sub_resource type="Resource" id="Resource_qpbjv"]
+script = ExtResource("2_rkql0")
+Id = "BiggerTank"
+Name = "Bigger Tank"
+Description = "It's bigger and better!
+<color=Yellow>Improves oxygen tank capacity</color>"
+Cost = Array[Object]([SubResource("Resource_dxyk2")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"
+
+[sub_resource type="Resource" id="Resource_hjqdq"]
+script = ExtResource("2_dxyk2")
+Amount = 3
+ItemType = 4
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[sub_resource type="Resource" id="Resource_m8k0l"]
+script = ExtResource("2_dxyk2")
+Amount = 5
+ItemType = 5
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[sub_resource type="Resource" id="Resource_rkql0"]
+script = ExtResource("2_rkql0")
+Id = "Rebreather"
+Name = "Rebreather"
+Description = "Reduce, reuse, rebreath! 
+<color=Yellow>Enchances oxygen efficiency.</color>"
+Cost = Array[Object]([SubResource("Resource_hjqdq"), SubResource("Resource_m8k0l")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"
+
 [sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
 
 [node name="UpgradeStation" type="Node3D" unique_id=733137947]
+script = ExtResource("1_ovuyv")
+_upgrades = Array[Object]([SubResource("Resource_qpbjv"), SubResource("Resource_rkql0")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1822561950]
 mesh = SubResource("BoxMesh_2apqw")

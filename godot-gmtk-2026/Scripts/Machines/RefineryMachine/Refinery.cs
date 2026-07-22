@@ -6,12 +6,16 @@ namespace GodotGMTK2026.Scripts.Machines.RefineryMachine;
 
 public partial class Refinery : Node3D
 {
+    public static Refinery Instance { get; private set; }
+    
     [Export] private RefineryRecipe[] _recipes;
     [Export] private float _processingTime;
     public Inventory Inventory { get; private set; }
     private Timer _processingTimer;
+    
     public override void _Ready()
     {
+        Instance = this;
         Inventory = new Inventory(10); //Virtually Infinite
         _processingTimer = new Timer();
         AddChild(_processingTimer);
@@ -26,6 +30,7 @@ public partial class Refinery : Node3D
         if (_processingTimer == null)
             return;
         _processingTimer.Timeout -= ProcessingTimerFinished;
+        Instance = null;
     }
 
     public override void _Process(double delta)

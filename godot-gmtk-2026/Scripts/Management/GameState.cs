@@ -22,4 +22,9 @@ public partial class GameState : Node
         PlayerInventory = new Inventory(5);
         PlayerStats = new PlayerStats(_oxygenCapacity, _oxygenEfficiency, _thrusterPower, _thrusterEfficiency);
     }
+
+    public override void _ExitTree()
+    {
+        Instance = null;
+    }
 }
