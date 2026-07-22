@@ -33,6 +33,13 @@ public class Inventory
         return true;
     }
 
+    public Item GetFirst()
+    {
+        if (_items.Count == 0)
+            return null;
+        return _items[0];
+    }
+    
     public Item GetFirstItemOfType(ItemEnum type)
     {
         foreach (Item item in _items)
@@ -81,5 +88,10 @@ public class Inventory
     public int GetCapacity()
     {
         return _capacity;
+    }
+
+    public int Count()
+    {
+        return _items.Count;
     }
 }

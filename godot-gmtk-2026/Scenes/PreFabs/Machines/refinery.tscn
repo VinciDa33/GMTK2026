@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dgvadnjbxegq2"]
+
+[ext_resource type="Script" uid="uid://cgjoyq8kj5ij3" path="res://Scripts/Machines/RefineryMachine/Refinery.cs" id="1_qpbjv"]
+[ext_resource type="Script" uid="uid://78v6qw8s56c5" path="res://Scripts/Machines/RefineryMachine/RefineryRecipe.cs" id="2_rb1ea"]
+
+[sub_resource type="Resource" id="Resource_6vxh6"]
+script = ExtResource("2_rb1ea")
+Output = 4
+metadata/_custom_type_script = "uid://78v6qw8s56c5"
+
+[sub_resource type="Resource" id="Resource_vryj5"]
+script = ExtResource("2_rb1ea")
+Input = 2
+Output = 4
+metadata/_custom_type_script = "uid://78v6qw8s56c5"
+
+[sub_resource type="Resource" id="Resource_ovuyv"]
+script = ExtResource("2_rb1ea")
+Input = 1
+Output = 5
+metadata/_custom_type_script = "uid://78v6qw8s56c5"
+
+[sub_resource type="Resource" id="Resource_rkql0"]
+script = ExtResource("2_rb1ea")
+Input = 3
+Output = 5
+metadata/_custom_type_script = "uid://78v6qw8s56c5"
+
+[sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
+
+[node name="Refinery" type="Node3D" unique_id=794471086]
+script = ExtResource("1_qpbjv")
+_recipes = Array[Object]([SubResource("Resource_6vxh6"), SubResource("Resource_vryj5"), SubResource("Resource_ovuyv"), SubResource("Resource_rkql0")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=891829362]
+mesh = SubResource("BoxMesh_2apqw")
