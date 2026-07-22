@@ -58,4 +58,26 @@ layout_mode = 2
 text = "Quit
 "
 
+[node name="Credits_MarginContainer" type="MarginContainer" parent="CanvasLayer/Main_Menu_Control" unique_id=1528594207]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/Main_Menu_Control/Credits_MarginContainer" unique_id=163846957]
+layout_mode = 2
+text = "By ZeroJect & VinciDa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="button_down" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Settings_Button" to="CanvasLayer/Main_Menu_Control" method="SettingsClicked"]
