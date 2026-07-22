@@ -1,3 +1,23 @@
 [gd_scene format=3 uid="uid://75gko4n5qxcr"]
 
-[node name="Player" type="Node3D" unique_id=876737141]
+[ext_resource type="Script" uid="uid://bt4pt1ffkb0w4" path="res://Scripts/player_controller.cs" id="1_aibd6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ff1m3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7y0oj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ff1m3"]
+size = Vector3(1.4655762, 1, 1)
+
+[node name="Player" type="CharacterBody3D" unique_id=466123480]
+script = ExtResource("1_aibd6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1741277003]
+shape = SubResource("BoxShape3D_ff1m3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1038037850]
+mesh = SubResource("BoxMesh_7y0oj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=207904145]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.86072725, 0, 0)
+mesh = SubResource("BoxMesh_ff1m3")
