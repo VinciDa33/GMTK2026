@@ -3,10 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://cd5bhls5ykigr" path="res://Scenes/PreFabs/game_state.tscn" id="1_05xqj"]
 [ext_resource type="Script" uid="uid://doxlwchcr3p3v" path="res://Scripts/Items/Inventory/UI/PlayerInventoryUI.cs" id="2_f6d6p"]
 [ext_resource type="PackedScene" uid="uid://cmghspt0j53nc" path="res://Scenes/PreFabs/inventory_item.tscn" id="3_1aiwk"]
+[ext_resource type="Script" uid="uid://dpkebv4ejpa6y" path="res://Scripts/OxygenCounter/UI/OxygenProgressBar.cs" id="4_2w2h1"]
+[ext_resource type="PackedScene" uid="uid://75gko4n5qxcr" path="res://Scenes/PreFabs/player.tscn" id="5_kj3be"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7y0oj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csq4g"]
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
 [node name="Game_State" parent="." unique_id=1927038039 instance=ExtResource("1_05xqj")]
+_oxygenCapacity = 100
+_oxygenLevel = 50
+_thrusterPower = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=34810243]
 
@@ -68,3 +78,67 @@ layout_mode = 2
 text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Oxygen_Counter" type="Control" parent="CanvasLayer/HUD" unique_id=317020778]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD/Oxygen_Counter" unique_id=1884751176]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_right = 60.0
+grow_vertical = 0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/HUD/Oxygen_Counter/MarginContainer" unique_id=1688954453]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD/Oxygen_Counter/MarginContainer/PanelContainer" unique_id=1265635859]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD/Oxygen_Counter/MarginContainer/PanelContainer/MarginContainer" unique_id=688883654]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/HUD/Oxygen_Counter/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1362028616]
+layout_mode = 2
+text = "Oxygen Level"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HUD/Oxygen_Counter/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=92623747 node_paths=PackedStringArray("_valueLabel", "_progressBar")]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_7y0oj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_csq4g")
+step = 1.0
+show_percentage = false
+script = ExtResource("4_2w2h1")
+_valueLabel = NodePath("ValueLabel")
+_progressBar = NodePath(".")
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/HUD/Oxygen_Counter/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ProgressBar" unique_id=1408701409]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." unique_id=466123480 instance=ExtResource("5_kj3be")]

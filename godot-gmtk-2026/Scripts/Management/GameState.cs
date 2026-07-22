@@ -7,9 +7,11 @@ public partial class GameState : Node
 {
     [ExportGroup("Initial Player Stats")] 
     [Export] private int _oxygenCapacity;
-    [Export] private float _oxygenEfficiency; 
+    [Export] private int _oxygenLevel;
+    [Export] private float _oxygenEfficiency;
     [Export] private float _thrusterEfficiency;
     [Export] private float _thrusterPower;
+    [Export] private bool _hasDampingUpgrade;
     
     public Inventory PlayerInventory { get; private set; }
     public PlayerStats PlayerStats { get; private set; }
@@ -20,7 +22,7 @@ public partial class GameState : Node
     {
         Instance = this;
         PlayerInventory = new Inventory(5);
-        PlayerStats = new PlayerStats(_oxygenCapacity, _oxygenEfficiency, _thrusterPower, _thrusterEfficiency);
+        PlayerStats = new PlayerStats(_oxygenCapacity, _oxygenLevel, _oxygenEfficiency, _thrusterPower, _thrusterEfficiency, _hasDampingUpgrade);
     }
 
     public override void _ExitTree()
