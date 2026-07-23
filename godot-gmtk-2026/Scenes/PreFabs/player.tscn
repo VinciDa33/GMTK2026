@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://75gko4n5qxcr"]
 
 [ext_resource type="Script" uid="uid://bt4pt1ffkb0w4" path="res://Scripts/Player/PlayerController.cs" id="1_aibd6"]
+[ext_resource type="ArrayMesh" uid="uid://f1uet73cwqvw" path="res://Assets/Graphics/Models/AstroGuy/AstroGuyMesh.res" id="2_svvew"]
+[ext_resource type="ArrayMesh" uid="uid://difcbkw865myi" path="res://Assets/Graphics/Models/AstroGuy/JetPackMesh.res" id="3_wbxv2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ff1m3"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_7y0oj"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ff1m3"]
-size = Vector3(1.4655762, 1, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qajyh"]
+margin = 0.05
+height = 1.25
 
 [node name="Player" type="CharacterBody3D" unique_id=466123480]
+axis_lock_linear_y = true
 script = ExtResource("1_aibd6")
 _breathingTick = 1.0
 _baseBreathConsumption = 1.0
@@ -17,11 +17,13 @@ _thrusterTick = 0.1
 _baseThrusterConsumption = 0.25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1741277003]
-shape = SubResource("BoxShape3D_ff1m3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08605957, 0)
+shape = SubResource("CapsuleShape3D_qajyh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1038037850]
-mesh = SubResource("BoxMesh_7y0oj")
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.2, 0)
+mesh = ExtResource("2_svvew")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=207904145]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.86072725, 0, 0)
-mesh = SubResource("BoxMesh_ff1m3")
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.05, -0.11)
+mesh = ExtResource("3_wbxv2")
