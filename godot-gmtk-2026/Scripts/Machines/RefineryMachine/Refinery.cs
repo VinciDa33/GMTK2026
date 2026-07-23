@@ -1,6 +1,7 @@
 ﻿using Godot;
 using GodotGMTK2026.Scripts.Items;
 using GodotGMTK2026.Scripts.Items.Inventory;
+using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Machines.RefineryMachine;
 
@@ -17,7 +18,7 @@ public partial class Refinery : Node3D
     {
         Instance = this;
         
-        Inventory = new Inventory(10); //Virtually Infinite
+        Inventory = new Inventory(10);
         
         _processingTimer = new Timer();
         AddChild(_processingTimer);
@@ -52,7 +53,8 @@ public partial class Refinery : Node3D
         foreach (RefineryRecipe recipe in _recipes)
             if (recipe.Input == item.Type)
             {
-                //TODO: Add the recipe output somewhere!
+                GameState.Instance.StationInventory.AddItem(item);
+                break;
             }
         Inventory.RemoveFirst();
     }

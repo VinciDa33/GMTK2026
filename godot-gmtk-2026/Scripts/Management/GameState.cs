@@ -14,14 +14,17 @@ public partial class GameState : Node
     
     public Inventory PlayerInventory { get; private set; }
     public PlayerStats PlayerStats { get; private set; }
+    public Inventory StationInventory;
     
     public static GameState Instance { get; private set; }
 
     public override void _Ready()
     {
         Instance = this;
+        
         PlayerInventory = new Inventory(5);
         PlayerStats = new PlayerStats(_oxygenCapacity, _oxygenEfficiency, _thrusterPower, _thrusterEfficiency, _dampingFactor);
+        StationInventory = new Inventory(100);
     }
 
     public override void _ExitTree()

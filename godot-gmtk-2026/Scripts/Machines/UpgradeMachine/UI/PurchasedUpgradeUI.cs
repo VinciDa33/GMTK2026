@@ -24,7 +24,7 @@ public partial class PurchasedUpgradeUI : Node
     
     private void SetupLabels()
     {
-        _nameLabel.Text = "[color=#9cdb2e]" + Upgrade.Name + "[/color]";
+        _nameLabel.Text = "[color=#b2db56]" + Upgrade.Name + "[/color]";
         _descriptionLabel.Text = Upgrade.Description;
     }
 }

@@ -1,22 +1,21 @@
 [gd_scene format=3 uid="uid://dc3r2hriraiwk"]
 
 [ext_resource type="Script" uid="uid://bttkijjaye26d" path="res://Scripts/SceneLoading/SceneLoader.cs" id="1_7iggs"]
-[ext_resource type="Script" uid="uid://bpb6clhaawhfu" path="res://Scripts/SceneLoading/ExampleSceneTransition.cs" id="2_uchka"]
+[ext_resource type="Script" uid="uid://b4okm2ql6y325" path="res://Scripts/SceneLoading/FadeSceneTransition.cs" id="2_b3r1s"]
 
 [node name="Scene_Loader" type="Node" unique_id=775801609 node_paths=PackedStringArray("_transition")]
 script = ExtResource("1_7iggs")
-_transition = NodePath("CanvasLayer/ColorRect")
+_transition = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1175200947]
 layer = 5
+script = ExtResource("2_b3r1s")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1746113511]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -650.0
-offset_bottom = -650.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.3137255, 0.3137255, 0.39215687, 1)
-script = ExtResource("2_uchka")
+mouse_filter = 2
+color = Color(0.11764706, 0.11764706, 0.11764706, 0)

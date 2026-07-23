@@ -1,39 +1,30 @@
 ﻿using System.Collections.Generic;
 using Godot;
+using GodotGMTK2026.Scripts.Items;
 using GodotGMTK2026.Scripts.Machines.UpgradeMachine.UI;
+using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Machines.UpgradeMachine;
 
 public partial class UpgradeStation : Node3D
 {
     public static UpgradeStation Instance { get; private set; }
-
-    [ExportGroup("UI")] 
-    [Export] private Control _upgradeStationUI;
-    [Export] private Control _availableUpgradesUI;
-    [Export] private Control _boughtUpgradesUI;
-    [Export] private PackedScene _upgradeUI;
-    [Export] private PackedScene _purchasedUpgradeUI;
     
     [ExportGroup("Upgrades")]
     [Export] private Upgrade[] _upgrades;
-    private readonly List<Upgrade> _availableUpgrades = new List<Upgrade>();
-    private readonly List<Upgrade> _boughtUpgrades = new List<Upgrade>();
+
+    [ExportGroup("UI Reference")] 
+    [Export] private UpgradeStationUI _upgradeStationUI;
+    
+    public List<Upgrade> AvailableUpgrades { get; private set; } = new List<Upgrade>();
+    public List<Upgrade> BoughtUpgrades { get; private set; } = new List<Upgrade>();
 
     public override void _Ready()
     {
         Instance = this;
         
-        _availableUpgrades.AddRange(_upgrades);
-        foreach (Upgrade upgrade in _availableUpgrades)
-        {
-            UpgradeUI u = _upgradeUI.Instantiate() as UpgradeUI;
-            if (u == null)
-                continue;
-            
-            u.SetUpgrade(upgrade);
-            _availableUpgradesUI.AddChild(u);
-        }
+        AvailableUpgrades.AddRange(_upgrades);
+        _upgradeStationUI.PopulateUpgrades();
     }
 
     public override void _ExitTree()
@@ -41,19 +32,38 @@ public partial class UpgradeStation : Node3D
         Instance = null;
     }
 
+    //DEV TEST CODE!
+    /*
+    public override void _Process(double delta)
+    {
+        if (Input.IsKeyPressed(Key.Space))
+        {
+            RandomNumberGenerator rng = new RandomNumberGenerator();
+            GameState.Instance.StationInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.Iron));
+        }
+        if (Input.IsKeyPressed(Key.S))
+            GameState.Instance.PlayerInventory.RemoveFirst();
+    }
+    */
+    
     public bool BuyUpgrade(Upgrade upgrade)
     {
         //TODO: Check cost against available resources. Return false if purchase fails
+        //Should be working
+        foreach (UpgradeCost cost in upgrade.Cost)
+        { 
+            int amount = GameState.Instance.StationInventory.GetAllOfType(cost.ItemType).Count;
+            if (amount < cost.Amount)
+                return false;
+        }
+        
         if (true)
         {
-            _availableUpgrades.Remove(upgrade);
-            _boughtUpgrades.Add(upgrade);
+            GD.Print($"Bought Upgrade {upgrade.Name}");
+            AvailableUpgrades.Remove(upgrade);
+            BoughtUpgrades.Add(upgrade);
 
-            if (_purchasedUpgradeUI.Instantiate() is PurchasedUpgradeUI pu)
-            {
-                pu.SetUpgrade(upgrade);
-                _boughtUpgradesUI.AddChild(pu);
-            }
+            _upgradeStationUI.AddBoughtUpgrade(upgrade);
 
             UpgradeEffect effect = UpgradeRegistry.GetUpgradeEffect(upgrade.Id);
             if (effect == null)

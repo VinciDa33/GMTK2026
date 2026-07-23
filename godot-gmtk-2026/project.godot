@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneLoader="*uid://dc3r2hriraiwk"
 ItemRegistry="*uid://bphqq66os3py"
+GameState="*uid://cd5bhls5ykigr"
 
 [display]
 

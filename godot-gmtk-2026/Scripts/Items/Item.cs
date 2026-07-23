@@ -4,14 +4,14 @@ namespace GodotGMTK2026.Scripts.Items;
 
 public class Item
 {
-    public string Name => _itemResource.Name;
-    public Texture2D Sprite => _itemResource.Sprite;
-    public ItemEnum Type => _itemResource.Identifier;
+    public string Name => ItemResource.Name;
+    public Texture2D Sprite => ItemResource.Sprite;
+    public ItemEnum Type => ItemResource.Identifier;
     
-    private readonly ItemResource _itemResource;
+    public readonly ItemResource ItemResource;
 
     public Item(ItemResource item)
     {
-        _itemResource = item;
+        ItemResource = item;
     }
 }

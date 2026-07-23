@@ -20,6 +20,8 @@ script = ExtResource("1_lvflg")
 _nameLabel = NodePath("MarginContainer/VBoxContainer/Name_Label")
 _descriptionLabel = NodePath("MarginContainer/VBoxContainer/Description_RichTextLabel")
 _cost = NodePath("MarginContainer/VBoxContainer/MarginContainer/PanelContainer/Cost_RichTextLabel")
+_availabelColor = Color(0.69803923, 0.85882354, 0.3372549, 1)
+_unavailableColor = Color(0.8039216, 0.40784314, 0.23137255, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=567043876]
 layout_mode = 2
@@ -66,6 +68,7 @@ horizontal_alignment = 1
 
 [node name="Purchase_Button" type="Button" parent="." unique_id=1615088557]
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = ExtResource("2_btqv8")
 
 [connection signal="pressed" from="Purchase_Button" to="." method="Purchase"]
