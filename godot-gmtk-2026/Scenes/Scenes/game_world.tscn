@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bxe8fq33up0g7" path="res://Scripts/Asteroids/AsteroidSpawner.cs" id="1_mpric"]
 [ext_resource type="Script" uid="uid://doxlwchcr3p3v" path="res://Scripts/Items/Inventory/UI/PlayerInventoryUI.cs" id="2_f6d6p"]
-[ext_resource type="PackedScene" uid="uid://bfpeq3v5hefvb" path="res://Scenes/PreFabs/mineable_asteroid.tscn" id="2_o7dsn"]
-[ext_resource type="PackedScene" uid="uid://bl7cpt7fr81so" path="res://Scenes/PreFabs/unmineable_asteroid.tscn" id="2_vca7v"]
+[ext_resource type="PackedScene" uid="uid://bfpeq3v5hefvb" path="res://Scenes/PreFabs/pickupable_object.tscn" id="2_o7dsn"]
+[ext_resource type="PackedScene" uid="uid://bl7cpt7fr81so" path="res://Scenes/PreFabs/asteroid.tscn" id="2_vca7v"]
 [ext_resource type="PackedScene" uid="uid://cmghspt0j53nc" path="res://Scenes/PreFabs/inventory_item.tscn" id="3_1aiwk"]
 [ext_resource type="Script" uid="uid://dpkebv4ejpa6y" path="res://Scripts/OxygenCounter/UI/OxygenProgressBar.cs" id="4_2w2h1"]
-[ext_resource type="PackedScene" uid="uid://gqviduy1hexi" path="res://Scenes/PreFabs/scrap.tscn" id="4_djwxc"]
 [ext_resource type="PackedScene" uid="uid://75gko4n5qxcr" path="res://Scenes/PreFabs/player.tscn" id="5_kj3be"]
 [ext_resource type="PackedScene" uid="uid://coh6jsmvnd4a4" path="res://Scenes/PreFabs/death_manager.tscn" id="5_vd2fa"]
 [ext_resource type="Script" uid="uid://cehx3tpqvjwb4" path="res://Scripts/Player/CameraFollower.cs" id="6_mpric"]
@@ -15,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="9_vca7v"]
 [ext_resource type="Script" uid="uid://cfw13teteyk3k" path="res://Scripts/Misc/PointerController.cs" id="10_djwxc"]
 [ext_resource type="PackedScene" uid="uid://chrqorh7jsc4s" path="res://Scenes/PreFabs/space_pod.tscn" id="12_bcfiw"]
-[ext_resource type="ArrayMesh" uid="uid://dr2h60mwyex8w" path="res://Assets/Graphics/Models/ISS/IIS.res" id="16_e11ps"]
+[ext_resource type="ArrayMesh" uid="uid://blkvbbq51lb5y" path="res://Assets/Graphics/Models/ISS/IIS.res" id="16_e11ps"]
 
 [sub_resource type="Environment" id="Environment_2apqw"]
 background_mode = 1
@@ -58,9 +57,12 @@ size = Vector3(10, 8, 10)
 [node name="AsteroidManager" type="Node" parent="." unique_id=2027151660 node_paths=PackedStringArray("PlayerCamera")]
 script = ExtResource("1_mpric")
 PlayerCamera = NodePath("../Camera3D")
+SpawnDistanceMinimum = 15.0
+SpawnDistanceMaximum = 20.0
+MaxActiveUnmineableAsteroids = 20
+MaxActivePickupableObjects = 5
 UnMineableAsteroidScene = ExtResource("2_vca7v")
-MineableAsteroidScene = ExtResource("2_o7dsn")
-ScrapScene = ExtResource("4_djwxc")
+PickupableObjectScene = ExtResource("2_o7dsn")
 
 [node name="Death_Manager" parent="." unique_id=1218891936 instance=ExtResource("5_vd2fa")]
 

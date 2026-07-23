@@ -1,17 +1,30 @@
-[gd_scene format=3 uid="uid://qfjofwcb6wvo"]
+[gd_scene format=3 uid="uid://bl7cpt7fr81so"]
 
 [ext_resource type="Script" uid="uid://dd6l7c2suoysn" path="res://Scripts/Asteroids/Asteroid.cs" id="1_l7mtn"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_6ckcd"]
+[ext_resource type="ArrayMesh" uid="uid://b3guo1jjowtuf" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1.res" id="2_upn8k"]
+[ext_resource type="Material" uid="uid://0fdgjoc5yafe" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1_MaterialBase.tres" id="3_pdh3s"]
+[ext_resource type="ArrayMesh" uid="uid://bpi3pwmp45uou" path="res://Assets/Graphics/Models/Asteroids/Asteroid_2/Asteroid_2.res" id="3_xsb0k"]
+[ext_resource type="ArrayMesh" uid="uid://drk6hflcv3pga" path="res://Assets/Graphics/Models/Asteroids/Asteroid_3/Asteroid_3.res" id="4_s0emi"]
+[ext_resource type="ArrayMesh" uid="uid://chp86s4kf26pq" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Asteroid_4.res" id="5_yyjqj"]
+[ext_resource type="ArrayMesh" uid="uid://cwybgaiwjn13s" path="res://Assets/Graphics/Models/Asteroids/Asteroid_5/Asteroid_5.res" id="6_kqy0l"]
+[ext_resource type="Material" uid="uid://bvyiftpes76jq" path="res://Assets/Graphics/Models/Asteroids/Asteroid_2/Asteroid_2_MaterialBase.tres" id="8_idynp"]
+[ext_resource type="Material" uid="uid://c0pwtxwru152y" path="res://Assets/Graphics/Models/Asteroids/Asteroid_3/Asteroid_3_MaterialBase.tres" id="9_3vdee"]
+[ext_resource type="Material" uid="uid://o7bpr8g26blo" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Asteroid_4_MaterialBase.tres" id="10_luv5b"]
+[ext_resource type="Material" uid="uid://cgoqu1pocyjc2" path="res://Assets/Graphics/Models/Asteroids/Asteroid_5/Asteroid_5_MaterialBase.tres" id="11_d16cq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yyap0"]
 
-[node name="Asteroid" type="RigidBody3D" unique_id=2113373444]
+[node name="Asteroid" type="RigidBody3D" unique_id=2113373444 node_paths=PackedStringArray("MeshInstance")]
 axis_lock_linear_y = true
 script = ExtResource("1_l7mtn")
+AsteroidMeshes = Array[Mesh]([ExtResource("2_upn8k"), ExtResource("3_xsb0k"), ExtResource("4_s0emi"), ExtResource("5_yyjqj"), ExtResource("6_kqy0l")])
+AsteroidMaterials = Array[Material]([ExtResource("3_pdh3s"), ExtResource("8_idynp"), ExtResource("9_3vdee"), ExtResource("10_luv5b"), ExtResource("11_d16cq")])
+MeshInstance = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1890546724]
-mesh = SubResource("SphereMesh_6ckcd")
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)
+mesh = ExtResource("2_upn8k")
+surface_material_override/0 = ExtResource("3_pdh3s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=837099225]
 shape = SubResource("SphereShape3D_yyap0")

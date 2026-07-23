@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bfpeq3v5hefvb"]
+
+[ext_resource type="Script" uid="uid://btxwitp3dmus3" path="res://Scripts/Asteroids/PickupableObject.cs" id="1_yb56b"]
+[ext_resource type="ArrayMesh" uid="uid://bpi3pwmp45uou" path="res://Assets/Graphics/Models/Asteroids/Asteroid_2/Asteroid_2.res" id="2_v8qyx"]
+[ext_resource type="ArrayMesh" uid="uid://b3guo1jjowtuf" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1.res" id="3_jk5x8"]
+[ext_resource type="ArrayMesh" uid="uid://drk6hflcv3pga" path="res://Assets/Graphics/Models/Asteroids/Asteroid_3/Asteroid_3.res" id="4_f5to8"]
+[ext_resource type="Script" uid="uid://dtdy7ne4qkh2c" path="res://Scripts/Asteroids/PickupableObjectData.cs" id="4_thxu2"]
+[ext_resource type="ArrayMesh" uid="uid://chp86s4kf26pq" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Asteroid_4.res" id="5_1d2q2"]
+[ext_resource type="Material" uid="uid://f5166e1q6y4b" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1_MaterialIron.tres" id="5_aeke5"]
+[ext_resource type="ArrayMesh" uid="uid://cwybgaiwjn13s" path="res://Assets/Graphics/Models/Asteroids/Asteroid_5/Asteroid_5.res" id="6_2qklj"]
+[ext_resource type="Material" uid="uid://b0dbwgxvqjymc" path="res://Assets/Graphics/Models/Asteroids/Asteroid_2/Asteroid_2_MaterialCopper.tres" id="6_32wmr"]
+[ext_resource type="Material" uid="uid://c07h1dnxsvlyd" path="res://Assets/Graphics/Models/Asteroids/Asteroid_3/Asteroid_3_MaterialIron.tres" id="11_yqeda"]
+[ext_resource type="Material" uid="uid://l37i8hprb24k" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Asteroid_4_MaterialCopper.tres" id="12_qg7sm"]
+[ext_resource type="PackedScene" uid="uid://sc7pq3yiwmm8" path="res://Scenes/PreFabs/interaction_follower.tscn" id="15_o13rv"]
+[ext_resource type="Material" uid="uid://coljdvq22n12h" path="res://Assets/Graphics/Models/Asteroids/Asteroid_5/Asteroid_5_MaterialIron.tres" id="17_gl558"]
+[ext_resource type="ArrayMesh" uid="uid://dyche875uhnm4" path="res://Assets/Graphics/Models/Scrap/IronScrap/Iron_Scrap.res" id="18_aeke5"]
+[ext_resource type="ArrayMesh" uid="uid://dgt6ipvl4gj8v" path="res://Assets/Graphics/Models/Scrap/CopperScrap/Copper_Scrap.res" id="19_32wmr"]
+
+[sub_resource type="Resource" id="Resource_xob82"]
+script = ExtResource("4_thxu2")
+Mesh = ExtResource("3_jk5x8")
+Material = ExtResource("5_aeke5")
+IsIron = true
+metadata/_custom_type_script = "uid://dtdy7ne4qkh2c"
+
+[sub_resource type="Resource" id="Resource_evb1f"]
+script = ExtResource("4_thxu2")
+Mesh = ExtResource("2_v8qyx")
+Material = ExtResource("6_32wmr")
+IsCopper = true
+metadata/_custom_type_script = "uid://dtdy7ne4qkh2c"
+
+[sub_resource type="Resource" id="Resource_m2xdm"]
+script = ExtResource("4_thxu2")
+Mesh = ExtResource("4_f5to8")
+Material = ExtResource("11_yqeda")
+IsIron = true
+metadata/_custom_type_script = "uid://dtdy7ne4qkh2c"
+
+[sub_resource type="Resource" id="Resource_kkij8"]
+script = ExtResource("4_thxu2")
+Mesh = ExtResource("5_1d2q2")
+Material = ExtResource("12_qg7sm")
+IsCopper = true
+metadata/_custom_type_script = "uid://dtdy7ne4qkh2c"
+
+[sub_resource type="Resource" id="Resource_rtaeu"]
+script = ExtResource("4_thxu2")
+Mesh = ExtResource("6_2qklj")
+Material = ExtResource("17_gl558")
+IsIron = true
+metadata/_custom_type_script = "uid://dtdy7ne4qkh2c"
+
+[sub_resource type="Resource" id="Resource_32wmr"]
+script = ExtResource("4_thxu2")
+Mesh = ExtResource("18_aeke5")
+IsIron = true
+IsScrap = true
+metadata/_custom_type_script = "uid://dtdy7ne4qkh2c"
+
+[sub_resource type="Resource" id="Resource_2v718"]
+script = ExtResource("4_thxu2")
+Mesh = ExtResource("19_32wmr")
+IsCopper = true
+IsScrap = true
+metadata/_custom_type_script = "uid://dtdy7ne4qkh2c"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yyap0"]
+
+[node name="Asteroid" type="RigidBody3D" unique_id=2113373444 node_paths=PackedStringArray("MeshInstance")]
+axis_lock_linear_y = true
+script = ExtResource("1_yb56b")
+Objects = Array[Resource]([SubResource("Resource_xob82"), SubResource("Resource_evb1f"), SubResource("Resource_m2xdm"), SubResource("Resource_kkij8"), SubResource("Resource_rtaeu"), SubResource("Resource_32wmr"), SubResource("Resource_2v718")])
+MeshInstance = NodePath("MeshInstance3D")
+InteractionPromptFollowerScene = ExtResource("15_o13rv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1890546724]
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)
+mesh = ExtResource("2_v8qyx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=837099225]
+shape = SubResource("SphereShape3D_yyap0")
