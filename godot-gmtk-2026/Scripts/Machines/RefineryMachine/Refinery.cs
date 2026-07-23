@@ -104,5 +104,6 @@ public partial class Refinery : Machine
     public void SetProcessingTime(float processingTime)
     {
         _processingTime = processingTime;
+        _processingTimer.WaitTime = _processingTime;
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bl7cpt7fr81so"]
+[gd_scene format=3 uid="uid://qfjofwcb6wvo"]
 
 [ext_resource type="Script" uid="uid://dd6l7c2suoysn" path="res://Scripts/Asteroids/Asteroid.cs" id="1_l7mtn"]
 [ext_resource type="ArrayMesh" uid="uid://b3guo1jjowtuf" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1.res" id="2_upn8k"]

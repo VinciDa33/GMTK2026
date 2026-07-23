@@ -11,7 +11,7 @@ public partial class PickupableObject : RigidBody3D
 {
 	[Export] public Array<PickupableObjectData> Objects;
 	[Export] public MeshInstance3D MeshInstance;
-    [Export] private float _playerCheckDistance = 1.2f;
+    [Export] private float _playerCheckDistance = 1.5f;
     [Export] private PackedScene InteractionPromptFollowerScene;
 
     private PickupableObjectData _objectData;
@@ -86,7 +86,7 @@ public partial class PickupableObject : RigidBody3D
             }
 
             _interactionPrompt.SetVisible(false);
-            QueueFree();
+            AsteroidSpawner.Instance.PickupObject(this);
         }
     }
 

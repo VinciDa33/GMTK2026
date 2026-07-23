@@ -1,11 +1,13 @@
-using Godot;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using Godot;
+using GodotGMTK2026.Scripts.Management;
+
+namespace GodotGMTK2026.Scripts.Asteroids;
 
 public partial class AsteroidSpawner : Node
 {
-	[Export] public Camera3D PlayerCamera;
+	public static AsteroidSpawner Instance { get; private set; }
+	
 	[Export] public float SpawnDistanceMinimum = 10f;
 	[Export] public float SpawnDistanceMaximum = 15f;
 	[Export] public float SpawnBuffer = 5f;
@@ -16,7 +18,17 @@ public partial class AsteroidSpawner : Node
 	[Export] public PackedScene PickupableObjectScene;
 
 	private List<Node3D> _activeUnmineableAsteroids = new List<Node3D>();
-	private List<Node3D> _activePickupableObjects = new List<Node3D>();
+	private List<PickupableObject> _activePickupableObjects = new List<PickupableObject>();
+
+	public override void _Ready()
+	{
+		Instance = this;
+	}
+
+	public override void _ExitTree()
+	{
+		Instance = null;
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -32,9 +44,9 @@ public partial class AsteroidSpawner : Node
 	{
 		var rand = new RandomNumberGenerator();
 
-		if (PlayerCamera == null)
+		if (GameState.Instance.PlayerController == null)
 		{
-			GD.PrintErr("PlayerCamera or AsteroidScene is not assigned.");
+			GD.PrintErr("Player Controller or AsteroidScene is not assigned.");
 			return Vector3.Zero;
 		}
 
@@ -44,8 +56,8 @@ public partial class AsteroidSpawner : Node
 		float angle = (float)rand.RandfRange(0, Mathf.Tau);
 
 		// Calculate X and Z using polar coordinates
-		float x = PlayerCamera.GlobalPosition.X + distance * Mathf.Cos(angle);
-		float z = PlayerCamera.GlobalPosition.Z + distance * Mathf.Sin(angle);
+		float x = GameState.Instance.PlayerController.GlobalPosition.X + distance * Mathf.Cos(angle);
+		float z = GameState.Instance.PlayerController.GlobalPosition.Z + distance * Mathf.Sin(angle);
 
 		Vector3 spawnPosition = new Vector3(x, 0, z);
 		return spawnPosition;
@@ -76,7 +88,7 @@ public partial class AsteroidSpawner : Node
 			return;
 		}
 
-		Node3D newObject = PickupableObjectScene.Instantiate<Node3D>();
+		PickupableObject newObject = PickupableObjectScene.Instantiate<PickupableObject>();
 		AddChild(newObject);
 		newObject.GlobalPosition = spawnPosition;
 
@@ -85,19 +97,14 @@ public partial class AsteroidSpawner : Node
 
 	private void DespawnDistantAsteroids()
 	{
-		if (PlayerCamera == null) return;
+		if (GameState.Instance.PlayerController == null) return;
 
 		for (int i = _activeUnmineableAsteroids.Count - 1; i >= 0; i--)
 		{
 			Node3D obj = _activeUnmineableAsteroids[i];
 			if (obj == null) continue;
 
-			// Calculate XZ-plane distance
-			float distanceSquared = (obj.GlobalPosition - PlayerCamera.GlobalPosition).LengthSquared();
-			float yDiff = obj.GlobalPosition.Y - PlayerCamera.GlobalPosition.Y;
-			float xzDistanceSquared = distanceSquared - (yDiff * yDiff);
-
-			if (xzDistanceSquared > DespawnDistance * DespawnDistance)
+			if (GameState.Instance.PlayerController.GlobalPosition.DistanceTo(obj.GlobalPosition) > DespawnDistance)
 			{
 				obj.QueueFree();
 				_activeUnmineableAsteroids.RemoveAt(i);
@@ -107,23 +114,24 @@ public partial class AsteroidSpawner : Node
 
 	private void DespawnDistantPickupableObjects()
 	{
-		if (PlayerCamera == null) return;
+		if (GameState.Instance.PlayerController == null) return;
 
-		for (int i = _activePickupableObjects.Count - 1; i >= 0; i--)
+		for (int i = 0; i < _activePickupableObjects.Count; i++)
 		{
 			Node3D obj = _activePickupableObjects[i];
-			if (obj == null) continue;
+			if (obj == null || obj.IsQueuedForDeletion()) continue;
 
-			// Calculate XZ-plane distance
-			float distanceSquared = (obj.GlobalPosition - PlayerCamera.GlobalPosition).LengthSquared();
-			float yDiff = obj.GlobalPosition.Y - PlayerCamera.GlobalPosition.Y;
-			float xzDistanceSquared = distanceSquared - (yDiff * yDiff);
-
-			if (xzDistanceSquared > DespawnDistance * DespawnDistance)
+			if (GameState.Instance.PlayerController.GlobalPosition.DistanceTo(obj.GlobalPosition) > DespawnDistance)
 			{
 				obj.QueueFree();
 				_activePickupableObjects.RemoveAt(i);
 			}
 		}
+	}
+
+	public void PickupObject(PickupableObject obj)
+	{
+		_activePickupableObjects.Remove(obj);
+		obj.QueueFree();
 	}
 }
