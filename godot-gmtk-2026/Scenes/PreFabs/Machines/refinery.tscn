@@ -29,6 +29,9 @@ metadata/_custom_type_script = "uid://78v6qw8s56c5"
 
 [sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ch7h"]
+albedo_color = Color(0.1491147, 0.1491068, 0.17080992, 1)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_g8kat"]
 viewport_path = NodePath("SubViewport")
 
@@ -43,6 +46,7 @@ _playerCheckDistance = 1.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=891829362]
 mesh = SubResource("BoxMesh_2apqw")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ch7h")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1601207563]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.8, 0)

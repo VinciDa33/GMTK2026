@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://chrqorh7jsc4s"]
+
+[ext_resource type="Script" uid="uid://v6hpspj8hv65" path="res://Scripts/SpacePod/Pod.cs" id="1_4f2li"]
+[ext_resource type="PackedScene" uid="uid://sxy6t2odfr70" path="res://Scenes/PreFabs/Machines/oxygen_station.tscn" id="2_4f2li"]
+[ext_resource type="ArrayMesh" uid="uid://cy62veod0jq8w" path="res://Assets/Graphics/Models/POD2/Pod2.res" id="2_m2gcg"]
+[ext_resource type="PackedScene" uid="uid://dgvadnjbxegq2" path="res://Scenes/PreFabs/Machines/refinery.tscn" id="3_m2gcg"]
+[ext_resource type="PackedScene" uid="uid://db5fwh1k6q5pl" path="res://Scenes/PreFabs/Machines/upgrade_station.tscn" id="4_qbtu1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
+size = Vector3(6, 6, 6)
+
+[node name="SpacePod" type="Node3D" unique_id=1209523577]
+script = ExtResource("1_4f2li")
+
+[node name="POD" type="MeshInstance3D" parent="." unique_id=1149133216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = ExtResource("2_m2gcg")
+
+[node name="OxygenStation" parent="." unique_id=557956778 instance=ExtResource("2_4f2li")]
+transform = Transform3D(1, 0, 0, 0, 0.99999905, 0.0013857026, 0, -0.0013857026, 0.99999905, 1.6, 0, -1)
+
+[node name="Refinery" parent="." unique_id=794471086 instance=ExtResource("3_m2gcg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 1)
+
+[node name="UpgradeStation" parent="." unique_id=733137947 instance=ExtResource("4_qbtu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=447631554]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1096448962]
+shape = SubResource("BoxShape3D_2apqw")
+
+[connection signal="body_entered" from="Area3D" to="." method="PlayerEntered"]
+[connection signal="body_exited" from="Area3D" to="." method="PlayerExited"]

@@ -17,6 +17,7 @@ public partial class PlayerController : CharacterBody3D
 	private Timer _thrustTimer;
 	
 	private float _oxygenTimer = 0.0f;
+	private bool StopConsumption = true;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -40,7 +41,7 @@ public partial class PlayerController : CharacterBody3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_breathTimer.IsStopped())
+		if (_breathTimer.IsStopped() && !StopConsumption)
 			_breathTimer.Start();
 
 		if (Input.IsActionPressed("rotate_left"))
@@ -56,7 +57,7 @@ public partial class PlayerController : CharacterBody3D
 		{
 			Velocity += -Transform.Basis.X * GameState.Instance.PlayerStats.ThrusterPower * (float)delta;
 			
-			if (_thrustTimer.IsStopped())
+			if (_thrustTimer.IsStopped() && !StopConsumption)
 				_thrustTimer.Start();
 		}
 		else if (Input.IsActionPressed("dampen_speed"))
@@ -85,6 +86,11 @@ public partial class PlayerController : CharacterBody3D
 		float currentOxygenLevel = GameState.Instance.PlayerStats.OxygenLevel;
 		float thrusterEfficiency = GameState.Instance.PlayerStats.ThrusterEfficiency;
 		GameState.Instance.PlayerStats.SetOxygenLevel(currentOxygenLevel - _baseThrusterConsumption * thrusterEfficiency);
+	}
+
+	public void SetStopConsumption(bool value)
+	{
+		StopConsumption = value;
 	}
 	
 	/*
