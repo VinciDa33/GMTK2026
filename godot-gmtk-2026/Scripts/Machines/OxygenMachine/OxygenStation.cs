@@ -10,14 +10,22 @@ public partial class OxygenStation : Machine
     [Export] private InteractionPrompt _interactionPrompt;
     public override void _Ready()
     {
+        base._Ready();
+        
         Instance = this;
         _interactionPrompt.SetupPrompt("Refill Oxygen", "E");
     }
 
     public override void _Process(double delta)
     {
+        base._Process(delta);
+
         if (_playerInRange && Input.IsActionPressed("interact"))
+        {
+            GD.Print("Refilled Oxygen");
             GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenCapacity);
+        }
+
     }
 
     public override void _ExitTree()
@@ -27,9 +35,6 @@ public partial class OxygenStation : Machine
 
     public override void PlayerInRange(bool isInRange)
     {
-        if (isInRange)
-            _interactionPrompt.SetVisible(true);
-        else
-            _interactionPrompt.SetVisible(false);
+        _interactionPrompt.SetVisible(isInRange);
     }
 }

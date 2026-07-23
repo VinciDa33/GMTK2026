@@ -8,10 +8,13 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_2apqw"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
+
 [node name="OxygenStation" type="Node3D" unique_id=557956778 node_paths=PackedStringArray("_interactionPrompt")]
 transform = Transform3D(1, 0, 0, 0, 0.99999905, 0.0013857026, 0, -0.0013857026, 0.99999905, 0, 0, 0)
 script = ExtResource("1_4ch7h")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
+_playerCheckDistance = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=553742419]
 mesh = SubResource("BoxMesh_6ckcd")
@@ -19,6 +22,11 @@ mesh = SubResource("BoxMesh_6ckcd")
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1204034475]
 transform = Transform3D(1, 0, 0, 0, -4.3655746e-08, 1, 0, -1, -4.3655746e-08, 0, 0.8, 0)
 texture = SubResource("ViewportTexture_2apqw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1851464926]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=235972472]
+shape = SubResource("BoxShape3D_2apqw")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=135400274]
 transparent_bg = true

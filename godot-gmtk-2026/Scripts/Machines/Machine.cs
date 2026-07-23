@@ -24,6 +24,12 @@ public abstract partial class Machine : Node3D
         _checkForPlayerTimer.Timeout -= CheckForPlayer;
     }
 
+    public override void _Process(double delta)
+    {
+        if (_checkForPlayerTimer.IsStopped())
+            _checkForPlayerTimer.Start();
+    }
+
     public void CheckForPlayer()
     {
         PlayerController player = GameState.Instance.PlayerController;
@@ -38,7 +44,7 @@ public abstract partial class Machine : Node3D
         else
         {
             PlayerInRange(false);
-            _playerInRange = true;
+            _playerInRange = false;
         }
     }
 

@@ -6,7 +6,7 @@ using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Machines.UpgradeMachine;
 
-public partial class UpgradeStation : Node
+public partial class UpgradeStation : Machine
 {
     public static UpgradeStation Instance { get; private set; }
     
@@ -30,6 +30,12 @@ public partial class UpgradeStation : Node
     public override void _ExitTree()
     {
         Instance = null;
+    }
+
+    public override void PlayerInRange(bool isInRange)
+    {
+        //TODO: Interaction PROMPT
+        throw new System.NotImplementedException();
     }
 
     //DEV TEST CODE!

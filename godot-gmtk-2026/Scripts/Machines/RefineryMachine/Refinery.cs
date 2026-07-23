@@ -5,7 +5,7 @@ using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Machines.RefineryMachine;
 
-public partial class Refinery : Node
+public partial class Refinery : Machine
 {
     public static Refinery Instance { get; private set; }
     
@@ -40,6 +40,12 @@ public partial class Refinery : Node
         //Start a timer when the refinery inventory is not empty!
         if (Inventory.Count() > 0 && _processingTimer.IsStopped())
             _processingTimer.Start();
+    }
+
+    public override void PlayerInRange(bool isInRange)
+    {
+        //TODO: INTERACTION PROMPT
+        throw new System.NotImplementedException();
     }
 
     private void ProcessingTimerFinished()
