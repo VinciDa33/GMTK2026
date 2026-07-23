@@ -12,7 +12,35 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csq4g"]
 
+[sub_resource type="Curve" id="Curve_mpric"]
+_data = [Vector2(0, 0), 0.0, 4.278798, 0, 0, Vector2(0.49892932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.540757, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_52ly3"]
+curve = SubResource("Curve_mpric")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ckcd"]
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 10)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, -90)
+rotation_3d_max = Vector3(0, 0, 90)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_52ly3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_g2gre"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_7y0oj"]
+
+[sub_resource type="Environment" id="Environment_2apqw"]
+background_mode = 1
+background_color = Color(0.039215688, 0.039215688, 0.039215688, 1)
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
@@ -141,9 +169,19 @@ vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=466123480 instance=ExtResource("5_kj3be")]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2035123442]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 20, 0)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2035123442 node_paths=PackedStringArray("Target")]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 5, 0)
 script = ExtResource("6_mpric")
+Target = NodePath("../Player")
+
+[node name="StarField_GPUParticles3D" type="GPUParticles3D" parent="Camera3D" unique_id=1643106249]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, -1, -4.3711385e-08, -4.3711392e-08, -4.371139e-08, -4.3711392e-08, 1, 0, 3.519886e-07, -8.052561)
+amount = 100
+lifetime = 10.0
+preprocess = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_6ckcd")
+draw_pass_1 = SubResource("QuadMesh_g2gre")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=697663417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.6698718)
@@ -152,3 +190,9 @@ mesh = SubResource("BoxMesh_7y0oj")
 [node name="OxygenStation" parent="." unique_id=557956778 instance=ExtResource("6_o7dsn")]
 transform = Transform3D(1, 0, 0, 0, 0.99999905, 0.0013857026, 0, -0.0013857026, 0.99999905, 0, 0, -4.5)
 _playerCheckDistance = 1.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1901408798]
+transform = Transform3D(0.8660254, 0.45315397, -0.21130915, 0, 0.4226183, 0.90630794, 0.5, -0.7848857, 0.36599815, 0, 4, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=554017553]
+environment = SubResource("Environment_2apqw")

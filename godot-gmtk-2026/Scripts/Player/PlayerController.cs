@@ -12,8 +12,6 @@ public partial class PlayerController : CharacterBody3D
 	[Export] private float _thrusterTick;
 	[Export] private float _baseThrusterConsumption;
 	
-	private Vector3 _velocity = Vector3.Zero;
-
 	private Timer _breathTimer;
 	private Timer _thrustTimer;
 	
@@ -55,16 +53,14 @@ public partial class PlayerController : CharacterBody3D
 
 		if (Input.IsActionPressed("fire_jetpack"))
 		{
-			_velocity += -Transform.Basis.X * GameState.Instance.PlayerStats.ThrusterPower * (float)delta;
-			Velocity = _velocity;
+			Velocity += -Transform.Basis.X * GameState.Instance.PlayerStats.ThrusterPower * (float)delta;
 			
 			if (_thrustTimer.IsStopped())
 				_thrustTimer.Start();
 		}
 		else if (Input.IsActionPressed("dampen_speed"))
 		{
-			_velocity *= GameState.Instance.PlayerStats.DampingFactor;
-			Velocity = _velocity;
+			Velocity *= GameState.Instance.PlayerStats.DampingFactor;
 			
 			if (_thrustTimer.IsStopped())
 				_thrustTimer.Start();

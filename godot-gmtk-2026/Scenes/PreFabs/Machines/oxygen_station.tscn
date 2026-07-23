@@ -30,6 +30,6 @@ shape = SubResource("BoxShape3D_2apqw")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=135400274]
 transparent_bg = true
-size = Vector2i(100, 100)
+size = Vector2i(256, 256)
 
 [node name="InteractPrompt" parent="SubViewport" unique_id=2137977658 instance=ExtResource("1_u83b7")]

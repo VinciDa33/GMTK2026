@@ -13,7 +13,7 @@ axis_lock_linear_y = true
 script = ExtResource("1_aibd6")
 _breathingTick = 1.0
 _baseBreathConsumption = 1.0
-_thrusterTick = 0.1
+_thrusterTick = 0.25
 _baseThrusterConsumption = 0.25
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1741277003]
