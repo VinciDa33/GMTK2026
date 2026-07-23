@@ -6,9 +6,16 @@
 [ext_resource type="Resource" uid="uid://cr24e1mleg73x" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/Rebreather.tres" id="3_hjqdq"]
 [ext_resource type="PackedScene" uid="uid://chfjhigk3kijo" path="res://Scenes/PreFabs/purchased_upgrade_ui.tscn" id="3_m8k0l"]
 [ext_resource type="Script" uid="uid://dw2o84v4ynx1w" path="res://Scripts/Machines/UpgradeMachine/UI/UpgradeStationUI.cs" id="4_eu3ni"]
+[ext_resource type="Resource" uid="uid://c2w63rtomoi18" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/FasterRefinery.tres" id="4_h3yh6"]
+[ext_resource type="Resource" uid="uid://dwgyjfgsg12hd" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/EfficientThrusters.tres" id="5_rkkdd"]
+[ext_resource type="Resource" uid="uid://drvgld04eg2iw" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/PowerfulThrusters.tres" id="6_0cu7w"]
 [ext_resource type="PackedScene" uid="uid://cy1cbxkebpe0v" path="res://Scenes/PreFabs/resource_count_display.tscn" id="6_m8k0l"]
+[ext_resource type="Resource" uid="uid://1yi2senqnhg1" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/MegaTank.tres" id="7_drfxu"]
 [ext_resource type="PackedScene" uid="uid://bc75i0kxuq0h5" path="res://Scenes/PreFabs/interact_prompt.tscn" id="8_0tnww"]
+[ext_resource type="Resource" uid="uid://djuicckja7wdr" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/BetterDampening.tres" id="8_b1oib"]
 [ext_resource type="StyleBox" uid="uid://bt8my7g78l6pq" path="res://Styling/Interaction.tres" id="8_rihsj"]
+[ext_resource type="Resource" uid="uid://dwy6ta8q6b5u3" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/OxygenScrubber.tres" id="9_omfkc"]
+[ext_resource type="Resource" uid="uid://bjgqpehj7liie" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/GigamongusTanks.tres" id="10_mvmag"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
 
@@ -23,7 +30,7 @@ viewport_path = NodePath("SubViewport")
 [node name="UpgradeStation" type="Node3D" unique_id=733137947 node_paths=PackedStringArray("_interactionPrompt", "_upgradeStationUI")]
 script = ExtResource("1_ovuyv")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
-_upgrades = Array[Object]([ExtResource("2_dxyk2"), ExtResource("3_hjqdq")])
+_upgrades = Array[Object]([ExtResource("2_dxyk2"), ExtResource("3_hjqdq"), ExtResource("4_h3yh6"), ExtResource("5_rkkdd"), ExtResource("6_0cu7w"), ExtResource("7_drfxu"), ExtResource("8_b1oib"), ExtResource("9_omfkc"), ExtResource("10_mvmag")])
 _upgradeStationUI = NodePath("CanvasLayer/Upgrade_Station_UI")
 _playerCheckDistance = 1.5
 
@@ -50,9 +57,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_eu3ni")
-_availableUpgradesUI = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/AUpgrades_HFlowContainer")
-_boughtUpgradesUI = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BUpgrades_HFlowContainer2")
-_resourceDisplayHost = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Resources_HBoxContainer")
+_availableUpgradesUI = NodePath("MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/AUpgrades_HFlowContainer")
+_boughtUpgradesUI = NodePath("MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/BUpgrades_HFlowContainer2")
+_resourceDisplayHost = NodePath("MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Resources_HBoxContainer")
 _upgradeUI = ExtResource("2_hjqdq")
 _purchasedUpgradeUI = ExtResource("3_m8k0l")
 _resourceDisplay = ExtResource("6_m8k0l")
@@ -83,11 +90,16 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer" unique_id=1258978667]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer" unique_id=1412568657]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=232853553]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="Upgrade_Station_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1090437920]
+[node name="Upgrade_Station_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1090437920]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
 theme_override_font_sizes/font_size = 24
@@ -95,35 +107,35 @@ text = "Upgrade Station"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Resources_HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1526856791]
+[node name="Resources_HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1526856791]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Available_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1270962368]
+[node name="Available_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1270962368]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
 text = ": Available Upgrades :"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AUpgrades_HFlowContainer" type="HFlowContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=619523842]
+[node name="AUpgrades_HFlowContainer" type="HFlowContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=619523842]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 
-[node name="Bought_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1874086042]
+[node name="Bought_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1874086042]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
 text = ": Aquired Upgrades :"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BUpgrades_HFlowContainer2" type="HFlowContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=641430223]
+[node name="BUpgrades_HFlowContainer2" type="HFlowContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=641430223]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 
-[node name="Close_Button" type="Button" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=26595424]
+[node name="Close_Button" type="Button" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=26595424]
 layout_mode = 2
 text = "Close"
 
@@ -133,4 +145,4 @@ size = Vector2i(256, 256)
 
 [node name="InteractPrompt" parent="SubViewport" unique_id=2137977658 instance=ExtResource("8_0tnww")]
 
-[connection signal="pressed" from="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Close_Button" to="." method="CloseUI"]
+[connection signal="pressed" from="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Close_Button" to="." method="CloseUI"]

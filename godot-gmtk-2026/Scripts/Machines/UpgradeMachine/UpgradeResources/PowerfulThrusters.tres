@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://drvgld04eg2iw"]
+
+[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="1_tu4g7"]
+[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="2_o6r1t"]
+
+[sub_resource type="Resource" id="Resource_uo453"]
+script = ExtResource("1_tu4g7")
+Amount = 10
+ItemType = 5
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[resource]
+script = ExtResource("2_o6r1t")
+Id = "PowerfulThrusters"
+Name = "Powerful Thrusters"
+Description = "More power, more energy!
+[color=#ede7a1]Increases thruster force.[/color]"
+Cost = Array[Object]([SubResource("Resource_uo453")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"

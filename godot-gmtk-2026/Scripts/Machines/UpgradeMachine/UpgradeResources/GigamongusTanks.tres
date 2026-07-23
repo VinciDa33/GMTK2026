@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bjgqpehj7liie"]
+
+[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="1_dr5c7"]
+[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="1_y0fum"]
+
+[sub_resource type="Resource" id="Resource_dr5c7"]
+script = ExtResource("1_y0fum")
+Amount = 20
+ItemType = 4
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[sub_resource type="Resource" id="Resource_y0fum"]
+script = ExtResource("1_y0fum")
+Amount = 5
+ItemType = 5
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[resource]
+script = ExtResource("1_dr5c7")
+Id = "GigaTank"
+Name = "Gigamongus Tank"
+Description = "Oh. My. God.
+[color=#ede7a1]The oxygen tank does not get bigger than this[/color]"
+Cost = Array[Object]([SubResource("Resource_dr5c7"), SubResource("Resource_y0fum")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"

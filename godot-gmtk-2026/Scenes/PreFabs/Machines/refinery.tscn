@@ -41,7 +41,7 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_qpbjv")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
 _recipes = Array[Object]([SubResource("Resource_6vxh6"), SubResource("Resource_vryj5"), SubResource("Resource_ovuyv"), SubResource("Resource_rkql0")])
-_processingTime = 1.0
+_processingTime = 2.0
 _playerCheckDistance = 1.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=891829362]

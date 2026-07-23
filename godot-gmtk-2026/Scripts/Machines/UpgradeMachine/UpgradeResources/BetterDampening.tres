@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://djuicckja7wdr"]
+
+[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="1_5xhnb"]
+[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="1_7vkfu"]
+
+[sub_resource type="Resource" id="Resource_h3yh6"]
+script = ExtResource("1_5xhnb")
+Amount = 5
+ItemType = 4
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[sub_resource type="Resource" id="Resource_rkkdd"]
+script = ExtResource("1_5xhnb")
+Amount = 8
+ItemType = 5
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[resource]
+script = ExtResource("1_7vkfu")
+Id = "BetterDampening"
+Name = "Better Dampening"
+Description = "There's no drag in space, afterall.
+[color=#ede7a1]Improves dampening effect[/color]"
+Cost = Array[Object]([SubResource("Resource_h3yh6"), SubResource("Resource_rkkdd")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"

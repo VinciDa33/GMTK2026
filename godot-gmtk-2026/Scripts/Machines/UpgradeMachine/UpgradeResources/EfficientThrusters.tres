@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://dwgyjfgsg12hd"]
+
+[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="1_0tme8"]
+[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="1_wey5i"]
+
+[sub_resource type="Resource" id="Resource_wey5i"]
+script = ExtResource("1_0tme8")
+Amount = 5
+ItemType = 4
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[sub_resource type="Resource" id="Resource_0tme8"]
+script = ExtResource("1_0tme8")
+Amount = 7
+ItemType = 5
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[resource]
+script = ExtResource("1_wey5i")
+Id = "EfficientThrusters"
+Name = "Efficient Thrusters"
+Description = "Nice.
+[color=#ede7a1]Increases thruster oxygen efficiency.[/color]"
+Cost = Array[Object]([SubResource("Resource_wey5i"), SubResource("Resource_0tme8")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"

@@ -87,5 +87,9 @@ public partial class Refinery : Machine
             }
         Inventory.RemoveFirst();
     }
-    
+
+    public void SetProcessingTime(float processingTime)
+    {
+        _processingTime = processingTime;
+    }
 }

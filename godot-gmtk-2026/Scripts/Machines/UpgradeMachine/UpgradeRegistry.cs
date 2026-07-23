@@ -12,6 +12,13 @@ public static class UpgradeRegistry
         //TODO: Instantiate upgrade effects here!
         UpgradeEffects.Add(new BiggerTank());
         UpgradeEffects.Add(new Rebreather());
+        UpgradeEffects.Add(new OxygenScrubber());
+        UpgradeEffects.Add(new MegaTank());
+        UpgradeEffects.Add(new GigamongusTank());
+        UpgradeEffects.Add(new BetterDampening());
+        UpgradeEffects.Add(new FasterRefinery());
+        UpgradeEffects.Add(new EfficientThrusters());
+        UpgradeEffects.Add(new PowerfulThrusters());
     }
 
     public static UpgradeEffect GetUpgradeEffect(string id)

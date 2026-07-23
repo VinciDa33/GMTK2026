@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://c2w63rtomoi18"]
+
+[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="1_4mr01"]
+[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="1_kp7yo"]
+
+[sub_resource type="Resource" id="Resource_kp7yo"]
+script = ExtResource("1_kp7yo")
+Amount = 3
+ItemType = 4
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[sub_resource type="Resource" id="Resource_u1arj"]
+script = ExtResource("1_kp7yo")
+Amount = 3
+ItemType = 5
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[resource]
+script = ExtResource("1_4mr01")
+Id = "FasterRefinery"
+Name = "Faster Refinery"
+Description = "A refined taste.
+[color=#ede7a1]Doubles the speed of the refinery.[/color]"
+Cost = Array[Object]([SubResource("Resource_kp7yo"), SubResource("Resource_u1arj")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"
