@@ -11,27 +11,21 @@ public partial class AsteroidSpawner : Node
 	[Export] public float SpawnBuffer = 5f;
 	[Export] public float DespawnDistance = 20f;
 	[Export] public int MaxActiveUnmineableAsteroids = 30;
-	[Export] public int MaxActiveMineableAsteroids = 5;
-	[Export] public int MaxActiveScrap = 5;
+	[Export] public int MaxActivePickupableObjects = 10;
 	[Export] public PackedScene UnMineableAsteroidScene;
-	[Export] public PackedScene MineableAsteroidScene;
-	[Export] public PackedScene ScrapScene;
+	[Export] public PackedScene PickupableObjectScene;
 
 	private List<Node3D> _activeUnmineableAsteroids = new List<Node3D>();
-	private List<Node3D> _activeMineableAsteroids = new List<Node3D>();
-	private List<Node3D> _activeScrap = new List<Node3D>();
+	private List<Node3D> _activePickupableObjects = new List<Node3D>();
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Vector3 spawnPosition = GetSpawnPosition();
+		SpawnAsteroids();
+		SpawnPickupableObjects();
 
-		SpawnAsteroids(spawnPosition);
-		SpawnScrap(spawnPosition);
-
-		DespawnDistantObjects(_activeUnmineableAsteroids);
-		DespawnDistantObjects(_activeMineableAsteroids);
-		DespawnDistantObjects(_activeScrap);
+		DespawnDistantAsteroids();
+		DespawnDistantPickupableObjects();
 	}
 
 	public Vector3 GetSpawnPosition()
@@ -57,47 +51,45 @@ public partial class AsteroidSpawner : Node
 		return spawnPosition;
 	}
 
-	private void SpawnAsteroids(Vector3 spawnPosition)
+	private void SpawnAsteroids()
 	{
+		Vector3 spawnPosition = GetSpawnPosition();
+
 		if (_activeUnmineableAsteroids.Count >= MaxActiveUnmineableAsteroids)
-		{
-			Node3D newObject = UnMineableAsteroidScene.Instantiate<Node3D>();
-			AddChild(newObject);
-			newObject.GlobalPosition = spawnPosition;
-
-			_activeUnmineableAsteroids.Add(newObject);
-		}
-		else if (_activeMineableAsteroids.Count >= MaxActiveMineableAsteroids)
-		{
-			Node3D newObject = MineableAsteroidScene.Instantiate<Node3D>();
-			AddChild(newObject);
-			newObject.GlobalPosition = spawnPosition;
-
-			_activeMineableAsteroids.Add(newObject);
-		}
-	}
-
-	private void SpawnScrap(Vector3 spawnPosition)
-	{
-		if (_activeScrap.Count >= MaxActiveScrap)
 		{
 			return;
 		}
 
-		Node3D newObject = ScrapScene.Instantiate<Node3D>();
+		Node3D newObject = UnMineableAsteroidScene.Instantiate<Node3D>();
 		AddChild(newObject);
 		newObject.GlobalPosition = spawnPosition;
 
-		_activeScrap.Add(newObject);
+		_activeUnmineableAsteroids.Add(newObject);
 	}
 
-	private void DespawnDistantObjects(List<Node3D> objects)
+	private void SpawnPickupableObjects()
+	{
+		Vector3 spawnPosition = GetSpawnPosition();
+
+		if (_activePickupableObjects.Count >= MaxActivePickupableObjects)
+		{
+			return;
+		}
+
+		Node3D newObject = PickupableObjectScene.Instantiate<Node3D>();
+		AddChild(newObject);
+		newObject.GlobalPosition = spawnPosition;
+
+		_activePickupableObjects.Add(newObject);
+	}
+
+	private void DespawnDistantAsteroids()
 	{
 		if (PlayerCamera == null) return;
 
-		for (int i = objects.Count - 1; i >= 0; i--)
+		for (int i = _activeUnmineableAsteroids.Count - 1; i >= 0; i--)
 		{
-			Node3D obj = objects[i];
+			Node3D obj = _activeUnmineableAsteroids[i];
 			if (obj == null) continue;
 
 			// Calculate XZ-plane distance
@@ -108,7 +100,29 @@ public partial class AsteroidSpawner : Node
 			if (xzDistanceSquared > DespawnDistance * DespawnDistance)
 			{
 				obj.QueueFree();
-				objects.RemoveAt(i);
+				_activeUnmineableAsteroids.RemoveAt(i);
+			}
+		}
+	}
+
+	private void DespawnDistantPickupableObjects()
+	{
+		if (PlayerCamera == null) return;
+
+		for (int i = _activePickupableObjects.Count - 1; i >= 0; i--)
+		{
+			Node3D obj = _activePickupableObjects[i];
+			if (obj == null) continue;
+
+			// Calculate XZ-plane distance
+			float distanceSquared = (obj.GlobalPosition - PlayerCamera.GlobalPosition).LengthSquared();
+			float yDiff = obj.GlobalPosition.Y - PlayerCamera.GlobalPosition.Y;
+			float xzDistanceSquared = distanceSquared - (yDiff * yDiff);
+
+			if (xzDistanceSquared > DespawnDistance * DespawnDistance)
+			{
+				obj.QueueFree();
+				_activePickupableObjects.RemoveAt(i);
 			}
 		}
 	}
