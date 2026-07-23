@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cbgjwdha8r1ef"]
 
+[ext_resource type="Script" uid="uid://bv6pp4mgnshgs" path="res://Scripts/Asteroids/AsteroidSpawner.cs" id="1_mpric"]
 [ext_resource type="Script" uid="uid://doxlwchcr3p3v" path="res://Scripts/Items/Inventory/UI/PlayerInventoryUI.cs" id="2_f6d6p"]
+[ext_resource type="PackedScene" uid="uid://bl7cpt7fr81so" path="res://Scenes/PreFabs/asteroid.tscn" id="2_o7dsn"]
 [ext_resource type="PackedScene" uid="uid://cmghspt0j53nc" path="res://Scenes/PreFabs/inventory_item.tscn" id="3_1aiwk"]
 [ext_resource type="Script" uid="uid://dpkebv4ejpa6y" path="res://Scripts/OxygenCounter/UI/OxygenProgressBar.cs" id="4_2w2h1"]
 [ext_resource type="PackedScene" uid="uid://75gko4n5qxcr" path="res://Scenes/PreFabs/player.tscn" id="5_kj3be"]
@@ -44,11 +46,18 @@ scale_curve = SubResource("CurveTexture_52ly3")
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
+<<<<<<< HEAD
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=554017553]
 environment = SubResource("Environment_2apqw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1901408798]
 transform = Transform3D(0.8660254, 0.4531539, -0.21130912, 0, 0.42261824, 0.9063078, 0.5, -0.7848856, 0.36599815, 0, 4, 0)
+=======
+[node name="GameManager" type="Node" parent="." unique_id=1333234611 node_paths=PackedStringArray("PlayerCamera")]
+script = ExtResource("1_mpric")
+PlayerCamera = NodePath("../Camera3D")
+AsteroidScene = ExtResource("2_o7dsn")
+>>>>>>> 4cfb192c705b5dc1c665536d49d2c648ba74ef39
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=34810243]
 
