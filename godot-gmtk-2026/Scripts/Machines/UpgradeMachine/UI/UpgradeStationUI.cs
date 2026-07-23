@@ -5,7 +5,7 @@ using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Machines.UpgradeMachine.UI;
 
-public partial class UpgradeStationUI : Node
+public partial class UpgradeStationUI : Control
 {
     [ExportGroup("UI")] 
     [Export] private Control _availableUpgradesUI;
@@ -92,8 +92,9 @@ public partial class UpgradeStationUI : Node
         _boughtUpgradesUI.AddChild(pu);
     }
 
-    public void SetVisible(bool visibility)
+    public void SetVisibility(bool visibility)
     {
         SetVisible(visibility);
+        MouseFilter = visibility ? MouseFilterEnum.Stop : MouseFilterEnum.Ignore;
     }
 }

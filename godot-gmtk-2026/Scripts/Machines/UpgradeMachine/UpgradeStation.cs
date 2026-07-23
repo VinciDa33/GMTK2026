@@ -42,7 +42,7 @@ public partial class UpgradeStation : Node3D
             GameState.Instance.StationInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.Iron));
         }
         if (Input.IsKeyPressed(Key.S))
-            GameState.Instance.PlayerInventory.RemoveFirst();
+            GameState.Instance.StationInventory.RemoveFirst();
     }
     */
     
@@ -57,19 +57,25 @@ public partial class UpgradeStation : Node3D
                 return false;
         }
         
-        if (true)
+        foreach (UpgradeCost cost in upgrade.Cost)
         {
-            GD.Print($"Bought Upgrade {upgrade.Name}");
-            AvailableUpgrades.Remove(upgrade);
-            BoughtUpgrades.Add(upgrade);
-
-            _upgradeStationUI.AddBoughtUpgrade(upgrade);
-
-            UpgradeEffect effect = UpgradeRegistry.GetUpgradeEffect(upgrade.Id);
-            if (effect == null)
-                GD.PrintErr($"Upgrade id [{upgrade.Id}] did not match any effect in registry!");
-
-            return true;
+            for (int i = 0; i < cost.Amount; i++)
+            {
+                Item item = GameState.Instance.StationInventory.GetFirstItemOfType(cost.ItemType);
+                GameState.Instance.StationInventory.RemoveItem(item);
+            }
         }
+        
+        GD.Print($"Bought Upgrade {upgrade.Name}");
+        AvailableUpgrades.Remove(upgrade);
+        BoughtUpgrades.Add(upgrade);
+
+        _upgradeStationUI.AddBoughtUpgrade(upgrade);
+
+        UpgradeEffect effect = UpgradeRegistry.GetUpgradeEffect(upgrade.Id);
+        if (effect == null)
+            GD.PrintErr($"Upgrade id [{upgrade.Id}] did not match any effect in registry!");
+
+        return true;
     }
 }

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bc75i0kxuq0h5"]
+
+[ext_resource type="Texture2D" uid="uid://dg2j60wdt06ux" path="res://Assets/Input_Prompts/Default/keyboard_e.png" id="1_hvsd1"]
+
+[node name="InteractPrompt" type="Control" unique_id=2137977658]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1766876628]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -43.5
+offset_right = 34.0
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=74661189]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=2041460686]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=928693382]
+layout_mode = 2
+text = "Pick Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2123757594]
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_hvsd1")
