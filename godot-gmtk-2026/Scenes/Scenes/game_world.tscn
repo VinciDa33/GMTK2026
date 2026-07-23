@@ -18,9 +18,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Game_State" parent="." unique_id=1927038039 instance=ExtResource("1_05xqj")]
 _oxygenCapacity = 100
-_oxygenLevel = 50
 _thrusterPower = 1.0
-_hasDampingUpgrade = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=34810243]
 

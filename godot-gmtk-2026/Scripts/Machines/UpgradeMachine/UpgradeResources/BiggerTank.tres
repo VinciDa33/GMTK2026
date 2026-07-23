@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://cwramt78r671i"]
+
+[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="1_hp5ww"]
+[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="1_tkbr6"]
+
+[sub_resource type="Resource" id="Resource_hp5ww"]
+script = ExtResource("1_hp5ww")
+Amount = 5
+ItemType = 4
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[resource]
+script = ExtResource("1_tkbr6")
+Id = "BiggerTank"
+Name = "Bigger Tank"
+Description = "It's bigger and better!
+[color=yellow]Improves oxygen tank capacity[/color]"
+Cost = Array[Object]([SubResource("Resource_hp5ww")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"

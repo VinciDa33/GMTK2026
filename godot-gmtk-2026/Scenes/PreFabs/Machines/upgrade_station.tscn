@@ -1,50 +1,89 @@
 [gd_scene format=3 uid="uid://db5fwh1k6q5pl"]
 
 [ext_resource type="Script" uid="uid://dubhvr4ku1edw" path="res://Scripts/Machines/UpgradeMachine/UpgradeStation.cs" id="1_ovuyv"]
-[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="2_dxyk2"]
-[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="2_rkql0"]
-
-[sub_resource type="Resource" id="Resource_dxyk2"]
-script = ExtResource("2_dxyk2")
-Amount = 5
-ItemType = 4
-metadata/_custom_type_script = "uid://ciq0enofs0344"
-
-[sub_resource type="Resource" id="Resource_qpbjv"]
-script = ExtResource("2_rkql0")
-Id = "BiggerTank"
-Name = "Bigger Tank"
-Description = "It's bigger and better!
-<color=Yellow>Improves oxygen tank capacity</color>"
-Cost = Array[Object]([SubResource("Resource_dxyk2")])
-metadata/_custom_type_script = "uid://bx61t3jpfkc4s"
-
-[sub_resource type="Resource" id="Resource_hjqdq"]
-script = ExtResource("2_dxyk2")
-Amount = 3
-ItemType = 4
-metadata/_custom_type_script = "uid://ciq0enofs0344"
-
-[sub_resource type="Resource" id="Resource_m8k0l"]
-script = ExtResource("2_dxyk2")
-Amount = 5
-ItemType = 5
-metadata/_custom_type_script = "uid://ciq0enofs0344"
-
-[sub_resource type="Resource" id="Resource_rkql0"]
-script = ExtResource("2_rkql0")
-Id = "Rebreather"
-Name = "Rebreather"
-Description = "Reduce, reuse, rebreath! 
-<color=Yellow>Enchances oxygen efficiency.</color>"
-Cost = Array[Object]([SubResource("Resource_hjqdq"), SubResource("Resource_m8k0l")])
-metadata/_custom_type_script = "uid://bx61t3jpfkc4s"
+[ext_resource type="Resource" uid="uid://cwramt78r671i" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/BiggerTank.tres" id="2_dxyk2"]
+[ext_resource type="PackedScene" uid="uid://dsblb8pe0a6e6" path="res://Scenes/PreFabs/upgrade_ui.tscn" id="2_hjqdq"]
+[ext_resource type="Resource" uid="uid://cr24e1mleg73x" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/Rebreather.tres" id="3_hjqdq"]
+[ext_resource type="PackedScene" uid="uid://chfjhigk3kijo" path="res://Scenes/PreFabs/purchased_upgrade_ui.tscn" id="3_m8k0l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
 
-[node name="UpgradeStation" type="Node3D" unique_id=733137947]
+[node name="UpgradeStation" type="Node3D" unique_id=733137947 node_paths=PackedStringArray("_upgradeStationUI", "_availableUpgradesUI", "_boughtUpgradesUI")]
 script = ExtResource("1_ovuyv")
-_upgrades = Array[Object]([SubResource("Resource_qpbjv"), SubResource("Resource_rkql0")])
+_upgradeStationUI = NodePath("CanvasLayer/Upgrade_Station_UI")
+_availableUpgradesUI = NodePath("CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/AUpgrades_HFlowContainer")
+_boughtUpgradesUI = NodePath("CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BUpgrades_HFlowContainer2")
+_upgradeUI = ExtResource("2_hjqdq")
+_purchasedUpgradeUI = ExtResource("3_m8k0l")
+_upgrades = Array[Object]([ExtResource("2_dxyk2"), ExtResource("3_hjqdq")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1822561950]
 mesh = SubResource("BoxMesh_2apqw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1385835267]
+
+[node name="Upgrade_Station_UI" type="Control" parent="CanvasLayer" unique_id=334832324]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Upgrade_Station_UI" unique_id=671278711]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_right = 67.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer" unique_id=1135095232]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer" unique_id=1862468589]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer" unique_id=1258978667]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Upgrade_Station_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1090437920]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Upgrade Station"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Available_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1270962368]
+layout_mode = 2
+text = ": Available Upgrades :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AUpgrades_HFlowContainer" type="HFlowContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=619523842]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="Bought_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1874086042]
+layout_mode = 2
+text = ": Aquired Upgrades :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BUpgrades_HFlowContainer2" type="HFlowContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=641430223]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8

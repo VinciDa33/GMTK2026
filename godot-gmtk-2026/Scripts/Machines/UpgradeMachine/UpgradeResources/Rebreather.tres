@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://cr24e1mleg73x"]
+
+[ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="1_nrb3s"]
+[ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="1_qb7ss"]
+
+[sub_resource type="Resource" id="Resource_qb7ss"]
+script = ExtResource("1_qb7ss")
+Amount = 3
+ItemType = 4
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[sub_resource type="Resource" id="Resource_8ef1x"]
+script = ExtResource("1_qb7ss")
+Amount = 5
+ItemType = 5
+metadata/_custom_type_script = "uid://ciq0enofs0344"
+
+[resource]
+script = ExtResource("1_nrb3s")
+Id = "Rebreather"
+Name = "Rebreather"
+Description = "Reduce, reuse, rebreath! 
+[color=yellow]Enchances oxygen efficiency.[/color]"
+Cost = Array[Object]([SubResource("Resource_qb7ss"), SubResource("Resource_8ef1x")])
+metadata/_custom_type_script = "uid://bx61t3jpfkc4s"

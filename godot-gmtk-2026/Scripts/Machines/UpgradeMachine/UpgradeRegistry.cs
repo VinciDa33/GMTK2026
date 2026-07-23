@@ -11,6 +11,7 @@ public static class UpgradeRegistry
     {
         //TODO: Instantiate upgrade effects here!
         UpgradeEffects.Add(new BiggerTank());
+        UpgradeEffects.Add(new Rebreather());
     }
 
     public static UpgradeEffect GetUpgradeEffect(string id)
