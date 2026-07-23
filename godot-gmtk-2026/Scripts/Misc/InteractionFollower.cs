@@ -13,7 +13,7 @@ public partial class InteractionFollower : Node3D
 
     public override void _Process(double delta)
     {
-        if (_target == null)
+        if (_target == null || _target.IsQueuedForDeletion())
         {
             QueueFree();
             return;
