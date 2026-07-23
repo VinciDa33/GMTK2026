@@ -5,7 +5,7 @@ using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Machines.RefineryMachine;
 
-public partial class Refinery : Node3D
+public partial class Refinery : Node
 {
     public static Refinery Instance { get; private set; }
     
@@ -21,11 +21,10 @@ public partial class Refinery : Node3D
         Inventory = new Inventory(10);
         
         _processingTimer = new Timer();
-        AddChild(_processingTimer);
-
         _processingTimer.WaitTime = _processingTime;
         _processingTimer.OneShot = true;
         _processingTimer.Timeout += ProcessingTimerFinished;
+        AddChild(_processingTimer);
     }
 
     public override void _ExitTree()

@@ -6,7 +6,7 @@ using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Machines.UpgradeMachine;
 
-public partial class UpgradeStation : Node3D
+public partial class UpgradeStation : Node
 {
     public static UpgradeStation Instance { get; private set; }
     

@@ -22,6 +22,8 @@ public partial class PlayerController : CharacterBody3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GameState.Instance.SetPlayerController(this);
+		
 		_breathTimer = new Timer();
 		_breathTimer.WaitTime = _breathingTick;
 		_breathTimer.OneShot = true;

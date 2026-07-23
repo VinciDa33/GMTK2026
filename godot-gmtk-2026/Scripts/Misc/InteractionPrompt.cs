@@ -2,7 +2,7 @@ using Godot;
 
 namespace GodotGMTK2026.Scripts.Misc;
 
-public partial class InteractionPrompt : Node
+public partial class InteractionPrompt : Control
 {
     [ExportGroup("Keys")] 
     [Export] private PromptKey[] _keys;

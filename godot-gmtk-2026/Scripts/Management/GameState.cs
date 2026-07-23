@@ -1,5 +1,6 @@
 using Godot;
 using GodotGMTK2026.Scripts.Items.Inventory;
+using GodotGMTK2026.Scripts.Player;
 
 namespace GodotGMTK2026.Scripts.Management;
 
@@ -14,8 +15,9 @@ public partial class GameState : Node
     
     public Inventory PlayerInventory { get; private set; }
     public PlayerStats PlayerStats { get; private set; }
-    public Inventory StationInventory;
-    
+    public Inventory StationInventory { get; private set; }
+    public PlayerController PlayerController { get; private set; }
+
     public static GameState Instance { get; private set; }
 
     public override void _Ready()
@@ -30,5 +32,10 @@ public partial class GameState : Node
     public override void _ExitTree()
     {
         Instance = null;
+    }
+
+    public void SetPlayerController(PlayerController playerController)
+    {
+        PlayerController = playerController;
     }
 }

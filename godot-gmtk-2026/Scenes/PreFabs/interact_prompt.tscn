@@ -1,8 +1,51 @@
 [gd_scene format=3 uid="uid://bc75i0kxuq0h5"]
 
 [ext_resource type="Texture2D" uid="uid://dg2j60wdt06ux" path="res://Assets/Input_Prompts/Default/keyboard_e.png" id="1_hvsd1"]
+[ext_resource type="Script" uid="uid://b40qsltaigaf5" path="res://Scripts/Misc/InteractionPrompt.cs" id="1_u2eqa"]
+[ext_resource type="Script" uid="uid://c8a2m37sqbdq0" path="res://Scripts/Misc/PromptKey.cs" id="3_rdqbl"]
+[ext_resource type="Texture2D" uid="uid://cprd6tvnsl27g" path="res://Assets/Input_Prompts/Default/keyboard_escape.png" id="4_om018"]
+[ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="5_0r2ik"]
+[ext_resource type="Texture2D" uid="uid://bu58v8q22h6or" path="res://Assets/Input_Prompts/Default/keyboard_arrow_down.png" id="6_2y16q"]
+[ext_resource type="Texture2D" uid="uid://cughec7tg58gg" path="res://Assets/Input_Prompts/Default/keyboard_arrow_left.png" id="7_mry6i"]
+[ext_resource type="Texture2D" uid="uid://ded6u6ya78jdu" path="res://Assets/Input_Prompts/Default/keyboard_arrow_right.png" id="8_xgd22"]
 
-[node name="InteractPrompt" type="Control" unique_id=2137977658]
+[sub_resource type="Resource" id="Resource_hvsd1"]
+script = ExtResource("3_rdqbl")
+key = "E"
+Texture = ExtResource("1_hvsd1")
+metadata/_custom_type_script = "uid://c8a2m37sqbdq0"
+
+[sub_resource type="Resource" id="Resource_y8ud3"]
+script = ExtResource("3_rdqbl")
+key = "ESC"
+Texture = ExtResource("4_om018")
+metadata/_custom_type_script = "uid://c8a2m37sqbdq0"
+
+[sub_resource type="Resource" id="Resource_756xb"]
+script = ExtResource("3_rdqbl")
+key = "UP"
+Texture = ExtResource("5_0r2ik")
+metadata/_custom_type_script = "uid://c8a2m37sqbdq0"
+
+[sub_resource type="Resource" id="Resource_ebnh8"]
+script = ExtResource("3_rdqbl")
+key = "DOWN"
+Texture = ExtResource("6_2y16q")
+metadata/_custom_type_script = "uid://c8a2m37sqbdq0"
+
+[sub_resource type="Resource" id="Resource_lmc1c"]
+script = ExtResource("3_rdqbl")
+key = "LEFT"
+Texture = ExtResource("7_mry6i")
+metadata/_custom_type_script = "uid://c8a2m37sqbdq0"
+
+[sub_resource type="Resource" id="Resource_2buln"]
+script = ExtResource("3_rdqbl")
+key = "RIGHT"
+Texture = ExtResource("8_xgd22")
+metadata/_custom_type_script = "uid://c8a2m37sqbdq0"
+
+[node name="InteractPrompt" type="Control" unique_id=2137977658 node_paths=PackedStringArray("_label", "_textureRect")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -11,6 +54,10 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u2eqa")
+_keys = Array[Object]([SubResource("Resource_hvsd1"), SubResource("Resource_y8ud3"), SubResource("Resource_756xb"), SubResource("Resource_ebnh8"), SubResource("Resource_lmc1c"), SubResource("Resource_2buln")])
+_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Label")
+_textureRect = NodePath("PanelContainer/MarginContainer/VBoxContainer/TextureRect")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1766876628]
 layout_mode = 1
