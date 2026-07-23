@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://coh6jsmvnd4a4"]
+
+[ext_resource type="Script" uid="uid://d0ljle6qfpss2" path="res://Scripts/Misc/DeathManager.cs" id="1_4biau"]
+
+[node name="Death_Manager" type="Node3D" unique_id=1218891936 node_paths=PackedStringArray("_deathUI")]
+script = ExtResource("1_4biau")
+_deathUI = NodePath("CanvasLayer/Control")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=344005501]
+layer = 10
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1014207729]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=867678559]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=137913177]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.4, 0.12156863, 1)
+theme_override_font_sizes/font_size = 40
+text = "You Died"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=1762801003]
+layout_mode = 2
+text = "All items in your inventory have been lost"

@@ -8,12 +8,11 @@
 [ext_resource type="Script" uid="uid://dpkebv4ejpa6y" path="res://Scripts/OxygenCounter/UI/OxygenProgressBar.cs" id="4_2w2h1"]
 [ext_resource type="PackedScene" uid="uid://gqviduy1hexi" path="res://Scenes/PreFabs/scrap.tscn" id="4_djwxc"]
 [ext_resource type="PackedScene" uid="uid://75gko4n5qxcr" path="res://Scenes/PreFabs/player.tscn" id="5_kj3be"]
+[ext_resource type="PackedScene" uid="uid://coh6jsmvnd4a4" path="res://Scenes/PreFabs/death_manager.tscn" id="5_vd2fa"]
 [ext_resource type="Script" uid="uid://cehx3tpqvjwb4" path="res://Scripts/Player/CameraFollower.cs" id="6_mpric"]
-[ext_resource type="PackedScene" uid="uid://sxy6t2odfr70" path="res://Scenes/PreFabs/Machines/oxygen_station.tscn" id="6_o7dsn"]
-[ext_resource type="PackedScene" uid="uid://dgvadnjbxegq2" path="res://Scenes/PreFabs/Machines/refinery.tscn" id="7_o7dsn"]
-[ext_resource type="PackedScene" uid="uid://db5fwh1k6q5pl" path="res://Scenes/PreFabs/Machines/upgrade_station.tscn" id="8_rbwgj"]
 [ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="9_vca7v"]
 [ext_resource type="Script" uid="uid://cfw13teteyk3k" path="res://Scripts/Misc/PointerController.cs" id="10_djwxc"]
+[ext_resource type="PackedScene" uid="uid://chrqorh7jsc4s" path="res://Scenes/PreFabs/space_pod.tscn" id="12_bcfiw"]
 
 [sub_resource type="Environment" id="Environment_2apqw"]
 background_mode = 1
@@ -62,6 +61,8 @@ environment = SubResource("Environment_2apqw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1901408798]
 transform = Transform3D(0.8660254, 0.4531539, -0.21130912, 0, 0.42261824, 0.9063078, 0.5, -0.7848856, 0.36599815, 0, 4, 0)
+
+[node name="Death_Manager" parent="." unique_id=1218891936 instance=ExtResource("5_vd2fa")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=34810243]
 
@@ -203,20 +204,10 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_6ckcd")
 draw_pass_1 = SubResource("QuadMesh_g2gre")
 
-[node name="OxygenStation" parent="." unique_id=557956778 instance=ExtResource("6_o7dsn")]
-transform = Transform3D(-4.3711385e-08, -0.0017453283, 0.9999984, 0, 0.99999845, 0.0017453282, -0.99999994, 7.6290724e-11, -4.3711317e-08, 0, 0, -4.5)
-_playerCheckDistance = 1.5
-
-[node name="Refinery" parent="." unique_id=794471086 instance=ExtResource("7_o7dsn")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.293022, 0, 0)
-
-[node name="UpgradeStation" parent="." unique_id=733137947 instance=ExtResource("8_rbwgj")]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 4.012583)
-
 [node name="POD_Pointer_Root" type="Node3D" parent="." unique_id=545788461 node_paths=PackedStringArray("_origin", "_target")]
 script = ExtResource("10_djwxc")
 _origin = NodePath("../Player")
-_target = NodePath("../Refinery")
+_target = NodePath("../SpacePod/Node3D")
 _orbitRadius = 0.75
 
 [node name="POD_Pointer_Sprite3D" type="Sprite3D" parent="POD_Pointer_Root" unique_id=2137757481]
@@ -224,13 +215,16 @@ transform = Transform3D(0.75, 0, 0, 0, -3.278354e-08, 0.75, 0, -0.75, -3.278354e
 modulate = Color(0.5294118, 1, 0.64705884, 1)
 texture = ExtResource("9_vca7v")
 
-[node name="END_Pointer_Root" type="Node3D" parent="." unique_id=475915005 node_paths=PackedStringArray("_origin", "_target")]
+[node name="END_Pointer_Root" type="Node3D" parent="." unique_id=475915005 node_paths=PackedStringArray("_origin")]
 script = ExtResource("10_djwxc")
 _origin = NodePath("../Player")
-_target = NodePath("../OxygenStation")
 _orbitRadius = 0.75
 
 [node name="END_Pointer_Sprite3D" type="Sprite3D" parent="END_Pointer_Root" unique_id=1726001545]
 transform = Transform3D(0.75, 0, 0, 0, -3.278354e-08, 0.75, 0, -0.75, -3.278354e-08, 0, 0, 0)
 modulate = Color(1, 0.44705883, 0.29411766, 1)
 texture = ExtResource("9_vca7v")
+
+[node name="SpacePod" parent="." unique_id=1209523577 instance=ExtResource("12_bcfiw")]
+
+[node name="Node3D" type="Node3D" parent="SpacePod" unique_id=192385754]

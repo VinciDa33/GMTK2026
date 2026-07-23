@@ -7,7 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://db5fwh1k6q5pl" path="res://Scenes/PreFabs/Machines/upgrade_station.tscn" id="4_qbtu1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
-size = Vector3(6, 6, 6)
+size = Vector3(4, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ckcd"]
+size = Vector3(2.5, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyap0"]
+size = Vector3(2, 2, 3.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxkdg"]
+size = Vector3(2, 2, 3.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ohks4"]
+size = Vector3(5, 2, 0.5)
 
 [node name="SpacePod" type="Node3D" unique_id=1209523577]
 script = ExtResource("1_4f2li")
@@ -17,18 +29,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = ExtResource("2_m2gcg")
 
 [node name="OxygenStation" parent="." unique_id=557956778 instance=ExtResource("2_4f2li")]
-transform = Transform3D(1, 0, 0, 0, 0.99999905, 0.0013857026, 0, -0.0013857026, 0.99999905, 1.6, 0, -1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6, 0, -1)
 
 [node name="Refinery" parent="." unique_id=794471086 instance=ExtResource("3_m2gcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6, 0, 1)
 
 [node name="UpgradeStation" parent="." unique_id=733137947 instance=ExtResource("4_qbtu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.6, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=447631554]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1096448962]
 shape = SubResource("BoxShape3D_2apqw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=990304635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1388361761]
+shape = SubResource("BoxShape3D_6ckcd")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=567086252]
+transform = Transform3D(1, 5.992952e-08, 8.149546e-05, -5.992952e-08, 1, -2.9903497e-06, -8.149546e-05, 2.9903497e-06, 1, -2.35, 0, -0.15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=626790004]
+transform = Transform3D(1, 2.026157e-15, 0, 2.414735e-15, 1, 4.5474735e-13, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_yyap0")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=222187411]
+transform = Transform3D(1, 5.992952e-08, 8.149546e-05, -5.992952e-08, 1, -2.9903497e-06, -8.149546e-05, 2.9903497e-06, 1, 2.35, 0, -0.15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=2055981510]
+transform = Transform3D(1, 2.026157e-15, 0, 2.414735e-15, 1, 4.5474735e-13, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_vxkdg")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=1261222108]
+transform = Transform3D(1, 5.992952e-08, 8.149546e-05, -5.992952e-08, 1, -2.9903497e-06, -8.149546e-05, 2.9903497e-06, 1, 0, 0, 1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=601210177]
+transform = Transform3D(1, 2.026157e-15, 0, 2.414735e-15, 1, 4.5474735e-13, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_ohks4")
 
 [connection signal="body_entered" from="Area3D" to="." method="PlayerEntered"]
 [connection signal="body_exited" from="Area3D" to="." method="PlayerExited"]
