@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dgvadnjbxegq2"]
 
 [ext_resource type="Script" uid="uid://cgjoyq8kj5ij3" path="res://Scripts/Machines/RefineryMachine/Refinery.cs" id="1_qpbjv"]
+[ext_resource type="PackedScene" uid="uid://bjmh4wo4g2jsr" path="res://Scenes/PreFabs/floating_text.tscn" id="2_g8kat"]
 [ext_resource type="Script" uid="uid://78v6qw8s56c5" path="res://Scripts/Machines/RefineryMachine/RefineryRecipe.cs" id="2_rb1ea"]
 [ext_resource type="PackedScene" uid="uid://bc75i0kxuq0h5" path="res://Scenes/PreFabs/interact_prompt.tscn" id="3_rb1ea"]
 
@@ -40,6 +41,7 @@ viewport_path = NodePath("SubViewport")
 [node name="Refinery" type="Node3D" unique_id=794471086 node_paths=PackedStringArray("_interactionPrompt")]
 script = ExtResource("1_qpbjv")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
+_floatingText = ExtResource("2_g8kat")
 _recipes = Array[Object]([SubResource("Resource_6vxh6"), SubResource("Resource_vryj5"), SubResource("Resource_ovuyv"), SubResource("Resource_rkql0")])
 _processingTime = 2.0
 _playerCheckDistance = 1.4

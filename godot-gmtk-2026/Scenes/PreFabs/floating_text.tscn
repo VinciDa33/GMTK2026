@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bjmh4wo4g2jsr"]
+
+[ext_resource type="Script" uid="uid://ekceo6rt8bfo" path="res://Scripts/Misc/FloatingText.cs" id="1_8djc0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2apqw"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Floating_Text" type="Node3D" unique_id=996191325 node_paths=PackedStringArray("_label")]
+script = ExtResource("1_8djc0")
+_label = NodePath("SubViewport/Control/PanelContainer/MarginContainer/Label")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1000894605]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+texture = SubResource("ViewportTexture_2apqw")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=449727025]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=1188449828]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="SubViewport/Control" unique_id=1755002428]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -20.0
+offset_right = 22.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/PanelContainer" unique_id=283575149]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="SubViewport/Control/PanelContainer/MarginContainer" unique_id=274068863]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Yeet"
+horizontal_alignment = 1
+vertical_alignment = 1

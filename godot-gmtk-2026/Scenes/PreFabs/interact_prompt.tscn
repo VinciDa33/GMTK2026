@@ -87,7 +87,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=928693382]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 26
 text = "Pick Up"
 horizontal_alignment = 1
 vertical_alignment = 1

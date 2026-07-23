@@ -1,4 +1,5 @@
-﻿using GodotGMTK2026.Scripts.Management;
+﻿using Godot;
+using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Machines.UpgradeMachine.UpgradeImplementations;
 
@@ -10,5 +11,6 @@ public class BiggerTank() : UpgradeEffect("BiggerTank")
     {
         int currentCapacity = GameState.Instance.PlayerStats.OxygenCapacity;
         GameState.Instance.PlayerStats.SetOxygenCapacity(currentCapacity + _oxygenCapacityIncrease);
+        GD.Print($"New tank size: {GameState.Instance.PlayerStats.OxygenCapacity}");
     }
 }

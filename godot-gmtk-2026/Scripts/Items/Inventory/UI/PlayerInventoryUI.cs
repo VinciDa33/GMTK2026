@@ -27,18 +27,18 @@ public partial class PlayerInventoryUI : Node
     }
 
     //DEV TEST CODE!
-    /*
+    
     public override void _Process(double delta)
     {
         if (Input.IsKeyPressed(Key.Space))
         {
             RandomNumberGenerator rng = new RandomNumberGenerator();
-            GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem((ItemEnum)rng.RandiRange(0, 5)));
+            GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.IronOre));
         }
         if (Input.IsKeyPressed(Key.S))
             GameState.Instance.PlayerInventory.RemoveFirst();
     }
-    */
+    
 
     private void ItemAdded(Item item)
     {

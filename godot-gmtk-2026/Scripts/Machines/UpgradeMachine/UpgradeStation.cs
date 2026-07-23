@@ -58,7 +58,6 @@ public partial class UpgradeStation : Machine
     
     public bool BuyUpgrade(Upgrade upgrade)
     {
-        //TODO: Check cost against available resources. Return false if purchase fails
         //Should be working
         foreach (UpgradeCost cost in upgrade.Cost)
         { 
@@ -84,8 +83,12 @@ public partial class UpgradeStation : Machine
 
         UpgradeEffect effect = UpgradeRegistry.GetUpgradeEffect(upgrade.Id);
         if (effect == null)
+        {
             GD.PrintErr($"Upgrade id [{upgrade.Id}] did not match any effect in registry!");
+            return true;
+        }
 
+        effect.ExecuteUpgrade();
         return true;
     }
 

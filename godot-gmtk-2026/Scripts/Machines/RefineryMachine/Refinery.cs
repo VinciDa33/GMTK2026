@@ -11,12 +11,14 @@ public partial class Refinery : Machine
 {
     public static Refinery Instance { get; private set; }
     [Export] private InteractionPrompt _interactionPrompt;
+    [Export] private PackedScene _floatingText;
     
     [Export] private RefineryRecipe[] _recipes;
     [Export] private float _processingTime;
     public Inventory Inventory { get; private set; }
     private Timer _processingTimer;
-    
+
+    private RandomNumberGenerator rng = new RandomNumberGenerator();
     public override void _Ready()
     {
         base._Ready();
@@ -81,11 +83,19 @@ public partial class Refinery : Machine
         foreach (RefineryRecipe recipe in _recipes)
             if (recipe.Input == item.Type)
             {
-                GameState.Instance.StationInventory.AddItem(item);
+                Item output = ItemRegistry.Instance.GetItem(recipe.Output);
+                GameState.Instance.StationInventory.AddItem(output);
+                
+                FloatingText ft = _floatingText.Instantiate() as FloatingText;
+                ft.SetupText($"+1 {output.Name}", new Vector3(rng.RandfRange(-0.2f, 0.2f), 0f, rng.RandfRange(-0.2f, 0.2f)));
+                AddChild(ft);
+                ft.Position = new Vector3(0, 1f, 0);
+                
                 GD.Print($"Refinery Produced: {item.Name}");
                 break;
             }
         Inventory.RemoveFirst();
+        Inventory.Count();
     }
 
     public void SetProcessingTime(float processingTime)
