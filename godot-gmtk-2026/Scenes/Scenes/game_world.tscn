@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="9_vca7v"]
 [ext_resource type="Script" uid="uid://cfw13teteyk3k" path="res://Scripts/Misc/PointerController.cs" id="10_djwxc"]
 [ext_resource type="PackedScene" uid="uid://chrqorh7jsc4s" path="res://Scenes/PreFabs/space_pod.tscn" id="12_bcfiw"]
+[ext_resource type="ArrayMesh" uid="uid://dr2h60mwyex8w" path="res://Assets/Graphics/Models/ISS/IIS.res" id="16_e11ps"]
 
 [sub_resource type="Environment" id="Environment_2apqw"]
 background_mode = 1
@@ -50,9 +51,7 @@ scale_curve = SubResource("CurveTexture_msnvf")
 [sub_resource type="QuadMesh" id="QuadMesh_g2gre"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
-size = Vector3(5, 5, 5)
-
-[sub_resource type="TorusMesh" id="TorusMesh_2apqw"]
+size = Vector3(10, 8, 10)
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
@@ -242,7 +241,7 @@ texture = ExtResource("9_vca7v")
 [node name="Node3D" type="Node3D" parent="SpacePod" unique_id=192385754]
 
 [node name="End_Location" type="Node3D" parent="." unique_id=1713897890]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0, -40)
 
 [node name="Area3D" type="Area3D" parent="End_Location" unique_id=714800839]
 
@@ -250,6 +249,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
 shape = SubResource("BoxShape3D_2apqw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="End_Location" unique_id=809866720]
-mesh = SubResource("TorusMesh_2apqw")
+transform = Transform3D(0.34016082, 0.35309657, 0.09804802, -0.11991058, -0.019165719, 0.48503003, 0.34628323, -0.35349038, 0.071641184, 0, 0, 0)
+mesh = ExtResource("16_e11ps")
 
 [connection signal="body_entered" from="End_Location/Area3D" to="Game_Complete" method="PlayerEnteredArea"]
