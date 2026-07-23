@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://o7bpr8g26blo"]
+
+[ext_resource type="Texture2D" uid="uid://cab348fgvf54s" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Textures/Material.004_BaseColor.png" id="1_xu1n2"]
+[ext_resource type="Texture2D" uid="uid://byw24rmfrkuak" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Textures/Material.004_Emission.png" id="2_eh4gy"]
+[ext_resource type="Texture2D" uid="uid://bqkx3ya7doiln" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Textures/Material.004_Metallic.png" id="3_kc2x0"]
+[ext_resource type="Texture2D" uid="uid://dsooujlqabqe8" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Textures/Material.004_Normal.png" id="4_arhy6"]
+[ext_resource type="Texture2D" uid="uid://dmfuwyfyrco8j" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Textures/Material.004_Roughness.png" id="5_3wkyp"]
+
+[resource]
+albedo_texture = ExtResource("1_xu1n2")
+metallic = 1.0
+metallic_texture = ExtResource("3_kc2x0")
+roughness_texture = ExtResource("5_3wkyp")
+emission_enabled = true
+emission_texture = ExtResource("2_eh4gy")
+normal_enabled = true
+normal_texture = ExtResource("4_arhy6")
