@@ -5,6 +5,9 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_6ckcd"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2apqw"]
+albedo_color = Color(0.24705882, 0.49411765, 1, 1)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_2apqw"]
 viewport_path = NodePath("SubViewport")
 
@@ -14,10 +17,10 @@ viewport_path = NodePath("SubViewport")
 transform = Transform3D(1, 0, 0, 0, 0.99999905, 0.0013857026, 0, -0.0013857026, 0.99999905, 0, 0, 0)
 script = ExtResource("1_4ch7h")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
-_playerCheckDistance = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=553742419]
 mesh = SubResource("BoxMesh_6ckcd")
+surface_material_override/0 = SubResource("StandardMaterial3D_2apqw")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1204034475]
 transform = Transform3D(1, 0, 0, 0, -4.3655746e-08, 1, 0, -1, -4.3655746e-08, 0, 0.8, 0)
