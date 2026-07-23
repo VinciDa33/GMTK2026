@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://sxy6t2odfr70" path="res://Scenes/PreFabs/Machines/oxygen_station.tscn" id="6_o7dsn"]
 [ext_resource type="PackedScene" uid="uid://dgvadnjbxegq2" path="res://Scenes/PreFabs/Machines/refinery.tscn" id="7_o7dsn"]
 [ext_resource type="PackedScene" uid="uid://db5fwh1k6q5pl" path="res://Scenes/PreFabs/Machines/upgrade_station.tscn" id="8_rbwgj"]
+[ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="9_vca7v"]
+[ext_resource type="Script" uid="uid://cfw13teteyk3k" path="res://Scripts/Misc/PointerController.cs" id="10_djwxc"]
 
 [sub_resource type="Environment" id="Environment_2apqw"]
 background_mode = 1
@@ -198,3 +200,25 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.2
 
 [node name="UpgradeStation" parent="." unique_id=733137947 instance=ExtResource("8_rbwgj")]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 4.012583)
+
+[node name="POD_Pointer_Root" type="Node3D" parent="." unique_id=545788461 node_paths=PackedStringArray("_origin", "_target")]
+script = ExtResource("10_djwxc")
+_origin = NodePath("../Player")
+_target = NodePath("../Refinery")
+_orbitRadius = 0.75
+
+[node name="POD_Pointer_Sprite3D" type="Sprite3D" parent="POD_Pointer_Root" unique_id=2137757481]
+transform = Transform3D(0.75, 0, 0, 0, -3.278354e-08, 0.75, 0, -0.75, -3.278354e-08, 0, 0, 0)
+modulate = Color(0.5294118, 1, 0.64705884, 1)
+texture = ExtResource("9_vca7v")
+
+[node name="END_Pointer_Root" type="Node3D" parent="." unique_id=475915005 node_paths=PackedStringArray("_origin", "_target")]
+script = ExtResource("10_djwxc")
+_origin = NodePath("../Player")
+_target = NodePath("../OxygenStation")
+_orbitRadius = 0.75
+
+[node name="END_Pointer_Sprite3D" type="Sprite3D" parent="END_Pointer_Root" unique_id=1726001545]
+transform = Transform3D(0.75, 0, 0, 0, -3.278354e-08, 0.75, 0, -0.75, -3.278354e-08, 0, 0, 0)
+modulate = Color(1, 0.44705883, 0.29411766, 1)
+texture = ExtResource("9_vca7v")
