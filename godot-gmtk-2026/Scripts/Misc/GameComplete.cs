@@ -1,4 +1,6 @@
 ﻿using Godot;
+using GodotGMTK2026.Scripts.Management;
+using GodotGMTK2026.Scripts.Player;
 
 namespace GodotGMTK2026.Scripts.Misc;
 
@@ -12,10 +14,15 @@ public partial class GameComplete : Node
         _UI.MouseFilter = Control.MouseFilterEnum.Ignore;
     }
 
-    public void ShowCompletion()
+    public void PlayerEnteredArea(Node3D body)
     {
-        _UI.SetVisible(true);
+        if (body is not PlayerController)
+            return;
+        
+        GameState.Instance.PlayerController.SetStopConsumption(true);
+        
         _UI.MouseFilter = Control.MouseFilterEnum.Stop;
+        _UI.SetVisible(true);
     }
 
     public void Quit()

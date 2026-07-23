@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cqmstl8mx3gcg"]
 
-[ext_resource type="Texture2D" uid="uid://c05o4aapkqwvl" path="res://Assets/Graphics/Placeholder/scrap_cable.png" id="1_6ccgd"]
+[ext_resource type="Texture2D" uid="uid://c2e740lownyob" path="res://Assets/Graphics/Icons/ScrapCable.png" id="1_6ccgd"]
 [ext_resource type="Script" uid="uid://cs2sm5kpdiksk" path="res://Scripts/Items/ItemResource.cs" id="1_nidgu"]
 
 [resource]

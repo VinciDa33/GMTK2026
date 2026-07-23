@@ -242,7 +242,7 @@ texture = ExtResource("9_vca7v")
 [node name="Node3D" type="Node3D" parent="SpacePod" unique_id=192385754]
 
 [node name="End_Location" type="Node3D" parent="." unique_id=1713897890]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, -200)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
 
 [node name="Area3D" type="Area3D" parent="End_Location" unique_id=714800839]
 
@@ -251,3 +251,5 @@ shape = SubResource("BoxShape3D_2apqw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="End_Location" unique_id=809866720]
 mesh = SubResource("TorusMesh_2apqw")
+
+[connection signal="body_entered" from="End_Location/Area3D" to="Game_Complete" method="PlayerEnteredArea"]
