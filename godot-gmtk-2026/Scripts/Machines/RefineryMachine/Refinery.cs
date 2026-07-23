@@ -12,6 +12,7 @@ public partial class Refinery : Machine
     public static Refinery Instance { get; private set; }
     [Export] private InteractionPrompt _interactionPrompt;
     [Export] private PackedScene _floatingText;
+    [Export] private GpuParticles3D _particles;
     
     [Export] private RefineryRecipe[] _recipes;
     [Export] private float _processingTime;
@@ -47,7 +48,7 @@ public partial class Refinery : Machine
     {
         base._Process(delta);
         
-        if (_playerInRange && Input.IsActionPressed("interact"))
+        if (_playerInRange && Input.IsActionJustPressed("interact"))
         {
             foreach (RefineryRecipe recipe in _recipes)
             {
@@ -90,6 +91,8 @@ public partial class Refinery : Machine
                 ft.SetupText($"+1 {output.Name}", new Vector3(rng.RandfRange(-0.2f, 0.2f), 0f, rng.RandfRange(-0.2f, 0.2f)));
                 AddChild(ft);
                 ft.Position = new Vector3(0, 1f, 0);
+
+                _particles.Emitting = true;
                 
                 GD.Print($"Refinery Produced: {item.Name}");
                 break;

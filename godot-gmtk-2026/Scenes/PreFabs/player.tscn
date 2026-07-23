@@ -44,6 +44,7 @@ material = SubResource("StandardMaterial3D_yyap0")
 [node name="Player" type="CharacterBody3D" unique_id=466123480 node_paths=PackedStringArray("_particles")]
 axis_lock_linear_y = true
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_aibd6")
 _maxSpeed = 20.0
 _particles = NodePath("GPUParticles3D")

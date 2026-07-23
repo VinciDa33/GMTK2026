@@ -38,10 +38,38 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
 
-[node name="Refinery" type="Node3D" unique_id=794471086 node_paths=PackedStringArray("_interactionPrompt")]
+[sub_resource type="Curve" id="Curve_g8kat"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.005235672), -2.8216891, -2.8216891, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vxkdg"]
+curve = SubResource("Curve_g8kat")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yyap0"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_vxkdg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ckcd"]
+albedo_color = Color(0.27058825, 0.28627452, 0.3019608, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_2apqw"]
+material = SubResource("StandardMaterial3D_6ckcd")
+
+[node name="Refinery" type="Node3D" unique_id=794471086 node_paths=PackedStringArray("_interactionPrompt", "_particles")]
 script = ExtResource("1_qpbjv")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
 _floatingText = ExtResource("2_g8kat")
+_particles = NodePath("GPUParticles3D")
 _recipes = Array[Object]([SubResource("Resource_6vxh6"), SubResource("Resource_vryj5"), SubResource("Resource_ovuyv"), SubResource("Resource_rkql0")])
 _processingTime = 2.0
 _playerCheckDistance = 1.4
@@ -64,3 +92,11 @@ transparent_bg = true
 size = Vector2i(256, 256)
 
 [node name="InteractPrompt" parent="SubViewport" unique_id=2137977658 instance=ExtResource("3_rb1ea")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=594802419]
+emitting = false
+amount = 50
+lifetime = 0.2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_yyap0")
+draw_pass_1 = SubResource("QuadMesh_2apqw")

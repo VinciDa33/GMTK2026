@@ -13,10 +13,38 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
 
-[node name="OxygenStation" type="Node3D" unique_id=557956778 node_paths=PackedStringArray("_interactionPrompt")]
+[sub_resource type="Curve" id="Curve_4ch7h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.005235672), -2.8216891, -2.8216891, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vxkdg"]
+curve = SubResource("Curve_4ch7h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_euadp"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_vxkdg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e11ps"]
+albedo_color = Color(0.5764706, 1, 1, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_n2uhk"]
+material = SubResource("StandardMaterial3D_e11ps")
+
+[node name="OxygenStation" type="Node3D" unique_id=557956778 node_paths=PackedStringArray("_interactionPrompt", "_particles")]
 transform = Transform3D(1, 0, 0, 0, 0.99999905, 0.0013857026, 0, -0.0013857026, 0.99999905, 0, 0, 0)
 script = ExtResource("1_4ch7h")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
+_particles = NodePath("GPUParticles3D")
 _playerCheckDistance = 1.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=553742419]
@@ -37,3 +65,11 @@ transparent_bg = true
 size = Vector2i(256, 256)
 
 [node name="InteractPrompt" parent="SubViewport" unique_id=2137977658 instance=ExtResource("1_u83b7")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1974405657]
+emitting = false
+amount = 50
+lifetime = 0.2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_euadp")
+draw_pass_1 = SubResource("QuadMesh_n2uhk")

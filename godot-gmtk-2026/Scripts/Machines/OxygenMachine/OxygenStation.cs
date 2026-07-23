@@ -8,6 +8,7 @@ public partial class OxygenStation : Machine
 {
     public static OxygenStation Instance { get; private set; }
     [Export] private InteractionPrompt _interactionPrompt;
+    [Export] private GpuParticles3D _particles;
     public override void _Ready()
     {
         base._Ready();
@@ -20,12 +21,13 @@ public partial class OxygenStation : Machine
     {
         base._Process(delta);
 
-        if (_playerInRange && Input.IsActionPressed("interact"))
+        if (_playerInRange && Input.IsActionJustPressed("interact"))
         {
             if (GameState.Instance.PlayerStats.OxygenLevel < GameState.Instance.PlayerStats.OxygenCapacity)
             {
                 GD.Print("Refilled Oxygen");
                 GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenCapacity);
+                _particles.Emitting = true;
             }
         }
 

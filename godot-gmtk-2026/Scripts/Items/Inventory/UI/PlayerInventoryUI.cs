@@ -27,7 +27,7 @@ public partial class PlayerInventoryUI : Node
     }
 
     //DEV TEST CODE!
-    
+    /*
     public override void _Process(double delta)
     {
         if (Input.IsKeyPressed(Key.Space))
@@ -38,7 +38,7 @@ public partial class PlayerInventoryUI : Node
         if (Input.IsKeyPressed(Key.S))
             GameState.Instance.PlayerInventory.RemoveFirst();
     }
-    
+    */
 
     private void ItemAdded(Item item)
     {

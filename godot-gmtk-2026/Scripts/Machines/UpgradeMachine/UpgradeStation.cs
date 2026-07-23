@@ -43,7 +43,7 @@ public partial class UpgradeStation : Machine
     {
         base._Process(delta);
 
-        if (_playerInRange && !_upgradeStationUI.IsVisible() && Input.IsActionPressed("interact"))
+        if (_playerInRange && !_upgradeStationUI.IsVisible() && Input.IsActionJustPressed("interact"))
         {
             _upgradeStationUI.SetVisibility(true);
         }
