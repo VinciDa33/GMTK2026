@@ -8,7 +8,7 @@ script = ExtResource("1_7iggs")
 _transition = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1175200947]
-layer = 5
+layer = 20
 script = ExtResource("2_b3r1s")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1746113511]

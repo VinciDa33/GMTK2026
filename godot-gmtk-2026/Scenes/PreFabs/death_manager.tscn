@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0ljle6qfpss2" path="res://Scripts/Misc/DeathManager.cs" id="1_4biau"]
 
-[node name="Death_Manager" type="Node3D" unique_id=1218891936 node_paths=PackedStringArray("_deathUI")]
+[node name="Death_Manager" type="Node" unique_id=2105370656 node_paths=PackedStringArray("_deathUI")]
 script = ExtResource("1_4biau")
 _deathUI = NodePath("CanvasLayer/Control")
 
@@ -10,6 +10,7 @@ _deathUI = NodePath("CanvasLayer/Control")
 layer = 10
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=1014207729]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

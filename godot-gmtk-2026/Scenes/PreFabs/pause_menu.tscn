@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dicourw40dtkg"]
+
+[ext_resource type="Script" uid="uid://b6x0jdrku0sxd" path="res://Scripts/Misc/PauseMenu.cs" id="1_6gg3g"]
+[ext_resource type="StyleBox" uid="uid://bt8my7g78l6pq" path="res://Styling/Interaction.tres" id="2_j6be0"]
+
+[node name="Pause_Menu" type="Node" unique_id=1084472096 node_paths=PackedStringArray("_menuUI")]
+script = ExtResource("1_6gg3g")
+_menuUI = NodePath("CanvasLayer/Control")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1756021898]
+layer = 20
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1770354334]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=356543652]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.5
+offset_right = 130.5
+offset_bottom = 154.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 200
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=1123084476]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_j6be0")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer" unique_id=854593377]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer" unique_id=782788475]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1718669209]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Game Is NOT Paused"
+
+[node name="Quit_Button" type="Button" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=543920384]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Quit Game"
+
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Quit_Button" to="." method="QuitGame"]

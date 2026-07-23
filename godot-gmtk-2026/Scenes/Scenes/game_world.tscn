@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://75gko4n5qxcr" path="res://Scenes/PreFabs/player.tscn" id="5_kj3be"]
 [ext_resource type="PackedScene" uid="uid://coh6jsmvnd4a4" path="res://Scenes/PreFabs/death_manager.tscn" id="5_vd2fa"]
 [ext_resource type="Script" uid="uid://cehx3tpqvjwb4" path="res://Scripts/Player/CameraFollower.cs" id="6_mpric"]
+[ext_resource type="PackedScene" uid="uid://dicourw40dtkg" path="res://Scenes/PreFabs/pause_menu.tscn" id="6_msnvf"]
 [ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="9_vca7v"]
 [ext_resource type="Script" uid="uid://cfw13teteyk3k" path="res://Scripts/Misc/PointerController.cs" id="10_djwxc"]
 [ext_resource type="PackedScene" uid="uid://chrqorh7jsc4s" path="res://Scenes/PreFabs/space_pod.tscn" id="12_bcfiw"]
@@ -56,13 +57,15 @@ UnMineableAsteroidScene = ExtResource("2_vca7v")
 MineableAsteroidScene = ExtResource("2_o7dsn")
 ScrapScene = ExtResource("4_djwxc")
 
+[node name="Death_Manager" parent="." unique_id=1218891936 instance=ExtResource("5_vd2fa")]
+
+[node name="Pause_Menu" parent="." unique_id=1084472096 instance=ExtResource("6_msnvf")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=554017553]
 environment = SubResource("Environment_2apqw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1901408798]
 transform = Transform3D(0.8660254, 0.4531539, -0.21130912, 0, 0.42261824, 0.9063078, 0.5, -0.7848856, 0.36599815, 0, 4, 0)
-
-[node name="Death_Manager" parent="." unique_id=1218891936 instance=ExtResource("5_vd2fa")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=34810243]
 
