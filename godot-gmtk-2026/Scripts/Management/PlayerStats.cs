@@ -3,20 +3,21 @@
 public class PlayerStats
 {
     public int OxygenCapacity { get; private set; }
-    public int OxygenLevel { get; set; }
+    public float OxygenLevel { get; set; }
     public float OxygenEfficiency { get; private set; }
     public float ThrusterPower { get; private set; }
     public float ThrusterEfficiency { get; private set; }
-    public bool HasDampingUpgrade { get; private set; }
+    public float DampingFactor { get; private set; }
 
-    public PlayerStats(int oxygenCapacity, int oxygenLevel, float oxygenEfficiency, float thrusterPower, float thrusterEfficiency, bool hasDampingUpgrade)
+    public PlayerStats(int oxygenCapacity, float oxygenEfficiency, float thrusterPower, float thrusterEfficiency, float dampingFactor)
     {
         OxygenCapacity = oxygenCapacity;
-        OxygenLevel = oxygenLevel;
         OxygenEfficiency = oxygenEfficiency;
         ThrusterPower = thrusterPower;
         ThrusterEfficiency = thrusterEfficiency;
-        HasDampingUpgrade = hasDampingUpgrade;
+        DampingFactor = dampingFactor;
+
+        OxygenLevel = oxygenCapacity; //Oxygen level always starts at full capacity
     }
 
     public void SetOxygenCapacity(int newCapacity)
@@ -34,7 +35,7 @@ public class PlayerStats
         OxygenLevel = OxygenCapacity;
     }
 
-    public void SetOxygenLevel(int newLevel)
+    public void SetOxygenLevel(float newLevel)
     {
         OxygenLevel = newLevel;
     }
@@ -44,13 +45,13 @@ public class PlayerStats
         ThrusterPower = newPower;
     }
     
-    public void SetThrusterEfficiency(int newEfficiency)
+    public void SetThrusterEfficiency(float newEfficiency)
     {
         ThrusterEfficiency = newEfficiency;
     }
 
-    public void SetHasDampingUpgrade(bool hasUpgrade)
+    public void SetDampingFactor(float newDampingFactor)
     {
-        HasDampingUpgrade = hasUpgrade;
+        DampingFactor = newDampingFactor;
     }
 }

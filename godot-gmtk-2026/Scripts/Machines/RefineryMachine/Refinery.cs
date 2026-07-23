@@ -18,6 +18,7 @@ public partial class Refinery : Node3D
         Instance = this;
         
         Inventory = new Inventory(10); //Virtually Infinite
+        
         _processingTimer = new Timer();
         AddChild(_processingTimer);
 
