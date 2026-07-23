@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgjoyq8kj5ij3" path="res://Scripts/Machines/RefineryMachine/Refinery.cs" id="1_qpbjv"]
 [ext_resource type="Script" uid="uid://78v6qw8s56c5" path="res://Scripts/Machines/RefineryMachine/RefineryRecipe.cs" id="2_rb1ea"]
+[ext_resource type="PackedScene" uid="uid://bc75i0kxuq0h5" path="res://Scenes/PreFabs/interact_prompt.tscn" id="3_rb1ea"]
 
 [sub_resource type="Resource" id="Resource_6vxh6"]
 script = ExtResource("2_rb1ea")
@@ -28,9 +29,32 @@ metadata/_custom_type_script = "uid://78v6qw8s56c5"
 
 [sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
 
-[node name="Refinery" type="Node3D" unique_id=794471086]
+[sub_resource type="ViewportTexture" id="ViewportTexture_g8kat"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
+
+[node name="Refinery" type="Node3D" unique_id=794471086 node_paths=PackedStringArray("_interactionPrompt")]
 script = ExtResource("1_qpbjv")
+_interactionPrompt = NodePath("SubViewport/InteractPrompt")
 _recipes = Array[Object]([SubResource("Resource_6vxh6"), SubResource("Resource_vryj5"), SubResource("Resource_ovuyv"), SubResource("Resource_rkql0")])
+_processingTime = 1.0
+_playerCheckDistance = 1.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=891829362]
 mesh = SubResource("BoxMesh_2apqw")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1601207563]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.8, 0)
+texture = SubResource("ViewportTexture_g8kat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1090822525]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=76207573]
+shape = SubResource("BoxShape3D_2apqw")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=985697656]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="InteractPrompt" parent="SubViewport" unique_id=2137977658 instance=ExtResource("3_rb1ea")]

@@ -5,7 +5,8 @@ namespace GodotGMTK2026.Scripts.Player;
 
 public partial class PlayerController : CharacterBody3D
 {
-	[Export] public float RotationSpeed = 5.0f;
+	[Export] private float _maxSpeed;
+	[Export] private float _rotationSpeed = 5.0f;
 	[ExportGroup("Oxygen Consumption")]
 	[Export] private float _breathingTick;
 	[Export] private float _baseBreathConsumption;
@@ -44,11 +45,11 @@ public partial class PlayerController : CharacterBody3D
 
 		if (Input.IsActionPressed("rotate_left"))
 		{
-			RotateY(RotationSpeed * (float)delta);
+			RotateY(_rotationSpeed * (float)delta);
 		}
 		else if (Input.IsActionPressed("rotate_right"))
 		{
-			RotateY(-RotationSpeed * (float)delta);
+			RotateY(-_rotationSpeed * (float)delta);
 		}
 
 		if (Input.IsActionPressed("fire_jetpack"))
@@ -60,12 +61,15 @@ public partial class PlayerController : CharacterBody3D
 		}
 		else if (Input.IsActionPressed("dampen_speed"))
 		{
-			Velocity *= GameState.Instance.PlayerStats.DampingFactor;
+			Velocity *= Mathf.Pow(GameState.Instance.PlayerStats.DampingFactor, (float)(delta * 60f));
 			
 			if (_thrustTimer.IsStopped())
 				_thrustTimer.Start();
 		}
 
+		if (Velocity.Length() > _maxSpeed)
+			Velocity *= Mathf.Pow(0.98f, (float)(delta * 60f));
+		
 		MoveAndSlide();
 	}
 

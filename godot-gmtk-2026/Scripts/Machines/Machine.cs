@@ -6,7 +6,7 @@ namespace GodotGMTK2026.Scripts.Machines;
 
 public abstract partial class Machine : Node3D
 {
-    [Export] private float _playerCheckDistance = 3f;
+    [Export] private float _playerCheckDistance = 1f;
     private Timer _checkForPlayerTimer;
     protected bool _playerInRange;
 

@@ -3,12 +3,15 @@ using Godot;
 using GodotGMTK2026.Scripts.Items;
 using GodotGMTK2026.Scripts.Machines.UpgradeMachine.UI;
 using GodotGMTK2026.Scripts.Management;
+using GodotGMTK2026.Scripts.Misc;
 
 namespace GodotGMTK2026.Scripts.Machines.UpgradeMachine;
 
 public partial class UpgradeStation : Machine
 {
     public static UpgradeStation Instance { get; private set; }
+    [Export] private InteractionPrompt _interactionPrompt;
+
     
     [ExportGroup("Upgrades")]
     [Export] private Upgrade[] _upgrades;
@@ -21,8 +24,12 @@ public partial class UpgradeStation : Machine
 
     public override void _Ready()
     {
+        base._Ready();
+        
         Instance = this;
         
+        _interactionPrompt.SetupPrompt("Open Upgrades", "E");
+        CloseUI();
         AvailableUpgrades.AddRange(_upgrades);
         _upgradeStationUI.PopulateUpgrades();
     }
@@ -32,25 +39,22 @@ public partial class UpgradeStation : Machine
         Instance = null;
     }
 
-    public override void PlayerInRange(bool isInRange)
-    {
-        //TODO: Interaction PROMPT
-        throw new System.NotImplementedException();
-    }
-
-    //DEV TEST CODE!
-    /*
     public override void _Process(double delta)
     {
-        if (Input.IsKeyPressed(Key.Space))
+        base._Process(delta);
+
+        if (_playerInRange && !_upgradeStationUI.IsVisible() && Input.IsActionPressed("interact"))
         {
-            RandomNumberGenerator rng = new RandomNumberGenerator();
-            GameState.Instance.StationInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.Iron));
+            _upgradeStationUI.SetVisibility(true);
         }
-        if (Input.IsKeyPressed(Key.S))
-            GameState.Instance.StationInventory.RemoveFirst();
     }
-    */
+
+    public override void PlayerInRange(bool isInRange)
+    {
+        _interactionPrompt.SetVisible(isInRange);
+        if (!isInRange)
+            _upgradeStationUI.SetVisibility(false);
+    }
     
     public bool BuyUpgrade(Upgrade upgrade)
     {
@@ -83,5 +87,10 @@ public partial class UpgradeStation : Machine
             GD.PrintErr($"Upgrade id [{upgrade.Id}] did not match any effect in registry!");
 
         return true;
+    }
+
+    public void CloseUI()
+    {
+        _upgradeStationUI.SetVisibility(false);
     }
 }

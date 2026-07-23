@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bu58v8q22h6or" path="res://Assets/Input_Prompts/Default/keyboard_arrow_down.png" id="6_2y16q"]
 [ext_resource type="Texture2D" uid="uid://cughec7tg58gg" path="res://Assets/Input_Prompts/Default/keyboard_arrow_left.png" id="7_mry6i"]
 [ext_resource type="Texture2D" uid="uid://ded6u6ya78jdu" path="res://Assets/Input_Prompts/Default/keyboard_arrow_right.png" id="8_xgd22"]
+[ext_resource type="StyleBox" uid="uid://bt8my7g78l6pq" path="res://Styling/Interaction.tres" id="9_rdqbl"]
 
 [sub_resource type="Resource" id="Resource_hvsd1"]
 script = ExtResource("3_rdqbl")
@@ -72,6 +73,7 @@ offset_right = 34.0
 offset_bottom = 43.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("9_rdqbl")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=74661189]
 layout_mode = 2
@@ -85,6 +87,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=928693382]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Pick Up"
 horizontal_alignment = 1
 vertical_alignment = 1

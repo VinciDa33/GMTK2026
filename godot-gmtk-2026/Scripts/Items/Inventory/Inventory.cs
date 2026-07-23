@@ -33,6 +33,11 @@ public class Inventory
         return true;
     }
 
+    public Item GetAt(int index)
+    {
+        return _items[index];
+    }
+
     public Item GetFirst()
     {
         if (_items.Count == 0)

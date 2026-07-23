@@ -22,8 +22,11 @@ public partial class OxygenStation : Machine
 
         if (_playerInRange && Input.IsActionPressed("interact"))
         {
-            GD.Print("Refilled Oxygen");
-            GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenCapacity);
+            if (GameState.Instance.PlayerStats.OxygenLevel < GameState.Instance.PlayerStats.OxygenCapacity)
+            {
+                GD.Print("Refilled Oxygen");
+                GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenCapacity);
+            }
         }
 
     }

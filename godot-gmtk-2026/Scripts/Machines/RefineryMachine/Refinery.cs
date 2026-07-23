@@ -1,13 +1,16 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
 using GodotGMTK2026.Scripts.Items;
 using GodotGMTK2026.Scripts.Items.Inventory;
 using GodotGMTK2026.Scripts.Management;
+using GodotGMTK2026.Scripts.Misc;
 
 namespace GodotGMTK2026.Scripts.Machines.RefineryMachine;
 
 public partial class Refinery : Machine
 {
     public static Refinery Instance { get; private set; }
+    [Export] private InteractionPrompt _interactionPrompt;
     
     [Export] private RefineryRecipe[] _recipes;
     [Export] private float _processingTime;
@@ -16,8 +19,11 @@ public partial class Refinery : Machine
     
     public override void _Ready()
     {
+        base._Ready();
+        
         Instance = this;
         
+        _interactionPrompt.SetupPrompt("Refine Materials", "E");
         Inventory = new Inventory(10);
         
         _processingTimer = new Timer();
@@ -37,6 +43,24 @@ public partial class Refinery : Machine
 
     public override void _Process(double delta)
     {
+        base._Process(delta);
+        
+        if (_playerInRange && Input.IsActionPressed("interact"))
+        {
+            foreach (RefineryRecipe recipe in _recipes)
+            {
+                List<Item> items = GameState.Instance.PlayerInventory.GetAllOfType(recipe.Input);
+                foreach (Item item in items)
+                {
+                    if (Inventory.AddItem(item))
+                    {
+                        GameState.Instance.PlayerInventory.RemoveItem(item);
+                        GD.Print($"Refinery got: {item.Name}");
+                    }
+                }
+            }
+        }
+        
         //Start a timer when the refinery inventory is not empty!
         if (Inventory.Count() > 0 && _processingTimer.IsStopped())
             _processingTimer.Start();
@@ -44,8 +68,7 @@ public partial class Refinery : Machine
 
     public override void PlayerInRange(bool isInRange)
     {
-        //TODO: INTERACTION PROMPT
-        throw new System.NotImplementedException();
+        _interactionPrompt.SetVisible(isInRange);
     }
 
     private void ProcessingTimerFinished()
@@ -59,6 +82,7 @@ public partial class Refinery : Machine
             if (recipe.Input == item.Type)
             {
                 GameState.Instance.StationInventory.AddItem(item);
+                GD.Print($"Refinery Produced: {item.Name}");
                 break;
             }
         Inventory.RemoveFirst();

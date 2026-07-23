@@ -7,16 +7,34 @@
 [ext_resource type="PackedScene" uid="uid://chfjhigk3kijo" path="res://Scenes/PreFabs/purchased_upgrade_ui.tscn" id="3_m8k0l"]
 [ext_resource type="Script" uid="uid://dw2o84v4ynx1w" path="res://Scripts/Machines/UpgradeMachine/UI/UpgradeStationUI.cs" id="4_eu3ni"]
 [ext_resource type="PackedScene" uid="uid://cy1cbxkebpe0v" path="res://Scenes/PreFabs/resource_count_display.tscn" id="6_m8k0l"]
+[ext_resource type="PackedScene" uid="uid://bc75i0kxuq0h5" path="res://Scenes/PreFabs/interact_prompt.tscn" id="8_0tnww"]
+[ext_resource type="StyleBox" uid="uid://bt8my7g78l6pq" path="res://Styling/Interaction.tres" id="8_rihsj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
 
-[node name="UpgradeStation" type="Node3D" unique_id=733137947 node_paths=PackedStringArray("_upgradeStationUI")]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2apqw"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
+
+[node name="UpgradeStation" type="Node3D" unique_id=733137947 node_paths=PackedStringArray("_interactionPrompt", "_upgradeStationUI")]
 script = ExtResource("1_ovuyv")
+_interactionPrompt = NodePath("SubViewport/InteractPrompt")
 _upgrades = Array[Object]([ExtResource("2_dxyk2"), ExtResource("3_hjqdq")])
 _upgradeStationUI = NodePath("CanvasLayer/Upgrade_Station_UI")
+_playerCheckDistance = 1.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1822561950]
 mesh = SubResource("BoxMesh_2apqw")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1571603231]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.8, 0)
+texture = SubResource("ViewportTexture_2apqw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1300858272]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2086117017]
+shape = SubResource("BoxShape3D_2apqw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1385835267]
 
@@ -52,6 +70,7 @@ theme_override_constants/margin_bottom = 50
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer" unique_id=1135095232]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("8_rihsj")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer" unique_id=1862468589]
 layout_mode = 2
@@ -66,6 +85,7 @@ theme_override_constants/separation = 10
 
 [node name="Upgrade_Station_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1090437920]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
 theme_override_font_sizes/font_size = 24
 text = "Upgrade Station"
 horizontal_alignment = 1
@@ -77,6 +97,7 @@ theme_override_constants/separation = 10
 
 [node name="Available_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1270962368]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
 text = ": Available Upgrades :"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -88,6 +109,7 @@ theme_override_constants/v_separation = 8
 
 [node name="Bought_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1874086042]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
 text = ": Aquired Upgrades :"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -96,3 +118,15 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
+
+[node name="Close_Button" type="Button" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=26595424]
+layout_mode = 2
+text = "Close"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1705730287]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="InteractPrompt" parent="SubViewport" unique_id=2137977658 instance=ExtResource("8_0tnww")]
+
+[connection signal="pressed" from="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Close_Button" to="." method="CloseUI"]
