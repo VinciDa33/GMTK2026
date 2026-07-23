@@ -20,6 +20,6 @@ script = ExtResource("1_nrb3s")
 Id = "Rebreather"
 Name = "Rebreather"
 Description = "Reduce, reuse, rebreath! 
-[color=yellow]Enchances oxygen efficiency.[/color]"
+[color=#ede7a1]Enchances oxygen efficiency.[/color]"
 Cost = Array[Object]([SubResource("Resource_qb7ss"), SubResource("Resource_8ef1x")])
 metadata/_custom_type_script = "uid://bx61t3jpfkc4s"

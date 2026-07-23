@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cy1cbxkebpe0v"]
+
+[ext_resource type="Script" uid="uid://11gmsqhpgf1r" path="res://Scripts/Machines/UpgradeMachine/UI/ResourceDisplay.cs" id="1_osnxg"]
+[ext_resource type="Texture2D" uid="uid://cti8rkspqebmd" path="res://Assets/Graphics/Placeholder/iron_ore.png" id="1_w0clw"]
+
+[node name="ResourceCountDisplay" type="PanelContainer" unique_id=777829778 node_paths=PackedStringArray("_textureRect", "_amountLabel")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_osnxg")
+_textureRect = NodePath("MarginContainer/HBoxContainer/TextureRect")
+_amountLabel = NodePath("MarginContainer/HBoxContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2114323950]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=851327149]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=848091334]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("1_w0clw")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1394595716]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "5"

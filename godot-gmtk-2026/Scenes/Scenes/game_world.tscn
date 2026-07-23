@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cbgjwdha8r1ef"]
 
-[ext_resource type="PackedScene" uid="uid://cd5bhls5ykigr" path="res://Scenes/PreFabs/game_state.tscn" id="1_05xqj"]
 [ext_resource type="Script" uid="uid://doxlwchcr3p3v" path="res://Scripts/Items/Inventory/UI/PlayerInventoryUI.cs" id="2_f6d6p"]
 [ext_resource type="PackedScene" uid="uid://cmghspt0j53nc" path="res://Scenes/PreFabs/inventory_item.tscn" id="3_1aiwk"]
 [ext_resource type="Script" uid="uid://dpkebv4ejpa6y" path="res://Scripts/OxygenCounter/UI/OxygenProgressBar.cs" id="4_2w2h1"]
@@ -15,10 +14,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="BoxMesh" id="BoxMesh_7y0oj"]
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
-
-[node name="Game_State" parent="." unique_id=1927038039 instance=ExtResource("1_05xqj")]
-_oxygenCapacity = 100
-_thrusterPower = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=34810243]
 
@@ -145,10 +140,9 @@ vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=466123480 instance=ExtResource("5_kj3be")]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2035123442 node_paths=PackedStringArray("_target")]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2035123442]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 20, 0)
 script = ExtResource("6_mpric")
-_target = NodePath("../Player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=697663417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.6698718)

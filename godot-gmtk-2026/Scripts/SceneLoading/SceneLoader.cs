@@ -10,6 +10,7 @@ public partial class SceneLoader : Node
 
 	private PackedScene _sceneToLoad;
 	private string _pathToLoad;
+	private bool _isLoading = false;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,16 +34,24 @@ public partial class SceneLoader : Node
 
 	public void LoadSceneWithTransition(PackedScene sceneToLoad)
 	{
+		if (_isLoading)
+			return;
+		
 		_pathToLoad = null;
 		_sceneToLoad = sceneToLoad;
 		_transition.StartTransition();
+		_isLoading = true;
 	}
 
 	public void LoadSceneWithTransition(string path) //Path example: "res://Scenes/Game.tscn";
 	{
+		if (_isLoading)
+			return;
+		
 		_sceneToLoad = null;
 		_pathToLoad = path;
 		_transition.StartTransition();
+		_isLoading = true;
 	}
 
 	public void LoadSceneImmediate(PackedScene sceneToLoad)
@@ -64,16 +73,19 @@ public partial class SceneLoader : Node
 		if (_sceneToLoad != null)
 		{
 			LoadSceneImmediate(_sceneToLoad);
+			_isLoading = false;
 			return;
 		}
 
 		if (_pathToLoad != null)
 		{
 			LoadSceneImmediate(_pathToLoad);
+			_isLoading = false;
 			return;
 		}
 		
 		GD.PrintErr("No scene was queued for loading!");
+		_isLoading = false;
 	}
 	
 	public void SetSceneTransition(SceneTransition transition)

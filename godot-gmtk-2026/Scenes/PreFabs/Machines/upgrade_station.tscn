@@ -5,30 +5,35 @@
 [ext_resource type="PackedScene" uid="uid://dsblb8pe0a6e6" path="res://Scenes/PreFabs/upgrade_ui.tscn" id="2_hjqdq"]
 [ext_resource type="Resource" uid="uid://cr24e1mleg73x" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/Rebreather.tres" id="3_hjqdq"]
 [ext_resource type="PackedScene" uid="uid://chfjhigk3kijo" path="res://Scenes/PreFabs/purchased_upgrade_ui.tscn" id="3_m8k0l"]
+[ext_resource type="Script" uid="uid://dw2o84v4ynx1w" path="res://Scripts/Machines/UpgradeMachine/UI/UpgradeStationUI.cs" id="4_eu3ni"]
+[ext_resource type="PackedScene" uid="uid://cy1cbxkebpe0v" path="res://Scenes/PreFabs/resource_count_display.tscn" id="6_m8k0l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
 
-[node name="UpgradeStation" type="Node3D" unique_id=733137947 node_paths=PackedStringArray("_upgradeStationUI", "_availableUpgradesUI", "_boughtUpgradesUI")]
+[node name="UpgradeStation" type="Node3D" unique_id=733137947 node_paths=PackedStringArray("_upgradeStationUI")]
 script = ExtResource("1_ovuyv")
-_upgradeStationUI = NodePath("CanvasLayer/Upgrade_Station_UI")
-_availableUpgradesUI = NodePath("CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/AUpgrades_HFlowContainer")
-_boughtUpgradesUI = NodePath("CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BUpgrades_HFlowContainer2")
-_upgradeUI = ExtResource("2_hjqdq")
-_purchasedUpgradeUI = ExtResource("3_m8k0l")
 _upgrades = Array[Object]([ExtResource("2_dxyk2"), ExtResource("3_hjqdq")])
+_upgradeStationUI = NodePath("CanvasLayer/Upgrade_Station_UI")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1822561950]
 mesh = SubResource("BoxMesh_2apqw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1385835267]
 
-[node name="Upgrade_Station_UI" type="Control" parent="CanvasLayer" unique_id=334832324]
+[node name="Upgrade_Station_UI" type="Control" parent="CanvasLayer" unique_id=334832324 node_paths=PackedStringArray("_availableUpgradesUI", "_boughtUpgradesUI", "_resourceDisplayHost")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_eu3ni")
+_availableUpgradesUI = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/AUpgrades_HFlowContainer")
+_boughtUpgradesUI = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BUpgrades_HFlowContainer2")
+_resourceDisplayHost = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Resources_HBoxContainer")
+_upgradeUI = ExtResource("2_hjqdq")
+_purchasedUpgradeUI = ExtResource("3_m8k0l")
+_resourceDisplay = ExtResource("6_m8k0l")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Upgrade_Station_UI" unique_id=671278711]
 layout_mode = 1
@@ -65,6 +70,10 @@ theme_override_font_sizes/font_size = 24
 text = "Upgrade Station"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Resources_HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1526856791]
+layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Available_Upgrades_Label" type="Label" parent="CanvasLayer/Upgrade_Station_UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1270962368]
 layout_mode = 2
