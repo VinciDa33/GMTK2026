@@ -7,6 +7,7 @@ public partial class PlayerController : CharacterBody3D
 {
 	[Export] private float _maxSpeed;
 	[Export] private float _rotationSpeed = 5.0f;
+	[Export] private GpuParticles3D _particles;
 	[ExportGroup("Oxygen Consumption")]
 	[Export] private float _breathingTick;
 	[Export] private float _baseBreathConsumption;
@@ -56,11 +57,16 @@ public partial class PlayerController : CharacterBody3D
 		if (Input.IsActionPressed("fire_jetpack"))
 		{
 			Velocity += -Transform.Basis.X * GameState.Instance.PlayerStats.ThrusterPower * (float)delta;
-			
+
 			if (_thrustTimer.IsStopped() && !StopConsumption)
 				_thrustTimer.Start();
+
+			_particles.Emitting = true;
 		}
-		else if (Input.IsActionPressed("dampen_speed"))
+		else
+			_particles.Emitting = false;
+		
+		if (Input.IsActionPressed("dampen_speed"))
 		{
 			Velocity *= Mathf.Pow(GameState.Instance.PlayerStats.DampingFactor, (float)(delta * 60f));
 			
@@ -68,9 +74,12 @@ public partial class PlayerController : CharacterBody3D
 				_thrustTimer.Start();
 		}
 
-		if (Velocity.Length() > _maxSpeed)
-			Velocity *= Mathf.Pow(0.98f, (float)(delta * 60f));
-		
+		if (Velocity.Length() > _maxSpeed) //Dampen more above max speed
+			Velocity *= Mathf.Pow(0.97f, (float)(delta * 60f));
+	
+		//Slight passive dampening
+		Velocity *= Mathf.Pow(0.995f, (float)(delta * 60f));
+
 		MoveAndSlide();
 	}
 

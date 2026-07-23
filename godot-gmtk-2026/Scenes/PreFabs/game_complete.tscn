@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://biejp7hy81mpc"]
+
+[ext_resource type="Script" uid="uid://cukjjwx55grvh" path="res://Scripts/Misc/GameComplete.cs" id="1_ir3ri"]
+
+[node name="Game_Complete" type="Node" unique_id=318825675 node_paths=PackedStringArray("_UI")]
+script = ExtResource("1_ir3ri")
+_UI = NodePath("CanvasLayer/Control")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=976786828]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=625326059]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control" unique_id=1350625902]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -50.5
+offset_right = 96.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer" unique_id=209385544]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer" unique_id=2003901279]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=117319339]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "You Made It"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=418318578]
+layout_mode = 2
+text = "You won the game!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=471217408]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="Quit"]

@@ -7,5 +7,5 @@ script = ExtResource("1_1elp1")
 _oxygenCapacity = 20
 _oxygenEfficiency = 1.0
 _thrusterEfficiency = 1.0
-_thrusterPower = 10.0
+_thrusterPower = 5.0
 _dampingFactor = 0.99

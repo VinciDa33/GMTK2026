@@ -1,8 +1,40 @@
 [gd_scene format=3 uid="uid://bf7xuoykf2j41"]
 
 [ext_resource type="Script" uid="uid://opjdnpl0a4u0" path="res://Scripts/MainMenu/MainMenuController.cs" id="1_8um42"]
+[ext_resource type="ArrayMesh" uid="uid://cy62veod0jq8w" path="res://Assets/Graphics/Models/POD2/Pod2.res" id="2_wcf1k"]
+[ext_resource type="ArrayMesh" uid="uid://b3guo1jjowtuf" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1.res" id="3_05oej"]
+[ext_resource type="ArrayMesh" uid="uid://chp86s4kf26pq" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Asteroid_4.res" id="4_aggqv"]
+[ext_resource type="ArrayMesh" uid="uid://bpi3pwmp45uou" path="res://Assets/Graphics/Models/Asteroids/Asteroid_2/Asteroid_2.res" id="5_k3tmm"]
 
-[node name="World" type="Node2D" unique_id=255343335]
+[sub_resource type="Curve" id="Curve_8um42"]
+_data = [Vector2(0, 0), 0.0, 4.278798, 0, 0, Vector2(0.49892932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.540757, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_52ly3"]
+curve = SubResource("Curve_8um42")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t64sp"]
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 10)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, -90)
+rotation_3d_max = Vector3(0, 0, 90)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_52ly3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ggijk"]
+
+[sub_resource type="Environment" id="Environment_2apqw"]
+background_mode = 1
+background_color = Color(0.039215688, 0.039215688, 0.039215688, 1)
+
+[node name="World" type="Node3D" unique_id=639847217]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1671066560]
 
@@ -24,63 +56,100 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main_Menu_Control/MarginContainer" unique_id=1134897180]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main_Menu_Control/MarginContainer" unique_id=509304695]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer" unique_id=610406142]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer" unique_id=1134897180]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=677095968]
+[node name="Label" type="Label" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=677095968]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "GMTK 2026!"
+text = "Beyond The Airlock"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer" type="Control" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=281602445]
+[node name="Label2" type="Label" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2097398667]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+theme_override_font_sizes/font_size = 14
+text = "By ZeroJect, Ominousity & VinciDa"
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=663417087]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "With assets by [color=cyan][url=https://kenney.nl/assets/input-prompts]Kenney[/url][/color]"
+fit_content = true
+
+[node name="Spacer" type="Control" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=281602445]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Start_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=210176167]
+[node name="Start_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=210176167]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Start"
 
-[node name="Settings_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=1164563297]
+[node name="Settings_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1164563297]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+disabled = true
 text = "Settings
 "
 
-[node name="Quit_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer" unique_id=1698353584]
+[node name="Quit_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1698353584]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Quit
 "
 
-[node name="Credits_MarginContainer" type="MarginContainer" parent="CanvasLayer/Main_Menu_Control" unique_id=1528594207]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2094788330]
 
-[node name="Label" type="Label" parent="CanvasLayer/Main_Menu_Control/Credits_MarginContainer" unique_id=163846957]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "By ZeroJect, Ominousity & VinciDa"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="StarField_GPUParticles3D" type="GPUParticles3D" parent="Camera3D" unique_id=123434029]
+transform = Transform3D(-4.371139e-08, 2, 0, -1, -8.742278e-08, 0, 0, 0, 1, 0, 0, -11)
+amount = 100
+lifetime = 10.0
+preprocess = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_t64sp")
+draw_pass_1 = SubResource("QuadMesh_ggijk")
 
-[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Start_Button" to="CanvasLayer/Main_Menu_Control" method="StartClicked"]
-[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Settings_Button" to="CanvasLayer/Main_Menu_Control" method="SettingsClicked"]
-[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/VBoxContainer/Quit_Button" to="CanvasLayer/Main_Menu_Control" method="QuitClicked"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=481373840]
+environment = SubResource("Environment_2apqw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=234447080]
+transform = Transform3D(0.4934317, -0.8319622, -0.25370094, 0.71066624, 0.55380213, -0.43388584, 0.5014767, 0.03379616, 0.8645109, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=285637806]
+transform = Transform3D(0.8829906, 0.37267902, -0.2853728, -0.44207034, 0.8646457, -0.238666, 0.15780059, 0.3368947, 0.92822474, 8.3055935, 1.9473746, -12.73483)
+mesh = ExtResource("2_wcf1k")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=632750079]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 1.6479573, -0.027544975, -4.0437045)
+mesh = ExtResource("3_05oej")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1453183520]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 5.037907, -1.3476481, -5.5606136)
+mesh = ExtResource("4_aggqv")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1825924752]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 2.7451086, 3.6069698, -8.202078)
+mesh = ExtResource("5_k3tmm")
+
+[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Start_Button" to="CanvasLayer/Main_Menu_Control" method="StartClicked"]
+[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Settings_Button" to="CanvasLayer/Main_Menu_Control" method="SettingsClicked"]
+[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Quit_Button" to="CanvasLayer/Main_Menu_Control" method="QuitClicked"]

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://coh6jsmvnd4a4" path="res://Scenes/PreFabs/death_manager.tscn" id="5_vd2fa"]
 [ext_resource type="Script" uid="uid://cehx3tpqvjwb4" path="res://Scripts/Player/CameraFollower.cs" id="6_mpric"]
 [ext_resource type="PackedScene" uid="uid://dicourw40dtkg" path="res://Scenes/PreFabs/pause_menu.tscn" id="6_msnvf"]
+[ext_resource type="PackedScene" uid="uid://biejp7hy81mpc" path="res://Scenes/PreFabs/game_complete.tscn" id="7_n2uhk"]
 [ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="9_vca7v"]
 [ext_resource type="Script" uid="uid://cfw13teteyk3k" path="res://Scripts/Misc/PointerController.cs" id="10_djwxc"]
 [ext_resource type="PackedScene" uid="uid://chrqorh7jsc4s" path="res://Scenes/PreFabs/space_pod.tscn" id="12_bcfiw"]
@@ -28,7 +29,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 _data = [Vector2(0, 0), 0.0, 4.278798, 0, 0, Vector2(0.49892932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.540757, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_52ly3"]
+[sub_resource type="CurveTexture" id="CurveTexture_msnvf"]
 curve = SubResource("Curve_mpric")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ckcd"]
@@ -44,9 +45,14 @@ direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 scale_min = 0.049999997
 scale_max = 0.099999994
-scale_curve = SubResource("CurveTexture_52ly3")
+scale_curve = SubResource("CurveTexture_msnvf")
 
 [sub_resource type="QuadMesh" id="QuadMesh_g2gre"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="TorusMesh" id="TorusMesh_2apqw"]
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
@@ -60,6 +66,8 @@ ScrapScene = ExtResource("4_djwxc")
 [node name="Death_Manager" parent="." unique_id=1218891936 instance=ExtResource("5_vd2fa")]
 
 [node name="Pause_Menu" parent="." unique_id=1084472096 instance=ExtResource("6_msnvf")]
+
+[node name="Game_Complete" parent="." unique_id=318825675 instance=ExtResource("7_n2uhk")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=554017553]
 environment = SubResource("Environment_2apqw")
@@ -191,7 +199,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=466123480 instance=ExtResource("5_kj3be")]
-_maxSpeed = 0.0
+_maxSpeed = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2035123442 node_paths=PackedStringArray("Target")]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 8, 0)
@@ -214,20 +222,32 @@ _target = NodePath("../SpacePod/Node3D")
 _orbitRadius = 0.75
 
 [node name="POD_Pointer_Sprite3D" type="Sprite3D" parent="POD_Pointer_Root" unique_id=2137757481]
-transform = Transform3D(0.75, 0, 0, 0, -3.278354e-08, 0.75, 0, -0.75, -3.278354e-08, 0, 0, 0)
+transform = Transform3D(0.9, 0, 0, 0, -3.934025e-08, 0.9, 0, -0.9, -3.934025e-08, 0, 0, 0)
 modulate = Color(0.5294118, 1, 0.64705884, 1)
 texture = ExtResource("9_vca7v")
 
-[node name="END_Pointer_Root" type="Node3D" parent="." unique_id=475915005 node_paths=PackedStringArray("_origin")]
+[node name="END_Pointer_Root" type="Node3D" parent="." unique_id=475915005 node_paths=PackedStringArray("_origin", "_target")]
 script = ExtResource("10_djwxc")
 _origin = NodePath("../Player")
+_target = NodePath("../End_Location")
 _orbitRadius = 0.75
 
 [node name="END_Pointer_Sprite3D" type="Sprite3D" parent="END_Pointer_Root" unique_id=1726001545]
-transform = Transform3D(0.75, 0, 0, 0, -3.278354e-08, 0.75, 0, -0.75, -3.278354e-08, 0, 0, 0)
+transform = Transform3D(0.9, 0, 0, 0, -3.934025e-08, 0.9, 0, -0.9, -3.934025e-08, 0, 0, 0)
 modulate = Color(1, 0.44705883, 0.29411766, 1)
 texture = ExtResource("9_vca7v")
 
 [node name="SpacePod" parent="." unique_id=1209523577 instance=ExtResource("12_bcfiw")]
 
 [node name="Node3D" type="Node3D" parent="SpacePod" unique_id=192385754]
+
+[node name="End_Location" type="Node3D" parent="." unique_id=1713897890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, -200)
+
+[node name="Area3D" type="Area3D" parent="End_Location" unique_id=714800839]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End_Location/Area3D" unique_id=919704633]
+shape = SubResource("BoxShape3D_2apqw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Location" unique_id=809866720]
+mesh = SubResource("TorusMesh_2apqw")
