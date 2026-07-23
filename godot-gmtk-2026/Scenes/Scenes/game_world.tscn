@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://cbgjwdha8r1ef"]
 
+[ext_resource type="Script" uid="uid://bxe8fq33up0g7" path="res://Scripts/Asteroids/AsteroidSpawner.cs" id="1_mpric"]
 [ext_resource type="Script" uid="uid://doxlwchcr3p3v" path="res://Scripts/Items/Inventory/UI/PlayerInventoryUI.cs" id="2_f6d6p"]
+[ext_resource type="PackedScene" uid="uid://bfpeq3v5hefvb" path="res://Scenes/PreFabs/mineable_asteroid.tscn" id="2_o7dsn"]
+[ext_resource type="PackedScene" uid="uid://bl7cpt7fr81so" path="res://Scenes/PreFabs/unmineable_asteroid.tscn" id="2_vca7v"]
 [ext_resource type="PackedScene" uid="uid://cmghspt0j53nc" path="res://Scenes/PreFabs/inventory_item.tscn" id="3_1aiwk"]
 [ext_resource type="Script" uid="uid://dpkebv4ejpa6y" path="res://Scripts/OxygenCounter/UI/OxygenProgressBar.cs" id="4_2w2h1"]
+[ext_resource type="PackedScene" uid="uid://gqviduy1hexi" path="res://Scenes/PreFabs/scrap.tscn" id="4_djwxc"]
 [ext_resource type="PackedScene" uid="uid://75gko4n5qxcr" path="res://Scenes/PreFabs/player.tscn" id="5_kj3be"]
 [ext_resource type="Script" uid="uid://cehx3tpqvjwb4" path="res://Scripts/Player/CameraFollower.cs" id="6_mpric"]
 [ext_resource type="PackedScene" uid="uid://sxy6t2odfr70" path="res://Scenes/PreFabs/Machines/oxygen_station.tscn" id="6_o7dsn"]
@@ -45,6 +49,13 @@ scale_curve = SubResource("CurveTexture_52ly3")
 [sub_resource type="QuadMesh" id="QuadMesh_g2gre"]
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
+
+[node name="AsteroidManager" type="Node" parent="." unique_id=2027151660 node_paths=PackedStringArray("PlayerCamera")]
+script = ExtResource("1_mpric")
+PlayerCamera = NodePath("../Camera3D")
+UnMineableAsteroidScene = ExtResource("2_vca7v")
+MineableAsteroidScene = ExtResource("2_o7dsn")
+ScrapScene = ExtResource("4_djwxc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=554017553]
 environment = SubResource("Environment_2apqw")
@@ -176,14 +187,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=466123480 instance=ExtResource("5_kj3be")]
+_maxSpeed = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2035123442 node_paths=PackedStringArray("Target")]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 5, 0)
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 8, 0)
 script = ExtResource("6_mpric")
 Target = NodePath("../Player")
 
 [node name="StarField_GPUParticles3D" type="GPUParticles3D" parent="Camera3D" unique_id=1643106249]
-transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, -1, -4.3711385e-08, -4.3711392e-08, -4.371139e-08, -4.3711392e-08, 1, 0, 3.519886e-07, -8.052561)
+transform = Transform3D(-4.3711392e-08, 2, 4.371139e-08, -1, -8.742278e-08, -4.3711392e-08, -4.371139e-08, -8.7422784e-08, 1, 0, 0, -11)
 amount = 100
 lifetime = 10.0
 preprocess = 5.0
