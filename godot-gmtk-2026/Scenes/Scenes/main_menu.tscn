@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bf7xuoykf2j41"]
 
 [ext_resource type="Script" uid="uid://opjdnpl0a4u0" path="res://Scripts/MainMenu/MainMenuController.cs" id="1_8um42"]
-[ext_resource type="ArrayMesh" uid="uid://cy62veod0jq8w" path="res://Assets/Graphics/Models/POD2/Pod2.res" id="2_wcf1k"]
+[ext_resource type="ArrayMesh" uid="uid://dfglo5r44il84" path="res://Assets/Graphics/Models/POD2/Pod2.res" id="2_wcf1k"]
 [ext_resource type="ArrayMesh" uid="uid://b3guo1jjowtuf" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1.res" id="3_05oej"]
 [ext_resource type="ArrayMesh" uid="uid://chp86s4kf26pq" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Asteroid_4.res" id="4_aggqv"]
 [ext_resource type="ArrayMesh" uid="uid://bpi3pwmp45uou" path="res://Assets/Graphics/Models/Asteroids/Asteroid_2/Asteroid_2.res" id="5_k3tmm"]
