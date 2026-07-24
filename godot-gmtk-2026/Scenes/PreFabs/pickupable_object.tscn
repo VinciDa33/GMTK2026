@@ -12,9 +12,11 @@
 [ext_resource type="Material" uid="uid://c07h1dnxsvlyd" path="res://Assets/Graphics/Models/Asteroids/Asteroid_3/Asteroid_3_MaterialIron.tres" id="11_yqeda"]
 [ext_resource type="Material" uid="uid://l37i8hprb24k" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Asteroid_4_MaterialCopper.tres" id="12_qg7sm"]
 [ext_resource type="PackedScene" uid="uid://sc7pq3yiwmm8" path="res://Scenes/PreFabs/interaction_follower.tscn" id="15_o13rv"]
+[ext_resource type="AudioStream" uid="uid://dosp2eqe4rh82" path="res://Assets/Sounds/Effects/Pickup1.mp3" id="16_hupbn"]
 [ext_resource type="Material" uid="uid://coljdvq22n12h" path="res://Assets/Graphics/Models/Asteroids/Asteroid_5/Asteroid_5_MaterialIron.tres" id="17_gl558"]
+[ext_resource type="AudioStream" uid="uid://b10phbc4uckm4" path="res://Assets/Sounds/Effects/Pickup2.mp3" id="17_thxu2"]
 [ext_resource type="ArrayMesh" uid="uid://dyche875uhnm4" path="res://Assets/Graphics/Models/Scrap/IronScrap/Iron_Scrap.res" id="18_aeke5"]
-[ext_resource type="ArrayMesh" uid="uid://dgt6ipvl4gj8v" path="res://Assets/Graphics/Models/Scrap/CopperScrap/Copper_Scrap.res" id="19_32wmr"]
+[ext_resource type="ArrayMesh" uid="uid://dcsqotjcfhg5k" path="res://Assets/Graphics/Models/Scrap/CopperScrap/Copper_Scrap.res" id="19_32wmr"]
 
 [sub_resource type="Resource" id="Resource_xob82"]
 script = ExtResource("4_thxu2")
@@ -67,12 +69,14 @@ metadata/_custom_type_script = "uid://dtdy7ne4qkh2c"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yyap0"]
 
-[node name="Asteroid" type="RigidBody3D" unique_id=2113373444 node_paths=PackedStringArray("MeshInstance")]
+[node name="Asteroid2" type="RigidBody3D" unique_id=2113373444 node_paths=PackedStringArray("MeshInstance", "_audioPlayer")]
 axis_lock_linear_y = true
 script = ExtResource("1_yb56b")
 Objects = Array[Resource]([SubResource("Resource_xob82"), SubResource("Resource_evb1f"), SubResource("Resource_m2xdm"), SubResource("Resource_kkij8"), SubResource("Resource_rtaeu"), SubResource("Resource_32wmr"), SubResource("Resource_2v718")])
 MeshInstance = NodePath("MeshInstance3D")
 InteractionPromptFollowerScene = ExtResource("15_o13rv")
+_audioPlayer = NodePath("AudioStreamPlayer")
+_pickupSounds = Array[AudioStream]([ExtResource("16_hupbn"), ExtResource("17_thxu2")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1890546724]
 transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)
@@ -80,3 +84,5 @@ mesh = ExtResource("2_v8qyx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=837099225]
 shape = SubResource("SphereShape3D_yyap0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1131322161]

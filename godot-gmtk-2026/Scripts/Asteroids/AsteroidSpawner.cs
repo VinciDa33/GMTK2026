@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Godot;
+using Godot.Collections;
 using GodotGMTK2026.Scripts.Management;
 
 namespace GodotGMTK2026.Scripts.Asteroids;
@@ -7,7 +9,7 @@ namespace GodotGMTK2026.Scripts.Asteroids;
 public partial class AsteroidSpawner : Node
 {
 	public static AsteroidSpawner Instance { get; private set; }
-	
+
 	[Export] public float SpawnDistanceMinimum = 10f;
 	[Export] public float SpawnDistanceMaximum = 15f;
 	[Export] public float SpawnBuffer = 5f;
@@ -16,6 +18,9 @@ public partial class AsteroidSpawner : Node
 	[Export] public int MaxActivePickupableObjects = 10;
 	[Export] public PackedScene UnMineableAsteroidScene;
 	[Export] public PackedScene PickupableObjectScene;
+	[ExportGroup("Sounds")]
+	[Export] public AudioStreamPlayer PickupAudioPlayer;
+	[Export] public Array<AudioStream> PickupSounds;
 
 	private List<Node3D> _activeUnmineableAsteroids = new List<Node3D>();
 	private List<PickupableObject> _activePickupableObjects = new List<PickupableObject>();
@@ -133,5 +138,12 @@ public partial class AsteroidSpawner : Node
 	{
 		_activePickupableObjects.Remove(obj);
 		obj.QueueFree();
+
+		// play pickup sound
+		RandomNumberGenerator rng = new RandomNumberGenerator();
+
+		int randomIndex = rng.RandiRange(0, PickupSounds.Count - 1);
+		PickupAudioPlayer.Stream = PickupSounds[randomIndex];
+		PickupAudioPlayer.Play();
 	}
 }

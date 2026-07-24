@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bfpeq3v5hefvb" path="res://Scenes/PreFabs/pickupable_object.tscn" id="2_o7dsn"]
 [ext_resource type="PackedScene" uid="uid://cmghspt0j53nc" path="res://Scenes/PreFabs/inventory_item.tscn" id="3_1aiwk"]
 [ext_resource type="Script" uid="uid://dpkebv4ejpa6y" path="res://Scripts/OxygenCounter/UI/OxygenProgressBar.cs" id="4_2w2h1"]
+[ext_resource type="AudioStream" uid="uid://dosp2eqe4rh82" path="res://Assets/Sounds/Effects/Pickup1.mp3" id="4_d8tds"]
 [ext_resource type="PackedScene" uid="uid://75gko4n5qxcr" path="res://Scenes/PreFabs/player.tscn" id="5_kj3be"]
+[ext_resource type="AudioStream" uid="uid://b10phbc4uckm4" path="res://Assets/Sounds/Effects/Pickup2.mp3" id="5_u1648"]
 [ext_resource type="PackedScene" uid="uid://coh6jsmvnd4a4" path="res://Scenes/PreFabs/death_manager.tscn" id="5_vd2fa"]
 [ext_resource type="Script" uid="uid://cehx3tpqvjwb4" path="res://Scripts/Player/CameraFollower.cs" id="6_mpric"]
 [ext_resource type="PackedScene" uid="uid://dicourw40dtkg" path="res://Scenes/PreFabs/pause_menu.tscn" id="6_msnvf"]
@@ -55,7 +57,7 @@ size = Vector3(10, 8, 10)
 
 [node name="Game_World" type="Node3D" unique_id=1187863218]
 
-[node name="AsteroidManager" type="Node" parent="." unique_id=2027151660]
+[node name="AsteroidManager" type="Node" parent="." unique_id=2027151660 node_paths=PackedStringArray("PickupAudioPlayer")]
 script = ExtResource("1_mpric")
 SpawnDistanceMinimum = 15.0
 SpawnDistanceMaximum = 20.0
@@ -63,6 +65,10 @@ DespawnDistance = 40.0
 MaxActiveUnmineableAsteroids = 15
 UnMineableAsteroidScene = ExtResource("2_msnvf")
 PickupableObjectScene = ExtResource("2_o7dsn")
+PickupAudioPlayer = NodePath("AudioStreamPlayer")
+PickupSounds = Array[AudioStream]([ExtResource("4_d8tds"), ExtResource("5_u1648")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AsteroidManager" unique_id=533759570]
 
 [node name="Death_Manager" parent="." unique_id=1218891936 instance=ExtResource("5_vd2fa")]
 

@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://75gko4n5qxcr"]
 
 [ext_resource type="Script" uid="uid://bt4pt1ffkb0w4" path="res://Scripts/Player/PlayerController.cs" id="1_aibd6"]
+[ext_resource type="AudioStream" uid="uid://dt3hgamwhc0ae" path="res://Assets/Sounds/Effects/Hit1.mp3" id="2_dwd4b"]
 [ext_resource type="ArrayMesh" uid="uid://f1uet73cwqvw" path="res://Assets/Graphics/Models/AstroGuy/AstroGuyMesh.res" id="2_svvew"]
 [ext_resource type="ArrayMesh" uid="uid://difcbkw865myi" path="res://Assets/Graphics/Models/AstroGuy/JetPackMesh.res" id="3_wbxv2"]
+[ext_resource type="AudioStream" uid="uid://b2nn5jlkdft24" path="res://Assets/Sounds/Effects/Hit2.mp3" id="3_x33vp"]
+[ext_resource type="AudioStream" uid="uid://srpn6bne58cy" path="res://Assets/Sounds/Effects/Hit3.mp3" id="4_x53qu"]
+[ext_resource type="AudioStream" uid="uid://0j2lsr8gwao2" path="res://Assets/Sounds/Effects/JetPack1.mp3" id="5_w3qde"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qajyh"]
 margin = 0.05
@@ -41,7 +45,7 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_6ckcd"]
 material = SubResource("StandardMaterial3D_yyap0")
 
-[node name="Player" type="CharacterBody3D" unique_id=466123480 node_paths=PackedStringArray("_particles")]
+[node name="Player" type="CharacterBody3D" unique_id=466123480 node_paths=PackedStringArray("_particles", "_collisionAudioPlayer", "_thrusterAudioPlayer")]
 axis_lock_linear_y = true
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -52,6 +56,10 @@ _breathingTick = 1.0
 _baseBreathConsumption = 1.0
 _thrusterTick = 0.25
 _baseThrusterConsumption = 0.1
+_collisionAudioPlayer = NodePath("CollisionAudioStreamPlayer")
+_collisionSounds = Array[AudioStream]([ExtResource("2_dwd4b"), ExtResource("3_x33vp"), ExtResource("4_x53qu")])
+_thrusterAudioPlayer = NodePath("ThrusterAudioStreamPlayer")
+_thruserSound = ExtResource("5_w3qde")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1741277003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08605957, 0)
@@ -71,3 +79,7 @@ emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_6ckcd")
 draw_pass_1 = SubResource("QuadMesh_6ckcd")
+
+[node name="CollisionAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1321144346]
+
+[node name="ThrusterAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1542899852]

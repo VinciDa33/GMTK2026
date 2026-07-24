@@ -1,4 +1,4 @@
-[gd_resource type="Resource" format=3 uid="uid://c2w63rtomoi18"]
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://c2w63rtomoi18"]
 
 [ext_resource type="Script" uid="uid://bx61t3jpfkc4s" path="res://Scripts/Machines/UpgradeMachine/Upgrade.cs" id="1_4mr01"]
 [ext_resource type="Script" uid="uid://ciq0enofs0344" path="res://Scripts/Machines/UpgradeMachine/UpgradeCost.cs" id="1_kp7yo"]
