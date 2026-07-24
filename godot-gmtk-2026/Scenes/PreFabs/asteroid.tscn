@@ -14,12 +14,13 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yyap0"]
 
-[node name="Asteroid" type="RigidBody3D" unique_id=2113373444 node_paths=PackedStringArray("MeshInstance")]
+[node name="Asteroid" type="RigidBody3D" unique_id=2113373444 node_paths=PackedStringArray("MeshInstance", "CollisionShape")]
 axis_lock_linear_y = true
 script = ExtResource("1_l7mtn")
 AsteroidMeshes = Array[Mesh]([ExtResource("2_upn8k"), ExtResource("3_xsb0k"), ExtResource("4_s0emi"), ExtResource("5_yyjqj"), ExtResource("6_kqy0l")])
 AsteroidMaterials = Array[Material]([ExtResource("3_pdh3s"), ExtResource("8_idynp"), ExtResource("9_3vdee"), ExtResource("10_luv5b"), ExtResource("11_d16cq")])
 MeshInstance = NodePath("MeshInstance3D")
+CollisionShape = NodePath("CollisionShape3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1890546724]
 transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)

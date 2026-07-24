@@ -4,7 +4,7 @@
 
 [node name="Game_State" type="Node" unique_id=1927038039]
 script = ExtResource("1_1elp1")
-_oxygenCapacity = 20
+_oxygenCapacity = 2000
 _oxygenEfficiency = 1.0
 _thrusterEfficiency = 1.0
 _thrusterPower = 5.0

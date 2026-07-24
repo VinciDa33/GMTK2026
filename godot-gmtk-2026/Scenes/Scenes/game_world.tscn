@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="9_vca7v"]
 [ext_resource type="Script" uid="uid://cfw13teteyk3k" path="res://Scripts/Misc/PointerController.cs" id="10_djwxc"]
 [ext_resource type="PackedScene" uid="uid://chrqorh7jsc4s" path="res://Scenes/PreFabs/space_pod.tscn" id="12_bcfiw"]
-[ext_resource type="ArrayMesh" uid="uid://dr2h60mwyex8w" path="res://Assets/Graphics/Models/ISS/IIS.res" id="16_e11ps"]
+[ext_resource type="ArrayMesh" uid="uid://blkvbbq51lb5y" path="res://Assets/Graphics/Models/ISS/IIS.res" id="16_e11ps"]
 
 [sub_resource type="Environment" id="Environment_2apqw"]
 background_mode = 1
@@ -58,7 +58,8 @@ size = Vector3(10, 8, 10)
 script = ExtResource("1_mpric")
 SpawnDistanceMinimum = 15.0
 SpawnDistanceMaximum = 20.0
-MaxActiveUnmineableAsteroids = 20
+DespawnDistance = 40.0
+MaxActiveUnmineableAsteroids = 15
 UnMineableAsteroidScene = ExtResource("2_msnvf")
 PickupableObjectScene = ExtResource("2_o7dsn")
 

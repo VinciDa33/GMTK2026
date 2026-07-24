@@ -63,6 +63,8 @@ public partial class PickupableObject : RigidBody3D
 
     public override void _Process(double delta)
     {
+        bool objectPickedUp = false;
+
         if (_checkForPlayerTimer.IsStopped())
             _checkForPlayerTimer.Start();
 
@@ -70,23 +72,26 @@ public partial class PickupableObject : RigidBody3D
         {
             if (_objectData.IsScrap && _objectData.IsCopper)
             {
-                GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.ScrapCable));
+                objectPickedUp = GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.ScrapCable));
             }
             else if (_objectData.IsScrap && _objectData.IsIron)
             {
-                GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.ScrapMetal));
+                objectPickedUp = GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.ScrapMetal));
             }
             else if (!_objectData.IsScrap && _objectData.IsCopper)
             {
-                GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.CopperOre));
+                 objectPickedUp = GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.CopperOre));
             }
             else
             {
-                GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.IronOre));
+                objectPickedUp = GameState.Instance.PlayerInventory.AddItem(ItemRegistry.Instance.GetItem(ItemEnum.IronOre));
             }
-
-            _interactionPrompt.SetVisible(false);
-            AsteroidSpawner.Instance.PickupObject(this);
+            
+            if (objectPickedUp)
+            {
+                _interactionPrompt.SetVisible(false);
+                AsteroidSpawner.Instance.PickupObject(this);
+            }
         }
     }
 

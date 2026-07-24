@@ -78,7 +78,7 @@ public partial class PlayerController : CharacterBody3D
 			Velocity *= Mathf.Pow(0.97f, (float)(delta * 60f));
 	
 		//Slight passive dampening
-		Velocity *= Mathf.Pow(0.995f, (float)(delta * 60f));
+		Velocity *= Mathf.Pow(0.9999f, (float)(delta * 60f));
 
 		MoveAndSlide();
 	}
@@ -101,22 +101,4 @@ public partial class PlayerController : CharacterBody3D
 	{
 		StopConsumption = value;
 	}
-	
-	/*
-	private void CountDownOxygen(double delta)
-	{
-		_oxygenTimer += (float)delta;
-		
-		if ((Input.IsActionPressed("fire_jetpack") || Input.IsActionPressed("dampen_speed")) && _oxygenTimer >= 0.5f)
-		{
-			GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenLevel - 1f * GameState.Instance.PlayerStats.ThrusterEfficiency);
-			_oxygenTimer = 0.0f;
-		}
-		else if (_oxygenTimer >= 1.0f)
-		{
-			GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenLevel - 1f * GameState.Instance.PlayerStats.OxygenEfficiency);
-			_oxygenTimer = 0.0f;
-		}
-	}
-	*/
 }
