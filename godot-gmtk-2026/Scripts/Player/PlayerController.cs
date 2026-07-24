@@ -6,6 +6,7 @@ namespace GodotGMTK2026.Scripts.Player;
 public partial class PlayerController : CharacterBody3D
 {
 	[Export] private float _maxSpeed;
+	[Export] private float PushForce = 0.3f;
 	[Export] private float _rotationSpeed = 5.0f;
 	[Export] private GpuParticles3D _particles;
 	[ExportGroup("Oxygen Consumption")]
@@ -81,6 +82,24 @@ public partial class PlayerController : CharacterBody3D
 		Velocity *= Mathf.Pow(0.9999f, (float)(delta * 60f));
 
 		MoveAndSlide();
+
+		// Detect collision with asteroids
+		int collisionCount = GetSlideCollisionCount();
+		for (int i = 0; i < collisionCount; i++)
+		{
+			KinematicCollision3D collision = GetSlideCollision(i);
+			GodotObject collider = collision.GetCollider();
+
+			if (collider is RigidBody3D rigidBody)
+			{
+				Vector3 pushDirection = -collision.GetNormal();
+				pushDirection.Y = 0;
+				pushDirection = pushDirection.Normalized();
+
+				Vector3 localHitPosition = collision.GetPosition() - rigidBody.GlobalPosition;
+				rigidBody.ApplyImpulse(pushDirection * PushForce, localHitPosition);
+			}
+		}
 	}
 
 	private void TakeBreath()
