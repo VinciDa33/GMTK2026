@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bjmh4wo4g2jsr" path="res://Scenes/PreFabs/floating_text.tscn" id="2_g8kat"]
 [ext_resource type="Script" uid="uid://78v6qw8s56c5" path="res://Scripts/Machines/RefineryMachine/RefineryRecipe.cs" id="2_rb1ea"]
 [ext_resource type="PackedScene" uid="uid://bc75i0kxuq0h5" path="res://Scenes/PreFabs/interact_prompt.tscn" id="3_rb1ea"]
+[ext_resource type="AudioStream" uid="uid://dobi1fk4lkas4" path="res://Assets/Sounds/Effects/Processing_Done1.mp3" id="4_0ojdn"]
 
 [sub_resource type="Resource" id="Resource_6vxh6"]
 script = ExtResource("2_rb1ea")
@@ -65,13 +66,15 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_2apqw"]
 material = SubResource("StandardMaterial3D_6ckcd")
 
-[node name="Refinery" type="Node3D" unique_id=794471086 node_paths=PackedStringArray("_interactionPrompt", "_particles")]
+[node name="Refinery" type="Node3D" unique_id=794471086 node_paths=PackedStringArray("_interactionPrompt", "_particles", "_audioPlayer")]
 script = ExtResource("1_qpbjv")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
 _floatingText = ExtResource("2_g8kat")
 _particles = NodePath("GPUParticles3D")
 _recipes = Array[Object]([SubResource("Resource_6vxh6"), SubResource("Resource_vryj5"), SubResource("Resource_ovuyv"), SubResource("Resource_rkql0")])
 _processingTime = 2.0
+_audioPlayer = NodePath("AudioStreamPlayer")
+_refinerySound = ExtResource("4_0ojdn")
 _playerCheckDistance = 1.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=891829362]
@@ -100,3 +103,5 @@ lifetime = 0.2
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_yyap0")
 draw_pass_1 = SubResource("QuadMesh_2apqw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=491250741]

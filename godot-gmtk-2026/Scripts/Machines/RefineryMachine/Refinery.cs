@@ -13,9 +13,12 @@ public partial class Refinery : Machine
     [Export] private InteractionPrompt _interactionPrompt;
     [Export] private PackedScene _floatingText;
     [Export] private GpuParticles3D _particles;
-    
     [Export] private RefineryRecipe[] _recipes;
     [Export] private float _processingTime;
+    [ExportGroup("Sounds")]
+    [Export] private AudioStreamPlayer _audioPlayer;
+    [Export] private AudioStream _refinerySound;
+    
     public Inventory Inventory { get; private set; }
     private Timer _processingTimer;
 
@@ -93,6 +96,9 @@ public partial class Refinery : Machine
                 ft.Position = new Vector3(0, 1f, 0);
 
                 _particles.Emitting = true;
+
+                _audioPlayer.Stream = _refinerySound;
+				_audioPlayer.Play();
                 
                 GD.Print($"Refinery Produced: {item.Name}");
                 break;

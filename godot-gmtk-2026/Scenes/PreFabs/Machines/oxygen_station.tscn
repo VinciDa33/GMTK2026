@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://r8n4dodvhgnb" path="res://Scripts/Machines/OxygenMachine/OxygenStation.cs" id="1_4ch7h"]
 [ext_resource type="PackedScene" uid="uid://bc75i0kxuq0h5" path="res://Scenes/PreFabs/interact_prompt.tscn" id="1_u83b7"]
+[ext_resource type="AudioStream" uid="uid://cl8fg8lknu8m1" path="res://Assets/Sounds/Effects/Oxygen_Dispensed1.mp3" id="2_euadp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6ckcd"]
 
@@ -40,11 +41,13 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_n2uhk"]
 material = SubResource("StandardMaterial3D_e11ps")
 
-[node name="OxygenStation" type="Node3D" unique_id=557956778 node_paths=PackedStringArray("_interactionPrompt", "_particles")]
+[node name="OxygenStation" type="Node3D" unique_id=557956778 node_paths=PackedStringArray("_interactionPrompt", "_particles", "_audioPlayer")]
 transform = Transform3D(1, 0, 0, 0, 0.99999905, 0.0013857026, 0, -0.0013857026, 0.99999905, 0, 0, 0)
 script = ExtResource("1_4ch7h")
 _interactionPrompt = NodePath("SubViewport/InteractPrompt")
 _particles = NodePath("GPUParticles3D")
+_audioPlayer = NodePath("AudioStreamPlayer")
+_oxygenDispensedSound = ExtResource("2_euadp")
 _playerCheckDistance = 1.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=553742419]
@@ -73,3 +76,7 @@ lifetime = 0.2
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_euadp")
 draw_pass_1 = SubResource("QuadMesh_n2uhk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=294101216]
+volume_db = -5.0
+pitch_scale = 0.9

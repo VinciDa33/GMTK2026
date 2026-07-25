@@ -9,6 +9,10 @@ public partial class OxygenStation : Machine
     public static OxygenStation Instance { get; private set; }
     [Export] private InteractionPrompt _interactionPrompt;
     [Export] private GpuParticles3D _particles;
+    [ExportGroup("Sounds")]
+    [Export] private AudioStreamPlayer _audioPlayer;
+    [Export] private AudioStream _oxygenDispensedSound;
+
     public override void _Ready()
     {
         base._Ready();
@@ -28,6 +32,9 @@ public partial class OxygenStation : Machine
                 GD.Print("Refilled Oxygen");
                 GameState.Instance.PlayerStats.SetOxygenLevel(GameState.Instance.PlayerStats.OxygenCapacity);
                 _particles.Emitting = true;
+
+                _audioPlayer.Stream = _oxygenDispensedSound;
+                _audioPlayer.Play();
             }
         }
 
