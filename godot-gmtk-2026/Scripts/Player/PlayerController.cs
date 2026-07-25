@@ -115,7 +115,7 @@ public partial class PlayerController : CharacterBody3D
 		{
 			KinematicCollision3D collision = GetSlideCollision(i);
 			// --- FIX: Slide Velocity along the collision normal ---
-			Velocity = Velocity.Reflect(collision.GetNormal()) * 0.8f;
+			Velocity = Velocity.Slide(collision.GetNormal());
 
 			GodotObject collider = collision.GetCollider();
 			if (collider is RigidBody3D rigidBody)
