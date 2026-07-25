@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://78v6qw8s56c5" path="res://Scripts/Machines/RefineryMachine/RefineryRecipe.cs" id="2_rb1ea"]
 [ext_resource type="PackedScene" uid="uid://bc75i0kxuq0h5" path="res://Scenes/PreFabs/interact_prompt.tscn" id="3_rb1ea"]
 [ext_resource type="AudioStream" uid="uid://dobi1fk4lkas4" path="res://Assets/Sounds/Effects/Processing_Done1.mp3" id="4_0ojdn"]
+[ext_resource type="ArrayMesh" uid="uid://ccntgk16y13y7" path="res://Assets/Graphics/Models/Machines/Refiner/Shell.res" id="5_ebtxp"]
+[ext_resource type="ArrayMesh" uid="uid://cpoegkty8iwe5" path="res://Assets/Graphics/Models/Machines/Refiner/Tooth1.res" id="6_l8xvf"]
 
 [sub_resource type="Resource" id="Resource_6vxh6"]
 script = ExtResource("2_rb1ea")
@@ -29,15 +31,18 @@ Input = 3
 Output = 5
 metadata/_custom_type_script = "uid://78v6qw8s56c5"
 
-[sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ch7h"]
 albedo_color = Color(0.1491147, 0.1491068, 0.17080992, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_g8kat"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_euadp"]
+friction = 0.0
+bounce = 1.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
+size = Vector3(1, 1.6427002, 1)
 
 [sub_resource type="Curve" id="Curve_g8kat"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.005235672), -2.8216891, -2.8216891, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -78,16 +83,23 @@ _refinerySound = ExtResource("4_0ojdn")
 _playerCheckDistance = 1.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=891829362]
-mesh = SubResource("BoxMesh_2apqw")
+transform = Transform3D(40, 0, 0, 0, -1.7484556e-06, -4, 0, 40, -1.7484555e-07, 0, 1.1, 0)
+mesh = ExtResource("5_ebtxp")
 surface_material_override/0 = SubResource("StandardMaterial3D_4ch7h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=159868694]
+transform = Transform3D(1.2404541, -3.8027976, 1.2466919e-05, 3.8027976, 1.2404541, 9.046768e-06, -1.6622556e-06, 1.2062359e-06, 30, 0, 8.6940505e-10, 0.19889669)
+mesh = ExtResource("6_l8xvf")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1601207563]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5, 0)
 texture = SubResource("ViewportTexture_g8kat")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1090822525]
+physics_material_override = SubResource("PhysicsMaterial_euadp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=76207573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3213501, 0)
 shape = SubResource("BoxShape3D_2apqw")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=985697656]

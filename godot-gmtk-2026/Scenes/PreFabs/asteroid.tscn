@@ -13,6 +13,8 @@
 [ext_resource type="Material" uid="uid://cgoqu1pocyjc2" path="res://Assets/Graphics/Models/Asteroids/Asteroid_5/Asteroid_5_MaterialBase.tres" id="11_d16cq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7y0oj"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yyap0"]
 

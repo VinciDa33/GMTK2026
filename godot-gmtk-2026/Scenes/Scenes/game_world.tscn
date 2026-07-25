@@ -248,6 +248,7 @@ modulate = Color(1, 0.44705883, 0.29411766, 1)
 texture = ExtResource("9_vca7v")
 
 [node name="SpacePod" parent="." unique_id=1209523577 instance=ExtResource("12_bcfiw")]
+Speed = 2.0
 
 [node name="Node3D" type="Node3D" parent="SpacePod" unique_id=192385754]
 

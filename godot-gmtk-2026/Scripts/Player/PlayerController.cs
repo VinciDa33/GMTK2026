@@ -114,8 +114,10 @@ public partial class PlayerController : CharacterBody3D
 		for (int i = 0; i < collisionCount; i++)
 		{
 			KinematicCollision3D collision = GetSlideCollision(i);
-			GodotObject collider = collision.GetCollider();
+			// --- FIX: Slide Velocity along the collision normal ---
+			Velocity = Velocity.Reflect(collision.GetNormal()) * 0.8f;
 
+			GodotObject collider = collision.GetCollider();
 			if (collider is RigidBody3D rigidBody)
 			{
 				Vector3 pushDirection = -collision.GetNormal();
@@ -125,16 +127,13 @@ public partial class PlayerController : CharacterBody3D
 				Vector3 localHitPosition = collision.GetPosition() - rigidBody.GlobalPosition;
 				rigidBody.ApplyImpulse(pushDirection * PushForce, localHitPosition);
 
-				// Play a random collision sound
-				if (_collisionSoundCooldownActive)
-					continue;
-				
-				RandomNumberGenerator rng = new RandomNumberGenerator();
+				// Play collision sound...
+				if (_collisionSoundCooldownActive) continue;
 
+				RandomNumberGenerator rng = new RandomNumberGenerator();
 				int randomIndex = rng.RandiRange(0, _collisionSounds.Count - 1);
 				_collisionAudioPlayer.Stream = _collisionSounds[randomIndex];
 				_collisionAudioPlayer.Play();
-
 				_collisionSoundCooldownActive = true;
 				_collisionSoundTimer.Start();
 			}

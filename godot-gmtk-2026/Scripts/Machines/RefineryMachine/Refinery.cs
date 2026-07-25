@@ -93,7 +93,7 @@ public partial class Refinery : Machine
                 FloatingText ft = _floatingText.Instantiate() as FloatingText;
                 ft.SetupText($"+1 {output.Name}", new Vector3(rng.RandfRange(-0.2f, 0.2f), 0f, rng.RandfRange(-0.2f, 0.2f)));
                 AddChild(ft);
-                ft.Position = new Vector3(0, 1f, 0);
+                ft.Position = new Vector3(0, 1.5f, 0);
 
                 _particles.Emitting = true;
 

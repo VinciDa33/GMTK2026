@@ -12,6 +12,11 @@ albedo_color = Color(0.24705882, 0.49411765, 1, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_2apqw"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u1648"]
+friction = 0.0
+bounce = 1.0
+absorbent = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
 
 [sub_resource type="Curve" id="Curve_4ch7h"]
@@ -59,6 +64,7 @@ transform = Transform3D(1, 0, 0, 0, -4.3655746e-08, 1, 0, -1, -4.3655746e-08, 0,
 texture = SubResource("ViewportTexture_2apqw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1851464926]
+physics_material_override = SubResource("PhysicsMaterial_u1648")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=235972472]
 shape = SubResource("BoxShape3D_2apqw")
