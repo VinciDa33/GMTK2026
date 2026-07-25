@@ -176,7 +176,7 @@ mesh = ExtResource("5_k3tmm")
 transform = Transform3D(1, 0, 0, 0, 0.036000535, 0.9993518, 0, -0.9993518, 0.036000535, 0, 2.085914, 0)
 
 [node name="OxygenStation" parent="." unique_id=557956778 instance=ExtResource("7_hls5v")]
-transform = Transform3D(-1.35015075e-08, 0, 0.30887848, 0, 0.30887848, 0, -0.30887848, 0, -1.35015075e-08, -0.5621518, -0.18705568, -0.71829)
+transform = Transform3D(-1.35015075e-08, 0, 0.30887848, 0, 0.30887848, 0, -0.30887848, 0, -1.35015075e-08, -0.562, -0.182, -0.718)
 
 [node name="Refinery" parent="." unique_id=794471086 instance=ExtResource("8_t0nep")]
 transform = Transform3D(-1.35015075e-08, 0, 0.30887848, 0, 0.30887848, 0, -0.30887848, 0, -1.35015075e-08, -0.5621518, -0.18705568, 0.51722395)

@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://r8n4dodvhgnb" path="res://Scripts/Machines/OxygenMachine/OxygenStation.cs" id="1_4ch7h"]
 [ext_resource type="PackedScene" uid="uid://bc75i0kxuq0h5" path="res://Scenes/PreFabs/interact_prompt.tscn" id="1_u83b7"]
 [ext_resource type="AudioStream" uid="uid://cl8fg8lknu8m1" path="res://Assets/Sounds/Effects/Oxygen_Dispensed1.mp3" id="2_euadp"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_6ckcd"]
+[ext_resource type="ArrayMesh" uid="uid://ukmmumiuhl6l" path="res://Assets/Graphics/Models/Machines/o2gen/o2gen.res" id="3_xsump"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2apqw"]
 albedo_color = Color(0.24705882, 0.49411765, 1, 1)
@@ -56,7 +55,8 @@ _oxygenDispensedSound = ExtResource("2_euadp")
 _playerCheckDistance = 1.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=553742419]
-mesh = SubResource("BoxMesh_6ckcd")
+transform = Transform3D(-7.724705e-07, 0.00043633138, -0.24999961, -0.0004363314, 0.24999923, 0.00043633208, 0.24999961, 0.0004363321, -1.092783e-08, -0.0005476475, -0.5019316, 0.016358564)
+mesh = ExtResource("3_xsump")
 surface_material_override/0 = SubResource("StandardMaterial3D_2apqw")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1204034475]

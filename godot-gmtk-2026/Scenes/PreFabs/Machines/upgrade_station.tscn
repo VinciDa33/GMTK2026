@@ -16,11 +16,7 @@
 [ext_resource type="StyleBox" uid="uid://bt8my7g78l6pq" path="res://Styling/Interaction.tres" id="8_rihsj"]
 [ext_resource type="Resource" uid="uid://dwy6ta8q6b5u3" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/OxygenScrubber.tres" id="9_omfkc"]
 [ext_resource type="Resource" uid="uid://bjgqpehj7liie" path="res://Scripts/Machines/UpgradeMachine/UpgradeResources/GigamongusTanks.tres" id="10_mvmag"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_2apqw"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rb1ea"]
-albedo_color = Color(1, 1, 0.14117648, 1)
+[ext_resource type="ArrayMesh" uid="uid://csyldo165gqs2" path="res://Assets/Graphics/Models/Machines/upgradeStation/upgradeStation.res" id="11_rkkdd"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2apqw"]
 viewport_path = NodePath("SubViewport")
@@ -35,8 +31,8 @@ _upgradeStationUI = NodePath("CanvasLayer/Upgrade_Station_UI")
 _playerCheckDistance = 1.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1822561950]
-mesh = SubResource("BoxMesh_2apqw")
-surface_material_override/0 = SubResource("StandardMaterial3D_rb1ea")
+transform = Transform3D(-1.0927847e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.0927847e-08, 0, -0.25712374, 0)
+mesh = ExtResource("11_rkkdd")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1571603231]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5, 0)

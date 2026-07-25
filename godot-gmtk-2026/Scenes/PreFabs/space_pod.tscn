@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://v6hpspj8hv65" path="res://Scripts/SpacePod/Pod.cs" id="1_4f2li"]
 [ext_resource type="PackedScene" uid="uid://sxy6t2odfr70" path="res://Scenes/PreFabs/Machines/oxygen_station.tscn" id="2_4f2li"]
-[ext_resource type="ArrayMesh" uid="uid://c8ufv0f5miew1" path="res://Assets/Graphics/Models/POD3/body.res" id="2_m2gcg"]
+[ext_resource type="ArrayMesh" uid="uid://bmiyukyk6fix" path="res://Assets/Graphics/Models/POD3/body.res" id="2_m2gcg"]
 [ext_resource type="PackedScene" uid="uid://dgvadnjbxegq2" path="res://Scenes/PreFabs/Machines/refinery.tscn" id="3_m2gcg"]
 [ext_resource type="PackedScene" uid="uid://db5fwh1k6q5pl" path="res://Scenes/PreFabs/Machines/upgrade_station.tscn" id="4_qbtu1"]
-[ext_resource type="ArrayMesh" uid="uid://d4fgebn1tf0b2" path="res://Assets/Graphics/Models/POD3/top.res" id="6_m2gcg"]
+[ext_resource type="ArrayMesh" uid="uid://wgd4einxxt7n" path="res://Assets/Graphics/Models/POD3/top.res" id="6_m2gcg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2apqw"]
 size = Vector3(4, 3, 7.617737)
