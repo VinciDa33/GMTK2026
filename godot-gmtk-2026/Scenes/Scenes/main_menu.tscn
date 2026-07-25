@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://bf7xuoykf2j41"]
 
 [ext_resource type="Script" uid="uid://opjdnpl0a4u0" path="res://Scripts/MainMenu/MainMenuController.cs" id="1_8um42"]
-[ext_resource type="ArrayMesh" uid="uid://dfglo5r44il84" path="res://Assets/Graphics/Models/POD2/Pod2.res" id="2_wcf1k"]
+[ext_resource type="ArrayMesh" uid="uid://wgd4einxxt7n" path="res://Assets/Graphics/Models/POD3/top.res" id="2_05oej"]
+[ext_resource type="ArrayMesh" uid="uid://blkvbbq51lb5y" path="res://Assets/Graphics/Models/ISS/IIS.res" id="2_t0nep"]
+[ext_resource type="ArrayMesh" uid="uid://bmiyukyk6fix" path="res://Assets/Graphics/Models/POD3/body.res" id="2_wcf1k"]
 [ext_resource type="ArrayMesh" uid="uid://b3guo1jjowtuf" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1.res" id="3_05oej"]
 [ext_resource type="ArrayMesh" uid="uid://chp86s4kf26pq" path="res://Assets/Graphics/Models/Asteroids/Asteroid_4/Asteroid_4.res" id="4_aggqv"]
 [ext_resource type="ArrayMesh" uid="uid://bpi3pwmp45uou" path="res://Assets/Graphics/Models/Asteroids/Asteroid_2/Asteroid_2.res" id="5_k3tmm"]
+[ext_resource type="PackedScene" uid="uid://sxy6t2odfr70" path="res://Scenes/PreFabs/Machines/oxygen_station.tscn" id="7_hls5v"]
+[ext_resource type="PackedScene" uid="uid://dgvadnjbxegq2" path="res://Scenes/PreFabs/Machines/refinery.tscn" id="8_t0nep"]
+[ext_resource type="PackedScene" uid="uid://db5fwh1k6q5pl" path="res://Scenes/PreFabs/Machines/upgrade_station.tscn" id="9_323ce"]
 
 [sub_resource type="Curve" id="Curve_8um42"]
 _data = [Vector2(0, 0), 0.0, 4.278798, 0, 0, Vector2(0.49892932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.540757, 0.0, 0, 0]
@@ -117,6 +122,19 @@ layout_mode = 2
 text = "Quit
 "
 
+[node name="ISS" type="MeshInstance3D" parent="." unique_id=825465414]
+transform = Transform3D(0.86797047, -0.4375441, 0.23490936, -0.08453911, -0.59629613, -0.7983009, 0.4893672, 0.67304254, -0.5545571, -27.19569, 0.6853733, -354.75986)
+mesh = ExtResource("2_t0nep")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="ISS" unique_id=2012001621]
+transform = Transform3D(-0.2407164, 0.9394889, 0.24375468, 0.80734146, 0.33321202, -0.48700035, -0.53875333, 0.07956433, -0.8386979, 6.046585, -12.06395, -9.30571)
+light_energy = 40.86
+light_indirect_energy = 1.476
+light_volumetric_fog_energy = 0.524
+light_size = 0.035
+spot_range = 40.296005
+spot_angle = 76.31862
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2094788330]
 
 [node name="StarField_GPUParticles3D" type="GPUParticles3D" parent="Camera3D" unique_id=123434029]
@@ -134,8 +152,12 @@ environment = SubResource("Environment_2apqw")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=234447080]
 transform = Transform3D(0.4934317, -0.8319622, -0.25370094, 0.71066624, 0.55380213, -0.43388584, 0.5014767, 0.03379616, 0.8645109, 0, 0, 0)
 
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1080632674]
+transform = Transform3D(0.9999995, 0, 0, 0, 0.9999999, 0, 0, 0, 1.0000002, 0.078, -0.382, 5.063)
+mesh = ExtResource("2_05oej")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=285637806]
-transform = Transform3D(0.8829906, 0.37267902, -0.2853728, -0.44207034, 0.8646457, -0.238666, 0.15780059, 0.3368947, 0.92822474, 8.3055935, 1.9473746, -12.73483)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 0.07755709, -0.38153636, 5.062908)
 mesh = ExtResource("2_wcf1k")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=632750079]
@@ -149,6 +171,18 @@ mesh = ExtResource("4_aggqv")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1825924752]
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 2.7451086, 3.6069698, -8.202078)
 mesh = ExtResource("5_k3tmm")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1479888042]
+transform = Transform3D(1, 0, 0, 0, 0.036000535, 0.9993518, 0, -0.9993518, 0.036000535, 0, 2.085914, 0)
+
+[node name="OxygenStation" parent="." unique_id=557956778 instance=ExtResource("7_hls5v")]
+transform = Transform3D(-1.35015075e-08, 0, 0.30887848, 0, 0.30887848, 0, -0.30887848, 0, -1.35015075e-08, -0.5621518, -0.18705568, -0.71829)
+
+[node name="Refinery" parent="." unique_id=794471086 instance=ExtResource("8_t0nep")]
+transform = Transform3D(-1.35015075e-08, 0, 0.30887848, 0, 0.30887848, 0, -0.30887848, 0, -1.35015075e-08, -0.5621518, -0.18705568, 0.51722395)
+
+[node name="UpgradeStation" parent="." unique_id=733137947 instance=ExtResource("9_323ce")]
+transform = Transform3D(-1.35015075e-08, 0, 0.30887848, 0, 0.30887848, 0, -0.30887848, 0, -1.35015075e-08, -0.5621518, -0.18705568, -0.10053301)
 
 [connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Start_Button" to="CanvasLayer/Main_Menu_Control" method="StartClicked"]
 [connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Settings_Button" to="CanvasLayer/Main_Menu_Control" method="SettingsClicked"]

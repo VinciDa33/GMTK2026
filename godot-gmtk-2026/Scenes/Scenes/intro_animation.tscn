@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://d30vwg61hxh8s"]
+
+[ext_resource type="ArrayMesh" uid="uid://blkvbbq51lb5y" path="res://Assets/Graphics/Models/ISS/IIS.res" id="1_ueub3"]
+[ext_resource type="ArrayMesh" uid="uid://bmiyukyk6fix" path="res://Assets/Graphics/Models/POD3/body.res" id="2_sftb1"]
+[ext_resource type="ArrayMesh" uid="uid://wgd4einxxt7n" path="res://Assets/Graphics/Models/POD3/top.res" id="3_fitt1"]
+[ext_resource type="Texture2D" uid="uid://cvm6xubdplgjl" path="res://Assets/Graphics/Models/earth/earth.png" id="4_fitt1"]
+[ext_resource type="Texture2D" uid="uid://cr7mvu0an1gs3" path="res://Assets/Graphics/Icons/gas-station.png" id="5_o7qe8"]
+[ext_resource type="Script" uid="uid://b2aqeeb2nc768" path="res://Scripts/Intro/WarningFlash.cs" id="5_q5dyf"]
+[ext_resource type="Script" uid="uid://bravmkaqxwunk" path="res://Scripts/Intro/AnimationPlayer.cs" id="5_wknhw"]
+[ext_resource type="AudioStream" uid="uid://fr4sbi5n3434" path="res://Assets/Sounds/intro.mp3" id="8_66cxu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fitt1"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_o7qe8"]
+sky_material = SubResource("ProceduralSkyMaterial_fitt1")
+
+[sub_resource type="Environment" id="Environment_q5dyf"]
+background_mode = 2
+sky = SubResource("Sky_o7qe8")
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umah2"]
+albedo_texture = ExtResource("4_fitt1")
+
+[sub_resource type="Animation" id="Animation_fitt1"]
+resource_name = "Cutscene"
+length = 21.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ISS:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.733333, 6.9666667, 10),
+"transitions": PackedFloat32Array(1, 0.4204483, 1, 1),
+"update": 0,
+"values": [Vector3(1.1695834, 0.9653635, 1.5330999), Vector3(1.0919541, 0.9711896, 1.6160654), Vector3(0.7382743, 1.261873, 1.9495327), Vector3(0.58817595, 1.2653637, 2.1188297)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ship:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7, 11.966666, 18.033333, 21),
+"transitions": PackedFloat32Array(1, 1, 0.7578572, 1, 1),
+"update": 0,
+"values": [Vector3(-8.625777, 5.2276325, 1510.2996), Vector3(-8.626, 5.228, -70.39905), Vector3(94.474, 5.228, -1327.118), Vector3(94.474, 5.228, -1605.116), Vector3(94.474, 5.228, -1648.896)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10, 10.01, 11.933333, 11.943334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.16711316, -2.7536738, -0.06690915), Vector3(4.712389, 3.1415927, 0), Vector3(4.712389, 3.1415927, 0), Vector3(0, -1.5707964, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(10, 10.01, 11.933333, 11.943334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-10.979102, 5.5018034, -24.037876), Vector3(-145.25574, 5.5018034, -24.246984), Vector3(-145.25574, 5.5018034, -24.246984), Vector3(-72.55678, 5.5018034, -1539.7161)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ship:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(18.025297, 20.995296),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0128632365, -3.113369, -0.42752364), Vector3(0.54105204, -2.4713862, -0.3700098)]
+}
+
+[sub_resource type="Animation" id="Animation_o7qe8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ISS:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.1695834, 0.9653635, 1.5330999)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ship:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.625777, 5.2276325, 1510.2996)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.16711316, -2.7536738, -0.06690915)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-10.979102, 5.5018034, -24.037876)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ship:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0128632365, -3.113369, -0.42752364)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7qe8"]
+_data = {
+&"Cutscene": SubResource("Animation_fitt1"),
+&"RESET": SubResource("Animation_o7qe8")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_4lqlq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5dyf"]
+
+[node name="IntroAnimation" type="Node3D" unique_id=1807178636]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1413232072]
+environment = SubResource("Environment_q5dyf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=379510956]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="ISS" type="MeshInstance3D" parent="." unique_id=829091533]
+transform = Transform3D(0.77786976, -0.54018587, 0.32111987, 0.39025772, 0.014718302, -0.92058814, 0.49256217, 0.8414172, 0.22226065, -0.79558086, 0.6853733, -15.3842535)
+mesh = ExtResource("1_ueub3")
+
+[node name="Ship" type="MeshInstance3D" parent="." unique_id=1183448248]
+transform = Transform3D(-0.9094823, -0.41478378, -0.028217584, -0.4145843, 0.9099199, -0.012862882, 0.031011056, 4.6566124e-09, -0.99951905, -8.625777, 5.2276325, 1510.2996)
+mesh = ExtResource("2_sftb1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ship" unique_id=1010090210]
+mesh = ExtResource("3_fitt1")
+
+[node name="Earth" type="CSGSphere3D" parent="." unique_id=1255173361]
+transform = Transform3D(-0.22569132, 0.2323067, 0.94609565, -0.46318644, 0.8287744, -0.31399253, -0.85704255, -0.509084, -0.07944587, 5.075763, 0, 4467.937)
+radius = 3447.5757
+material = SubResource("StandardMaterial3D_umah2")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=590419596]
+transform = Transform3D(-0.9278337, 0.00088659674, -0.37299317, -0.065927826, 0.9838627, 0.16633642, 0.36712155, 0.17892316, -0.91280246, -10.979102, 5.5018034, -24.037876)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=817519521]
+reset_on_save = false
+libraries/ = SubResource("AnimationLibrary_o7qe8")
+script = ExtResource("5_wknhw")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=2038822199]
+transform = Transform3D(3.978484, 0, 0, 0, 1, 0, 0, 0, 3.7236624, -145.30101, 4.332848, -24.175774)
+mesh = SubResource("BoxMesh_4lqlq")
+material = SubResource("StandardMaterial3D_q5dyf")
+script = ExtResource("5_q5dyf")
+Speed = 1.0
+EmissionStrength = 1.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=528719398]
+transform = Transform3D(0.08930093, 0, 0, 0, -3.5960932e-09, -1.0000007, 0, 0.08226903, -4.371142e-08, -145.22018, 4.8341923, -24.236912)
+texture = ExtResource("5_o7qe8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1762305646]
+stream = ExtResource("8_66cxu")
+volume_db = 4.257
+autoplay = true

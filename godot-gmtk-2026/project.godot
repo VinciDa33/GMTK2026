@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GodotGMTK2026"
-run/main_scene="uid://bf7xuoykf2j41"
+run/main_scene="uid://dm0ontwqgbu50"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
