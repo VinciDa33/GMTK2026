@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bf7xuoykf2j41"]
 
 [ext_resource type="Script" uid="uid://opjdnpl0a4u0" path="res://Scripts/MainMenu/MainMenuController.cs" id="1_8um42"]
-[ext_resource type="ArrayMesh" uid="uid://wgd4einxxt7n" path="res://Assets/Graphics/Models/POD3/top.res" id="2_05oej"]
+[ext_resource type="ArrayMesh" uid="uid://d4fgebn1tf0b2" path="res://Assets/Graphics/Models/POD3/top.res" id="2_05oej"]
 [ext_resource type="ArrayMesh" uid="uid://blkvbbq51lb5y" path="res://Assets/Graphics/Models/ISS/IIS.res" id="2_t0nep"]
 [ext_resource type="ArrayMesh" uid="uid://bmiyukyk6fix" path="res://Assets/Graphics/Models/POD3/body.res" id="2_wcf1k"]
 [ext_resource type="ArrayMesh" uid="uid://b3guo1jjowtuf" path="res://Assets/Graphics/Models/Asteroids/Asteroid_1/Asteroid_1.res" id="3_05oej"]
@@ -96,7 +96,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0.5882353, 0.5882353, 0.5882353, 1)
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-text = "With assets by [color=cyan][url=https://kenney.nl/assets/input-prompts]Kenney[/url][/color]"
+text = "With assets by [color=cyan][url=https://nasa.gov/assets/input-prompts]NASA[/url][/color] and [color=cyan][url=https://kenney.nl/assets/input-prompts]Kenney[/url][/color]"
 fit_content = true
 
 [node name="Spacer" type="Control" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=281602445]
@@ -108,13 +108,6 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Start"
-
-[node name="Settings_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1164563297]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-disabled = true
-text = "Settings
-"
 
 [node name="Quit_Button" type="Button" parent="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1698353584]
 custom_minimum_size = Vector2(200, 0)
@@ -185,5 +178,4 @@ transform = Transform3D(-1.35015075e-08, 0, 0.30887848, 0, 0.30887848, 0, -0.308
 transform = Transform3D(-1.35015075e-08, 0, 0.30887848, 0, 0.30887848, 0, -0.30887848, 0, -1.35015075e-08, -0.5621518, -0.18705568, -0.10053301)
 
 [connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Start_Button" to="CanvasLayer/Main_Menu_Control" method="StartClicked"]
-[connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Settings_Button" to="CanvasLayer/Main_Menu_Control" method="SettingsClicked"]
 [connection signal="pressed" from="CanvasLayer/Main_Menu_Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Quit_Button" to="CanvasLayer/Main_Menu_Control" method="QuitClicked"]

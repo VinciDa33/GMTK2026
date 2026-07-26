@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b6x0jdrku0sxd" path="res://Scripts/Misc/PauseMenu.cs" id="1_6gg3g"]
 [ext_resource type="StyleBox" uid="uid://bt8my7g78l6pq" path="res://Styling/Interaction.tres" id="2_j6be0"]
+[ext_resource type="Texture2D" uid="uid://p0usi6edw0dr" path="res://Assets/Input_Prompts/Default/keyboard_arrows_horizontal.png" id="3_rtwye"]
+[ext_resource type="Texture2D" uid="uid://dc1xns4a7v1lr" path="res://Assets/Input_Prompts/Default/keyboard_arrows_up.png" id="4_dcylf"]
+[ext_resource type="Texture2D" uid="uid://dg2j60wdt06ux" path="res://Assets/Input_Prompts/Default/keyboard_e.png" id="5_kdw5m"]
+[ext_resource type="Texture2D" uid="uid://cj4cqgiend7dy" path="res://Assets/Input_Prompts/Default/keyboard_ctrl.png" id="6_mxehm"]
 
 [node name="Pause_Menu" type="Node" unique_id=1084472096 node_paths=PackedStringArray("_menuUI")]
 script = ExtResource("1_6gg3g")
@@ -51,6 +55,75 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Game Is NOT Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=915890298]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1314125905]
+layout_mode = 2
+text = "Controls:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1384864513]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1790701452]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=454174191]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1455141414]
+layout_mode = 2
+text = " Rotate  "
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1105325251]
+layout_mode = 2
+texture = ExtResource("3_rtwye")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=980207940]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=1598999333]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1987021499]
+layout_mode = 2
+text = " Thruster"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=2142438827]
+layout_mode = 2
+texture = ExtResource("4_dcylf")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2043876198]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=822561928]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer2" unique_id=1381449875]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer2/HBoxContainer" unique_id=687509557]
+layout_mode = 2
+text = " Interact"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer2/HBoxContainer" unique_id=865138823]
+layout_mode = 2
+texture = ExtResource("5_kdw5m")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1290476860]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer" unique_id=1162882512]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/HBoxContainer" unique_id=611532591]
+layout_mode = 2
+text = " Dampen"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/HBoxContainer" unique_id=1215006610]
+layout_mode = 2
+texture = ExtResource("6_mxehm")
 
 [node name="Quit_Button" type="Button" parent="CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=543920384]
 layout_mode = 2
