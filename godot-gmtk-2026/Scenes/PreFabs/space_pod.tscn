@@ -51,7 +51,7 @@ mesh = ExtResource("2_m2gcg")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.4, 0, -1)
 
 [node name="Refinery" parent="." unique_id=794471086 instance=ExtResource("3_m2gcg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.4, 0, 3)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.4, -0.02330792, 3)
 
 [node name="UpgradeStation" parent="." unique_id=733137947 instance=ExtResource("4_qbtu1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.4, 0, 1)
