@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://b0epdoye5x7jb"]
+
+[ext_resource type="Texture2D" uid="uid://bw05jb26ubkv1" path="res://Assets/Graphics/Images/Screenshot 2026-07-26 131916.png" id="1_q6pp6"]
+[ext_resource type="Texture2D" uid="uid://cwq6xl6e3m2wk" path="res://Assets/Graphics/Images/Screenshot 2026-07-26 131952.png" id="2_b6cjs"]
+[ext_resource type="Texture2D" uid="uid://cqkweqowhnni2" path="res://Assets/Graphics/Images/Screenshot 2026-07-26 132116.png" id="3_a4rb7"]
+[ext_resource type="Texture2D" uid="uid://dgit08w7otn2j" path="res://Assets/Graphics/Images/Screenshot 2026-07-26 132201.png" id="4_3ug70"]
+[ext_resource type="Script" uid="uid://b01q6u7p33pfd" path="res://Scripts/Misc/playerGuide.cs" id="5_b6cjs"]
+
+[node name="PlayerGuide" type="Node" unique_id=856034109]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1812897557]
+layer = 15
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1391501151]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control" unique_id=806303836]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -438.0
+offset_top = -182.0
+offset_right = 434.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer" unique_id=780019581]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer" unique_id=111807832]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=511207785]
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1684221978]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/VBoxContainer" unique_id=2036041687]
+layout_mode = 2
+text = "Step 1
+Gather Resuorces"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/VBoxContainer" unique_id=96661736]
+layout_mode = 2
+texture = ExtResource("1_q6pp6")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=347056469]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/VBoxContainer2" unique_id=1625905302]
+layout_mode = 2
+text = "Step 2
+Refine Resources"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/VBoxContainer2" unique_id=1235379386]
+layout_mode = 2
+texture = ExtResource("2_b6cjs")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=889280039]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/VBoxContainer3" unique_id=1624823617]
+layout_mode = 2
+text = "Step 3
+Buy Upgrades"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/VBoxContainer3" unique_id=1013519718]
+layout_mode = 2
+texture = ExtResource("3_a4rb7")
+expand_mode = 4
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1302098277]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/VBoxContainer4" unique_id=1811310531]
+layout_mode = 2
+text = "Step 4
+Get to the ISS"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/VBoxContainer4" unique_id=1792607483]
+layout_mode = 2
+texture = ExtResource("4_3ug70")
+expand_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=304447275]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1498942005 node_paths=PackedStringArray("GuideNode")]
+layout_mode = 2
+text = "UNDERSTOOD"
+script = ExtResource("5_b6cjs")
+GuideNode = NodePath("../../../../..")
+
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/Control/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Button" method="OnButtonPressed"]

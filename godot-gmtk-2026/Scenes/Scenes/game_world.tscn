@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cehx3tpqvjwb4" path="res://Scripts/Player/CameraFollower.cs" id="6_mpric"]
 [ext_resource type="PackedScene" uid="uid://dicourw40dtkg" path="res://Scenes/PreFabs/pause_menu.tscn" id="6_msnvf"]
 [ext_resource type="PackedScene" uid="uid://biejp7hy81mpc" path="res://Scenes/PreFabs/game_complete.tscn" id="7_n2uhk"]
+[ext_resource type="PackedScene" uid="uid://b0epdoye5x7jb" path="res://Scenes/PreFabs/player_guide.tscn" id="9_5f682"]
 [ext_resource type="Texture2D" uid="uid://d2lw08sut2jwl" path="res://Assets/Input_Prompts/Default/keyboard_arrow_up.png" id="9_vca7v"]
 [ext_resource type="Script" uid="uid://cfw13teteyk3k" path="res://Scripts/Misc/PointerController.cs" id="10_djwxc"]
 [ext_resource type="Script" uid="uid://cvlad07kgupcx" path="res://Scripts/Starfield/StarFieldGpuParticles3d.cs" id="11_e11ps"]
@@ -76,6 +77,8 @@ PickupSounds = Array[AudioStream]([ExtResource("4_d8tds"), ExtResource("5_u1648"
 [node name="Pause_Menu" parent="." unique_id=1084472096 instance=ExtResource("6_msnvf")]
 
 [node name="Game_Complete" parent="." unique_id=318825675 instance=ExtResource("7_n2uhk")]
+
+[node name="PlayerGuide" parent="." unique_id=856034109 instance=ExtResource("9_5f682")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=554017553]
 environment = SubResource("Environment_2apqw")
