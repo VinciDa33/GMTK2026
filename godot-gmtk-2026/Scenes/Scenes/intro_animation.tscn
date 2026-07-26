@@ -26,6 +26,30 @@ glow_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umah2"]
 albedo_texture = ExtResource("4_fitt1")
 
+[sub_resource type="Curve" id="Curve_8um42"]
+_data = [Vector2(0, 0), 0.0, 4.278798, 0, 0, Vector2(0.49892932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.540757, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_66cxu"]
+curve = SubResource("Curve_8um42")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t64sp"]
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 10)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, -90)
+rotation_3d_max = Vector3(0, 0, 90)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_66cxu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ggijk"]
+
 [sub_resource type="Animation" id="Animation_fitt1"]
 resource_name = "Cutscene"
 length = 21.0
@@ -91,7 +115,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_o7qe8"]
-length = 0.001
+length = 22.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -173,11 +197,11 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="ISS" type="MeshInstance3D" parent="." unique_id=829091533]
-transform = Transform3D(0.77786976, -0.54018587, 0.32111987, 0.39025772, 0.014718302, -0.92058814, 0.49256217, 0.8414172, 0.22226065, -0.79558086, 0.6853733, -15.3842535)
+transform = Transform3D(0.29499817, -0.5323676, 0.79344887, 0.710115, -0.43345615, -0.5548445, 0.63930625, 0.7271181, 0.25017348, -0.79558086, 0.6853733, -15.3842535)
 mesh = ExtResource("1_ueub3")
 
 [node name="Ship" type="MeshInstance3D" parent="." unique_id=1183448248]
-transform = Transform3D(-0.9094823, -0.41478378, -0.028217584, -0.4145843, 0.9099199, -0.012862882, 0.031011056, 4.6566124e-09, -0.99951905, -8.625777, 5.2276325, 1510.2996)
+transform = Transform3D(-0.90948224, -0.41478375, -0.028217584, -0.41458428, 0.90991986, -0.012862882, 0.031011054, 4.6566124e-09, -0.99951905, 94.474, 5.228, -1428.8416)
 mesh = ExtResource("2_sftb1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ship" unique_id=1010090210]
@@ -188,8 +212,26 @@ transform = Transform3D(-0.22569132, 0.2323067, 0.94609565, -0.46318644, 0.82877
 radius = 3447.5757
 material = SubResource("StandardMaterial3D_umah2")
 
+[node name="StarField_GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=2136193473]
+transform = Transform3D(7.1458178, 0.008638599, -0.10035486, 0.00085566496, 37.54499, 2.3543134e-05, 62.919518, -0.0014916805, 0.011397379, 230.7307, 0, -1580.196)
+amount = 100
+lifetime = 10.0
+preprocess = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_t64sp")
+draw_pass_1 = SubResource("QuadMesh_ggijk")
+
+[node name="StarField_GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1300991511]
+transform = Transform3D(-1.9073486e-06, -355.57797, -0.055270515, -255.74963, 6.0081482e-05, -3.7252903e-09, -4.196167e-05, 230.90741, -0.08511177, 1892.1207, 2.861023e-06, 1070.2144)
+amount = 100
+lifetime = 10.0
+preprocess = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_t64sp")
+draw_pass_1 = SubResource("QuadMesh_ggijk")
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=590419596]
-transform = Transform3D(-0.9278337, 0.00088659674, -0.37299317, -0.065927826, 0.9838627, 0.16633642, 0.36712155, 0.17892316, -0.91280246, -10.979102, 5.5018034, -24.037876)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -72.55678, 5.5018034, -1539.7161)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=817519521]
 reset_on_save = false
@@ -212,3 +254,5 @@ texture = ExtResource("5_o7qe8")
 stream = ExtResource("8_66cxu")
 volume_db = 4.257
 autoplay = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1491795503]
