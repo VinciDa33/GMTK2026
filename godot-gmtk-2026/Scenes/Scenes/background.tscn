@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://nryyjgy4rj3q"]
+
+[ext_resource type="Texture2D" uid="uid://cvm6xubdplgjl" path="res://Assets/Graphics/Models/earth/earth.png" id="1_08gsj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a4ocu"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_o7qe8"]
+sky_material = SubResource("ProceduralSkyMaterial_a4ocu")
+
+[sub_resource type="Environment" id="Environment_oh88j"]
+background_mode = 2
+sky = SubResource("Sky_o7qe8")
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jny1p"]
+albedo_texture = ExtResource("1_08gsj")
+
+[sub_resource type="Curve" id="Curve_rq5v0"]
+_data = [Vector2(0, 0), 0.0, 4.278798, 0, 0, Vector2(0.49892932, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.540757, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_66cxu"]
+curve = SubResource("Curve_rq5v0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ak32v"]
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 10)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, -90)
+rotation_3d_max = Vector3(0, 0, 90)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_66cxu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_erauq"]
+
+[node name="Background" type="Node3D" unique_id=1818724578]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=381725126]
+environment = SubResource("Environment_oh88j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=41859000]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Earth" type="CSGSphere3D" parent="." unique_id=1679869966]
+transform = Transform3D(-0.16495873, 0.16979395, 0.69150525, -0.33854493, 0.6057547, -0.22949846, -0.6264161, -0.37209165, -0.05806732, -776.93616, 207.55441, 4083.0825)
+radius = 3447.5757
+material = SubResource("StandardMaterial3D_jny1p")
+
+[node name="StarField_GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1408402707]
+transform = Transform3D(-2.7787764e-06, -355.57797, -0.05527051, -372.5963, 6.0081482e-05, -3.72529e-09, -6.113308e-05, 230.90741, -0.08511176, 1892.1207, 2.861023e-06, 2051.3772)
+amount = 100
+lifetime = 10.0
+preprocess = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ak32v")
+draw_pass_1 = SubResource("QuadMesh_erauq")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1776960935]
+transform = Transform3D(-0.9278337, 0.00088660367, -0.3729932, -0.065927826, 0.9838627, 0.16633642, 0.36712155, 0.17892316, -0.91280246, -10.979102, 5.5018034, -30.019459)

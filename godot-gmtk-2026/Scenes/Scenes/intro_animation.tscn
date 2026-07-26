@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://blkvbbq51lb5y" path="res://Assets/Graphics/Models/ISS/IIS.res" id="1_ueub3"]
 [ext_resource type="ArrayMesh" uid="uid://bmiyukyk6fix" path="res://Assets/Graphics/Models/POD3/body.res" id="2_sftb1"]
-[ext_resource type="ArrayMesh" uid="uid://d4fgebn1tf0b2" path="res://Assets/Graphics/Models/POD3/top.res" id="3_fitt1"]
+[ext_resource type="ArrayMesh" uid="uid://wgd4einxxt7n" path="res://Assets/Graphics/Models/POD3/top.res" id="3_fitt1"]
 [ext_resource type="Texture2D" uid="uid://cvm6xubdplgjl" path="res://Assets/Graphics/Models/earth/earth.png" id="4_fitt1"]
 [ext_resource type="Texture2D" uid="uid://cr7mvu0an1gs3" path="res://Assets/Graphics/Icons/gas-station.png" id="5_o7qe8"]
 [ext_resource type="Script" uid="uid://b2aqeeb2nc768" path="res://Scripts/Intro/WarningFlash.cs" id="5_q5dyf"]
